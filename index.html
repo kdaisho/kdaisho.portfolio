@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Daisho: Web Designer/Integrator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta charset="UTF-8">
+  <meta name="descrition" content="Daisho: Web Designer/Ingetrator">
+  <meta name="keywords" content="web design, web integrator, front-end developer">
+  <meta name="author" content="Daisho Komiyama">
+  <meta property="og:title" content="Daisho: Web Designer/Integrator">
+  <meta property="og:site_name" content="Daisho: Web Designer/Integrator">
+  <meta property="og:url" content="http://daishodesign.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="Hi, I’m a Web Designer/Integrator based in Montreal, Quebec. I’m passionate building clean, usable websites with best practice available today.">
+  <meta property="og:image" content="http://daishodesign.com/images/fb-timeline-daisho.jpg">
+  <meta property="og:image:width" content="400">
+  <link href="//fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="shortcut icon" href="images/favi-logo.png">
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="js/app.js"></script>
+</head>
+<body ng-app="myApp">
+  <header class="main-header">
+    <a id="site_logo" class="site-logo" href="//daishodesign.com" ng-include="'images/logo.svg'"></a>
+    <ul class="social-icons">
+      <li>
+        <a href="//www.facebook.com/daisho.komiyama" target="_blank">
+          <img src="images/icon-fb.svg" onError="this.onerror=null; this.src='images/icon-fb.png'" alt="facebook">
+        </a>
+      </li>
+      <li>
+        <a href="//www.linkedin.com/in/daisho-komiyama-6766657a?trk=nav_responsive_tab_profile_pic" target="_blank">
+          <img src="images/icon-linkedin.svg" onError="this.onerror=null; this.src='images/icon-linkedin.png'" alt="linkedin">
+        </a>
+      </li>
+    </ul>
+    <img id="main-menu" src="images/menu.svg" onError="this.onerror=null; this.src='images/menu.png'" alt="menu">
+    <ul class="nav">
+      <li>
+        <a href="#goto-about" class="link"><img class="nav-icon" src="images/icon-about-opt.svg" onError="this.onerror=null; this.src='images/icon-about.png'"alt="about me">
+          <span></span>ABOUT
+        </a>
+      </li>
+      <li>
+        <a href="#goto-work" class="link"><img class="nav-icon" src="images/icon-work-opt.svg" onError="this.onerror=null; this.src='images/icon-work.png'"alt="my work">
+          <span></span>WORK
+        </a>
+      </li>
+      <li>
+        <a href="#goto-contact" class="link"><img class="nav-icon" src="images/icon-contact-opt.svg" onError="this.onerror=null; this.src='images/icon-contact.png'"alt="contact me">
+          <span></span>CONTACT
+        </a>
+      </li>
+      <img class="close-nav" src="images/close-btn.svg" onError="this.onerror=null; this.src='images/close-btn.png'"alt="close menu">
+    </ul>
+  </header>
+  <section class="home">
+    <div class="title">
+      <h1>DAISHO<br>KOMIYAMA</h1>
+      <h2>Web Designer/Integrator</h2>
+    </div>
+  </section>
+  <a class="goto-about"></a> <!-- HTML5: anchor without an href attribute is valid -->
+  <div class="wrapper">
+    <section class="about">
+      <img class="tape" src="images/scotch-tape.png" alt="scotch tape">
+      <div class="about-top about-styles">
+        <img src="images/daisho-profile.png" alt="daisho komiyama">
+        <div class="my-name">
+          <h2>Daisho Komiyama</h2>
+          <h4>(die-show, komi-yama)</h4>
+        </div>
+      </div>
+      <div class="about-bottom about-styles shadows">
+        <div class="about-title">
+          <h3>A bit of myself...</h3>
+          <img src="images/flag-canada.png" alt="flag of canada">
+          <img src="images/flag-japan.png" alt="flag of japan">
+        </div>
+        <div class="about-content">
+          <p>
+            Hi, I’m a Web Designer/Integrator based in Montreal, Quebec. I’m passionate building clean, usable websites with best practice available today.
+          </p>
+          <p>
+            I could be seen in a cafe in town, bar or Mont Saint-Sauveur struggling to learn how to fly! (<a href="//www.youtube.com/watch?v=_nkH4_fHZSE" target="_blank">see video</a>)
+          </p>
+        </div>
+      </div>
+    </section>
+    <section class="edu-skills">
+      <div class="education">
+        <h2>Education</h2>
+        <div class="cards">
+          <div class="two-cards">
+            <div class="card" ng-click="toggle1 = !toggle1" ng-class="{'flip1' : toggle1}">
+              <div class="side-a treehouse-a card-style">
+                <h4>2015 - Present</h4>
+                <img src="images/treehouse-logo.png" alt="treehouse">
+              </div>
+              <div class="side-b treehouse-b card-style">
+                <div class="v-align">
+                  <div class="edu-title">
+                    <h4>Web Development</h4>
+                    <p>Online Education</p>
+                  </div>
+                  <p>PHP, JavaScript, Angular.js, CSS3 animations, CSS3 flexbox; etc.</p>
+                </div>
+              </div>
+            </div>
+            <div class="card" ng-click="toggle2 = !toggle2" ng-class="{'flip2' : toggle2}">
+              <div class="side-a herzing-a card-style">
+                <h4>2013 - 2014</h4>
+                <img src="images/herzing-college-logo.png" alt="herzing college">
+                <p>Montreal, QC</p>
+              </div>
+              <div class="side-b herzing-b card-style">
+                <div class="v-align">
+                  <div class="edu-title">
+                    <h4>Graphic Design for Websites</h4>
+                  </div>
+                  <p>
+                    Photoshop, Illustrator, HTML5, CSS3, JavaScript, Responsive layout; etc.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="two-cards">
+            <div class="card" ng-click="toggle3 = !toggle3" ng-class="{'flip3' : toggle3}">
+              <div class="side-a sdf-a card-style">
+                <h4>Apr - Oct 2008</h4>
+                <p><span>JGSDF;</span><br>Japan Ground Self-Defense Force<br>陸上自衛隊 JPN</p>
+              </div>
+              <div class="side-b sdf-b card-style">
+                <div class="v-align">
+                  <div class="edu-title">
+                    <h4>Advance Officer's Course</h4>
+                  </div>
+                  <p>
+                    Army doctrine / tactics; offensice, defensive and maneuver companies / battalions; etc.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="card" ng-click="toggle4 = !toggle4" ng-class="{'flip4' : toggle4}">
+              <div class="side-a hokkai-a card-style">
+                <h4>1996 - 2000</h4>
+                <p><span>Hokkai Gakuen University</span><br>Sappro, JPN</p>
+              </div>
+              <div class="side-b hokkai-b card-style">
+                <div class="v-align">
+                  <div class="edu-title">
+                    <h4>Bachelor of Laws</h4>
+                  </div>
+                  <p>Leagl method and procedures, Criminal law, Administrative law, Law of property; etc.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="skills">
+        <h2>Skills &amp; Experiences</h2>
+        <div id="wrap_skill" class="wrap-skill">
+          <div class="container-app">
+            <img class="icon-skill" src="images/icon-ps.png" alt="photoshop">
+            <div class="state-prog">
+              <div class="state">
+                <span class="first-gauge eh">|</span>
+                <span class="good">|</span>
+                <span class="excellent">|</span>
+                <span class="ninja">|</span>
+              </div>
+              <div class="wrap-prog">
+                <div class="prog-bar ps"><span>Photoshop</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="container-app">
+            <img src="images/icon-ai.png" alt="illustrator">
+            <div class="state-prog">
+              <div class="state">
+                <span class="first-gauge">|</span>
+                <span>|</span>
+                <span>|</span>
+                <span>|</span>
+              </div>
+              <div class="wrap-prog">
+                <div class="prog-bar ai"><span>Illustrator</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="container-app">
+            <img src="images/icon-html5.png" alt="html5">
+            <div class="state-prog">
+              <div class="state">
+                <span class="first-gauge">|</span>
+                <span>|</span>
+                <span>|</span>
+                <span>|</span>
+              </div>
+              <div class="wrap-prog">
+                <div class="prog-bar htm"><span>HTML5</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="container-app">
+            <img src="images/icon-css3.png" alt="css3">
+            <div class="state-prog">
+              <div class="state">
+                <span class="first-gauge">|</span>
+                <span>|</span>
+                <span>|</span>
+                <span>|</span>
+              </div>
+              <div class="wrap-prog">
+                <div class="prog-bar css"><span>CSS3</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="container-app">
+            <img src="images/icon-sass.png" alt="sass">
+            <div class="state-prog">
+              <div class="state">
+                <span class="first-gauge">|</span>
+                <span>|</span>
+                <span>|</span>
+                <span>|</span>
+              </div>
+              <div class="wrap-prog">
+                <div class="prog-bar sass"><span>Sass&nbsp;(SCSS)</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="container-app">
+            <img src="images/icon-js.png" alt="javascript">
+            <div class="state-prog">
+              <div class="state">
+                <span class="first-gauge">|</span>
+                <span>|</span>
+                <span>|</span>
+                <span>|</span>
+              </div>
+              <div class="wrap-prog">
+                <div class="prog-bar js"><span>JavaScript</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="container-app">
+            <img src="images/icon-jquery.png" alt="jquery">
+            <div class="state-prog">
+              <div class="state">
+                <span class="first-gauge">|</span>
+                <span>|</span>
+                <span>|</span>
+                <span>|</span>
+              </div>
+              <div class="wrap-prog">
+                <div class="prog-bar jquery"><span>jQuery</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="container-app">
+            <img src="images/icon-angular.png" alt="angular">
+            <div class="state-prog">
+              <div class="state">
+                <span class="first-gauge">|</span>
+                <span>|</span>
+                <span>|</span>
+                <span>|</span>
+              </div>
+              <div class="wrap-prog">
+                <div class="prog-bar angular"><span>Angular.js</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="container-app">
+            <img src="images/icon-php.png" alt="php">
+            <div class="state-prog">
+              <div class="state">
+                <span class="first-gauge">|</span>
+                <span>|</span>
+                <span>|</span>
+                <span>|</span>
+              </div>
+              <div class="wrap-prog">
+                <div class="prog-bar php"><span>PHP</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="container-app">
+            <img src="images/icon-git.png" alt="git">
+            <div class="state-prog">
+              <div class="state">
+                <span class="first-gauge">|</span>
+                <span>|</span>
+                <span>|</span>
+                <span>|</span>
+              </div>
+              <div class="wrap-prog">
+                <div class="prog-bar git"><span>Git</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <a class="goto-work"></a>
+    <section class="my-work goto-work" ng-controller="galleryCtrl">
+      <h2>MY WORK</h2>
+      <div class="wrap-thumbs">
+        <div ng-repeat="image in images" class="wrap-thumb" data-pos="{{image.pos}}">
+            <div>
+              <p>{{image.desc}}</p>
+            </div>
+            <img ng-src="images/{{image.url}}" alt="{{image.alt}}">
+        </div>
+      </div>
+      <div class="gal-holder">
+        <div id="img_holder"></div>
+        <div id="close_btn">
+          <img src="images/close-btn.svg" onError="this.onerror=null; this.src='images/close-btn.png'" alt="close">
+        </div>
+        <div id="prev" class="arrow" data-pos="0">
+          <img src="images/arrow-prev.svg" onError="this.onerror=null; this.src='images/arrow-prev.png'" alt="previous">
+        </div>
+        <div id="next" class="arrow" data-pos="0">
+          <img src="images/arrow-next.svg" onError="this.onerror=null; this.src='images/arrow-next.png'" alt="next">
+        </div>
+      </div>
+    </section>
+    <div id="modal_bg"></div>
+    <section class="contact goto-contact">
+      <a class="goto-contact"></a>
+      <p>I'd like to hear from you. If you'd like more information about me, please fill out the form.<br>I'll get back to you ASAP!</p>
+      <div class="btn-holder">
+        <div id="modal_trigger">CONTACT</div>
+        <div id="modal-overlay">
+          <div class="modal-wrap">
+            <div id="modal_close" title="close">&#10006;</div>
+            <form id="form" name="myForm" onsubmit="return false" ng-controller="validateCtrl">
+              <h3>Questions or comments?</h3>
+              <div>
+                <label for="name">name: </label>
+                <input id="user" type="text" placeholder="name" name="user" ng-model="user" required>
+                <span ng-show="myForm.user.$dirty && myForm.user.$invalid">
+                  <span ng-show="myForm.user.$error.required">Username is required.</span>
+                </span>
+              </div>
+              <div>
+                <label for="email">email: </label>
+                <input id="email" type="email" placeholder="email" name="email" ng-model="email" required>
+                <span ng-show="myForm.email.$dirty && myForm.email.$invalid">
+                  <span ng-show="myForm.email.$error.required">Email is required.</span>
+                  <span ng-show="myForm.email.$error.email">Invalid email address.</span>
+                </span>
+              </div>
+              <div>
+                <label for="message">message: </label>
+                <textarea id="message" placeholder="message" name="message" rows="8" cols="32"></textarea>
+              </div>
+              <button id="submit" ng-disabled="myForm.user.$dirty && myForm.user.$invalid || myForm.email.$dirty && myForm.email.$invalid">SEND</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="contact-info">
+        <p>Daisho Komiyama</p>
+        <p>Web Designer/Integrator</p>
+        <a href="mailto:info@daishodesign.com?Subject=Hello%20" target="_top">info@daishodesign.com</a>
+        <div>
+          <ul class="social-icons">
+            <li>
+              <a href="//www.facebook.com/daisho.komiyama" target="_blank">
+                <img src="images/icon-fb.svg" onError="this.onerror=null; this.src='images/icon-fb.png'" alt="facebook">
+              </a>
+            </li>
+            <li>
+              <a href="//www.linkedin.com/in/daisho-komiyama-6766657a?trk=nav_responsive_tab_profile_pic" target="_blank">
+                <img src="images/icon-linkedin.svg" onError="this.onerror=null; this.src='images/icon-linkedin.png'" alt="linkedin">
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="btm-statement" ng-controller="timeCtrl">
+    <div class="wrapper">
+      <p>&#169; Copyright {{getDatetime | date:'yyyy'}} All Rights Reserved.</p>
+    </div>
+  </div>
+<script>
+
+var trigger = document.getElementById("modal_trigger");
+var eraser = document.getElementById("modal_close");
+console.log('waaat' + trigger);
+
+trigger.onclick = function() {
+  document.getElementById("modal-overlay").classList.add("modal-on");
+}
+eraser.onclick = function() {
+  document.getElementById("modal-overlay").classList.remove("modal-on"); 
+}
+
+window.onscroll = function() { // Trigger for growing skill gauges
+  console.log(scrollY);
+  console.log('this is the current width on scroll ' + window.innerWidth);
+
+  var mobile = false;
+  if (window.innerWidth <= 767) {
+    mobile = true;
+  }
+  if (mobile && (window.scrollY >= 1490)) {
+    document.getElementById("wrap_skill").classList.add("grow-bar");
+  }
+  else if (!mobile && (window.scrollY >= 910)) {
+    document.getElementById("wrap_skill").classList.add("grow-bar");
+  }
+};
+
+</script>
+</body>
+</html>
