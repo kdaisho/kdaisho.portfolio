@@ -22,22 +22,18 @@ article, aside, figure,
 footer, header, section {
 	display: block;
 }
-
 div {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
-
 body {
 	line-height: 1;
 	background: #f9f9f9;
 }
-
 ol, ul {
 	list-style: none;
 }
-
 a {
 	text-decoration: none;
 	color: inherit;
@@ -92,6 +88,7 @@ span {
 @keyframes fill-it {
 	100% {fill: #4f89c8;}
 }
+
 path {
 	stroke: #4f89c8;
 	stroke-width: 1;
@@ -104,6 +101,9 @@ path {
 	-webkit-animation: fill-it 2s 2s forwards;
 	animation: fill-it 2s 2s forwards;
 }
+#site_logo {
+	display: none;
+}
 .site-logo {
 	margin: .35em auto 0 .35em;
 	cursor: pointer;
@@ -111,7 +111,20 @@ path {
 .site-logo.mini-logo {
 	margin: .15em auto 0 .4em;
 	height: 47px;
-	transform: scale(.5) !important;
+	width: 70px;
+	transform: scale(.5);
+	transform-origin: 0 0;
+}
+#site_logo.logo-display {
+	display: block;
+}
+.logo-hide {
+	display: none;
+}
+.mini-alt-logo {
+	margin: .15em auto 0 .4em;
+	height: 47px;
+	transform: scale(1);
 	transform-origin: 0 0;
 }
 
@@ -137,7 +150,7 @@ path {
 		align-self: center;
 		transition: padding 2s ease-out;
 
-			&:hover span {
+			.no-touch &:hover span {
 				display: block;
 			}
 
@@ -153,13 +166,13 @@ path {
 			overflow: hidden;
 			transition: padding 0.2s ease-out;
 
-			&:hover {
+			.no-touch &:hover {
 				padding: 6px 15px 6px 52px;
 			}
-			&:hover span {
+			.no-touch &:hover span {
 				left: 0;
 			}
-			&:hover .nav-icon {
+			.no-touch &:hover .nav-icon {
 				left: 8px;
 				top: 7px;
 			}
@@ -255,12 +268,12 @@ path {
 				transition: none;
 				box-shadow: 0 3px 0px #fff;
 
-				&:hover {
+				.no-touch &:hover {
 					transition: none;
 					padding: 16px 15px 11px 25px;
 				}
 
-				&:hover .nav-icon {
+				.no-touch &:hover .nav-icon {
 					top: 16px;
 				}
 
@@ -269,7 +282,7 @@ path {
 					top: 16px;
 				}
 
-				&:hover span {
+				.no-touch &:hover span {
 					display: none;
 				}
 				span {
@@ -292,7 +305,7 @@ path {
 .home {
 	background: url('../images/snowb-cover2.3.jpg') no-repeat;
 	background-size: cover;
-	background-position: 40% 50%;
+	background-position: 40% 0%;
 	height: 860px;
 	display: flex;
 
@@ -804,9 +817,6 @@ path {
 	100% {width: 50%;}
 }
 
-.first-gauge {
-	// margin-left: 40px;
-}
 .eh::before {
 	content: "eh";
 	position: absolute;
@@ -888,7 +898,7 @@ path {
 			border: 3px solid $dark-blue;
 			cursor: pointer;
 			transition: .4s ease-out;
-			&:hover {
+			.no-touch &:hover {
 				background: transparent;
 				transition: .4s ease-out;
 			}
@@ -900,7 +910,7 @@ path {
 				text-align: center;
 				line-height: 1.3;
 			}
-			&:hover p {
+			.no-touch &:hover p {
 				opacity: 0;
 				transition: .4s ease-out;
 			}
@@ -917,7 +927,7 @@ path {
 	z-index: 500;
 	left: 0;
 	width: 100%;
-	top: 8em;
+	top: 4em;
 	text-align: center;
 }
 #close_btn {
@@ -980,15 +990,9 @@ path {
 	}
 
 	#img_holder {
-
 		img {
 			max-width: 760px;
 			width: 94%;
-		}
-		img[data-id="1"] {
-			max-width: 560px;
-			padding: 0;
-			top: 0;
 		}
 	}
 	#close_btn {
@@ -1004,12 +1008,15 @@ path {
 	#next {
 		right: .2em;
 	}
+	
+}
+@media (max-width: 767px) and (orientation: landscape) {	// make some gallery images fit in mobile-landscape
+	#img_holder {
+		top: .1em;
+	}
 	#img_holder img[data-id="1"],
 	#img_holder img[data-id="14"] {
-		width: 100%;
-		margin: -38% auto 0;
-		padding: 0;
-		top: 0;
+		width: 38%;
 	}
 }
 
@@ -1065,10 +1072,10 @@ path {
 			align-self: center;
 
 			#modal_close {
-				color: #fff;
-				font-size: 2em;
+				width: 30px;
 				cursor: pointer;
-				text-align: right;
+				margin-left: auto;
+				display: block;
 				padding: .3em;
 			}
 
@@ -1079,7 +1086,7 @@ path {
 			form {
 				div {
 					width: 200px;
-					margin-top: 9px;
+					margin: .4em 2em 0 0;
 					text-align: left;
 					span {  // validation error message
 						display: block;
@@ -1179,7 +1186,19 @@ path {
 		box-sizing: border-box;
 	 }
 	}
+}
 
+@media (max-width: 767px) and (orientation: landscape) {	// make contact form fit in mobile-landscape
+	.contact .btn-holder .modal-wrap {
+		margin: 0 auto;
+		max-width: 550px;
+	}
+	.form-child {
+		float: left;
+	}
+	#submit {
+		margin: 1.8em 0 0 4em;
+	}
 }
 
 /* === bottom bar === */
@@ -1191,14 +1210,3 @@ path {
 		padding: 4px 0;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
