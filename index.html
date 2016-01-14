@@ -21,10 +21,19 @@
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="js/app.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-49713403-4', 'auto');
+    ga('send', 'pageview');
+  </script>
 </head>
 <body ng-app="myApp">
   <header class="main-header">
-    <a id="site_logo" class="site-logo" href="//daishodesign.com" ng-include="'images/logo.svg'"></a>
+    <a id="site_logo" class="site-logo link" href="#goback-home" ng-include="'images/logo.svg'"></a>
+    <img id="alt_logo" class="site-logo" src="images/logo-alt.svg" alt="daisho logo">
     <ul class="social-icons">
       <li>
         <a href="//www.facebook.com/daisho.komiyama" target="_blank">
@@ -62,6 +71,7 @@
       <img class="close-nav" src="images/close-btn.svg" onError="this.onerror=null; this.src='images/close-btn.png'"alt="close menu">
     </ul>
   </header>
+  <a class="goback-home"></a>
   <section class="home">
     <div class="title">
       <h1>DAISHO<br>KOMIYAMA</h1>
@@ -345,17 +355,17 @@
         <div id="modal_trigger">CONTACT</div>
         <div id="modal-overlay">
           <div class="modal-wrap">
-            <div id="modal_close" title="close">&#10006;</div>
+            <img id="modal_close" class="" src="images/close-btn.svg" onError="this.onerror=null; this.src='images/close-btn.png'"alt="close">
             <form id="form" name="myForm" onsubmit="return false" ng-controller="validateCtrl">
               <h3>Questions or comments?</h3>
-              <div>
+              <div class="form-child">
                 <label for="name">name: </label>
                 <input id="user" type="text" placeholder="name" name="user" ng-model="user" required>
                 <span ng-show="myForm.user.$dirty && myForm.user.$invalid">
                   <span ng-show="myForm.user.$error.required">Username is required.</span>
                 </span>
               </div>
-              <div>
+              <div class="form-child">
                 <label for="email">email: </label>
                 <input id="email" type="email" placeholder="email" name="email" ng-model="email" required>
                 <span ng-show="myForm.email.$dirty && myForm.email.$invalid">
@@ -363,11 +373,11 @@
                   <span ng-show="myForm.email.$error.email">Invalid email address.</span>
                 </span>
               </div>
-              <div>
+              <div class="form-child">
                 <label for="message">message: </label>
-                <textarea id="message" placeholder="message" name="message" rows="8" cols="32"></textarea>
+                <textarea id="message" placeholder="message" name="message" rows="5" cols="30"></textarea>
               </div>
-              <button id="submit" ng-disabled="myForm.user.$dirty && myForm.user.$invalid || myForm.email.$dirty && myForm.email.$invalid">SEND</button>
+              <button id="submit" class="form-child" ng-disabled="myForm.user.$dirty && myForm.user.$invalid || myForm.email.$dirty && myForm.email.$invalid">SEND</button>
             </form>
           </div>
         </div>
@@ -376,25 +386,23 @@
         <p>Daisho Komiyama</p>
         <p>Web Designer/Integrator</p>
         <a href="mailto:info@daishodesign.com?Subject=Hello%20" target="_top">info@daishodesign.com</a>
-        <!-- <div> -->
-          <ul class="social-icons">
-            <li>
-              <a href="//www.facebook.com/daisho.komiyama" target="_blank">
-                <img src="images/icon-fb.svg" onError="this.onerror=null; this.src='images/icon-fb.png'" alt="facebook">
-              </a>
-            </li>
-            <li>
-              <a href="//www.linkedin.com/in/daisho-komiyama-6766657a?trk=nav_responsive_tab_profile_pic" target="_blank">
-                <img src="images/icon-linkedin.svg" onError="this.onerror=null; this.src='images/icon-linkedin.png'" alt="linkedin">
-              </a>
-            </li>
-            <li>
-              <a href="//github.com/kdaisho" target="_blank">
-                <img src="images/github.svg" onError="this.onerror=null; this.src='images/github.png'" alt="github">
-              </a>
-            </li>
-          </ul>
-        <!-- </div> -->
+        <ul class="social-icons">
+          <li>
+            <a href="//www.facebook.com/daisho.komiyama" target="_blank">
+              <img src="images/icon-fb.svg" onError="this.onerror=null; this.src='images/icon-fb.png'" alt="facebook">
+            </a>
+          </li>
+          <li>
+            <a href="//www.linkedin.com/in/daisho-komiyama-6766657a?trk=nav_responsive_tab_profile_pic" target="_blank">
+              <img src="images/icon-linkedin.svg" onError="this.onerror=null; this.src='images/icon-linkedin.png'" alt="linkedin">
+            </a>
+          </li>
+          <li>
+            <a href="//github.com/kdaisho" target="_blank">
+              <img src="images/github.svg" onError="this.onerror=null; this.src='images/github.png'" alt="github">
+            </a>
+          </li>
+        </ul>
       </div>
     </section>
   </div>
@@ -404,10 +412,8 @@
     </div>
   </div>
 <script>
-
 var trigger = document.getElementById("modal_trigger");
 var eraser = document.getElementById("modal_close");
-console.log('waaat' + trigger);
 
 trigger.onclick = function() {
   document.getElementById("modal-overlay").classList.add("modal-on");
@@ -417,9 +423,6 @@ eraser.onclick = function() {
 }
 
 window.onscroll = function() { // Trigger for growing skill gauges
-  console.log(scrollY);
-  console.log('this is the current width on scroll ' + window.innerWidth);
-
   var mobile = false;
   if (window.innerWidth <= 767) {
     mobile = true;
@@ -432,6 +435,15 @@ window.onscroll = function() { // Trigger for growing skill gauges
   }
 };
 
+if (!("ontouchstart" in document.documentElement)) { // limit hover interactions to desktops
+    document.documentElement.className += "no-touch";
+}
+
+var iOS = /iPad|iPhone|iPod/.test(navigator.platform);  // display alternative logo image for iOS as svg animation doesn't work right on iOS
+if(!iOS) {
+  document.getElementById('site_logo').classList.add("logo-display");
+  document.getElementById('alt_logo').classList.add("logo-hide");
+}
 </script>
 </body>
 </html>
