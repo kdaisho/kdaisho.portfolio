@@ -140,13 +140,19 @@ path {
 .main-header,
 .nav,
 .social-icons {
+	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 }
 .nav {
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
 	justify-content: flex-end;
 
 	li {
 		display: block;
+		-webkit-box-align-self: center;
+		-ms-flex-align-self: center;
 		align-self: center;
 		transition: padding 2s ease-out;
 
@@ -200,6 +206,8 @@ path {
 
 .social-icons {
 	margin: 0 .4em;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
 	justify-content: center;
 
 	a {
@@ -212,6 +220,8 @@ path {
 		display: block;
 	}
 	li {
+		-webkit-box-align-self: center;
+		-ms-flex-align-self: center;
 		align-self: center;
 	}
 }
@@ -236,6 +246,8 @@ path {
 			margin: 0 .8em;
 		}
 		li {
+			-webkit-box-align-self: center;
+			-ms-flex-align-self: center;
 			align-self: center;
 		}
 	}
@@ -245,6 +257,8 @@ path {
 	}
 
 	.nav {
+		-webkit-box-direction: column;
+		-ms-flexbox-direction: column;
 		flex-direction: column;
 		position: absolute;
 		top: 0;
@@ -256,6 +270,8 @@ path {
 		li {
 			background: rgba(0,0,0,.85);
 			border: 1px solid #111;
+			-webkit-box-align-self: stretch;
+			-ms-flex-align-self: stretch;
 			align-self: stretch;
 
 			a {
@@ -307,9 +323,13 @@ path {
 	background-size: cover;
 	background-position: 40% 0%;
 	height: 860px;
+	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 
 	.title {
+		-webkit-box-align-self: center;
+		-ms-flex-align-self: center;
 		align-self: center;
 		margin: -20% 0 0 56%;
 		-webkit-animation: my-name .8s;
@@ -386,6 +406,8 @@ path {
 	.home {
 		height: 460px;
 		.title {
+			-webkit-box-align-self: center;
+			-ms-flex-align-self: center;
 			align-self: center;
 			margin: 0 auto;
 		}
@@ -413,8 +435,14 @@ path {
 }
 .about-top {
 	background: $blue;
+	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
+	-webkit-box-wrap: wrap;
+	-ms-flexbox-wrap: wrap;
 	flex-wrap: wrap;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
 	justify-content: flex-start;
 
 	img {
@@ -424,6 +452,8 @@ path {
 	}
 
 	.my-name {
+		-webkit-box-align-self: center;
+		-ms-flex-align-self: center;
 		align-self: center;
 		margin-left: 12px;
 
@@ -435,6 +465,8 @@ path {
 
 @media (max-width: 767px) {
 	.about-top {
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
 		justify-content: center;
 
 		h2, h4 {
@@ -449,6 +481,8 @@ path {
 	.about-title {
 		border-bottom: 2px solid #555;
 		margin: 0;
+		display: -webkit-flex;
+		display: -ms-flexbox;
 		display: flex;
 	}
 
@@ -457,6 +491,8 @@ path {
 	}
 
 	img {
+		-webkit-box-align-self: center;
+		-ms-flex-align-self: center;
 		align-self: center;
 	}
 
@@ -498,7 +534,11 @@ path {
 
 /* ==== education and skills ==== */
 .edu-skills {
+	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
+	-webkit-box-wrap: wrap;
+	-ms-flexbox-wrap: wrap;
 	flex-wrap: wrap;
 
 	h2 {
@@ -512,6 +552,8 @@ path {
 	flex-grow: 1;
 	width: 500px;
 	padding: 80px 24px 0;
+	-webkit-box-wrap: wrap;
+	-ms-flexbox-wrap: wrap;
 	flex-wrap: wrap;
 }
 
@@ -522,16 +564,28 @@ path {
 }
 
 .cards {
+	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
+	-webkit-box-wrap: wrap;
+	-ms-flexbox-wrap: wrap;
 	flex-wrap: wrap;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
 	justify-content: center;
 	-webkit-perspective: 800px; // styles for animation starts here
 	-moz-perspective: 800px;
 }
 
 .two-cards {
+	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
+	-webkit-box-wrap: wrap;
+	-ms-flexbox-wrap: wrap;
 	flex-wrap: wrap;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
 	justify-content: center;
 }
 
@@ -551,6 +605,8 @@ path {
 }
 
 .v-align {
+	-webkit-box-align-self: center;
+	-ms-flex-align-self: center;
 	align-self: center;
 }
 
@@ -584,6 +640,8 @@ path {
 }
 
 .side-b {
+	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	background: #fff;
 	z-index: -10;
@@ -685,11 +743,9 @@ path {
 
 /* ==== skills ==== */
 .skills {
-	// width: 50%;
 	width: 604px;
 	margin: 0 auto;
 	padding: 80px 0 0;
-	// flex-grow: 2;
 }
 
 .wrap-skill {
@@ -697,6 +753,8 @@ path {
 	text-align: center;
 
 	.container-app {
+		display: -webkit-flex;
+		display: -ms-flexbox;
 		display: flex;
 		margin-bottom: 6px;
 		position: relative;
@@ -706,6 +764,8 @@ path {
 		width: 100%;
 
 		.state {
+			display: -webkit-flex;
+			display: -ms-flexbox;
 			display: flex;
 			padding: 0 0 3px;
 
@@ -717,6 +777,8 @@ path {
 	}
 
 	.wrap-prog {
+		-webkit-box-align-self: center;
+		-ms-flex-align-self: center;
 		align-self: center;
 		box-sizing: border-box;
 		margin-left: 3%;
@@ -870,16 +932,28 @@ path {
 		position: absolute;
 		z-index: 300;
 		width: 100%;
+		display: -webkit-flex;
+		display: -ms-flexbox;
 		display: flex;
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
 		justify-content: center;
 
 		img {
+			-webkit-box-align-self: center;
+			-ms-flex-align-self: center;
 			align-self: center;
 		}
 	}
 	.wrap-thumbs {
+		display: -webkit-flex;
+		display: -ms-flexbox;
 		display: flex;
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
 		justify-content: space-around;
+		-webkit-box-wrap: wrap;
+		-ms-flexbox-wrap: wrap;
 		flex-wrap: wrap;
 	}
 
@@ -888,7 +962,11 @@ path {
 		margin: 1%;
 
 		div {
-			display:flex;
+			display: -webkit-flex;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-pack: justify;
+			-ms-flex-pack: justify;
 			justify-content:center;
 			position: absolute;
 			z-index: 200;
@@ -903,7 +981,9 @@ path {
 				transition: .4s ease-out;
 			}
 			p {
-				align-self:flex-end;
+				-webkit-box-align-self: flex-end;
+				-ms-flex-align-self: flex-end;
+				align-self: flex-end;
 				color: #fff;
 				transition: .4s ease-out;
 				padding: 0 2px 2px;
@@ -1060,6 +1140,8 @@ path {
 			text-shadow: none;
 			top: 0;
 			z-index: 600;
+			display: -webkit-flex;
+			display: -ms-flexbox;
 			display: flex;
 		}
 
@@ -1069,6 +1151,8 @@ path {
 			margin: -110px auto 0;
 			max-width: 320px;
 			width: 100%;
+			-webkit-box-align-self: center;
+			-ms-flex-align-self: center;
 			align-self: center;
 
 			#modal_close {

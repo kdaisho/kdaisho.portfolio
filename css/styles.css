@@ -160,14 +160,20 @@ path {
 .main-header,
 .nav,
 .social-icons {
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
 }
 
 .nav {
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: flex-end;
 }
 .nav li {
   display: block;
+  -webkit-box-align-self: center;
+  -ms-flex-align-self: center;
   align-self: center;
   transition: padding 2s ease-out;
 }
@@ -217,6 +223,8 @@ path {
 
 .social-icons {
   margin: 0 .4em;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: center;
 }
 .social-icons a {
@@ -229,6 +237,8 @@ path {
   display: block;
 }
 .social-icons li {
+  -webkit-box-align-self: center;
+  -ms-flex-align-self: center;
   align-self: center;
 }
 
@@ -252,6 +262,8 @@ path {
     margin: 0 .8em;
   }
   .social-icons li {
+    -webkit-box-align-self: center;
+    -ms-flex-align-self: center;
     align-self: center;
   }
 
@@ -260,6 +272,8 @@ path {
   }
 
   .nav {
+    -webkit-box-direction: column;
+    -ms-flexbox-direction: column;
     flex-direction: column;
     position: absolute;
     top: 0;
@@ -271,6 +285,8 @@ path {
   .nav li {
     background: rgba(0, 0, 0, 0.85);
     border: 1px solid #111;
+    -webkit-box-align-self: stretch;
+    -ms-flex-align-self: stretch;
     align-self: stretch;
   }
   .nav li a {
@@ -316,9 +332,13 @@ path {
   background-size: cover;
   background-position: 40% 0%;
   height: 860px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
 }
 .home .title {
+  -webkit-box-align-self: center;
+  -ms-flex-align-self: center;
   align-self: center;
   margin: -20% 0 0 56%;
   -webkit-animation: my-name .8s;
@@ -394,6 +414,8 @@ path {
     height: 460px;
   }
   .home .title {
+    -webkit-box-align-self: center;
+    -ms-flex-align-self: center;
     align-self: center;
     margin: 0 auto;
   }
@@ -418,8 +440,14 @@ path {
 
 .about-top {
   background: #4f89c8;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-wrap: wrap;
+  -ms-flexbox-wrap: wrap;
   flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: flex-start;
 }
 .about-top img {
@@ -428,6 +456,8 @@ path {
   margin: 9px 12px;
 }
 .about-top .my-name {
+  -webkit-box-align-self: center;
+  -ms-flex-align-self: center;
   align-self: center;
   margin-left: 12px;
 }
@@ -437,6 +467,8 @@ path {
 
 @media (max-width: 767px) {
   .about-top {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: center;
   }
   .about-top h2, .about-top h4 {
@@ -449,12 +481,16 @@ path {
 .about-bottom .about-title {
   border-bottom: 2px solid #555;
   margin: 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
 }
 .about-bottom h3 {
   margin-right: auto;
 }
 .about-bottom img {
+  -webkit-box-align-self: center;
+  -ms-flex-align-self: center;
   align-self: center;
 }
 .about-bottom .about-content {
@@ -496,7 +532,11 @@ path {
 
 /* ==== education and skills ==== */
 .edu-skills {
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-wrap: wrap;
+  -ms-flexbox-wrap: wrap;
   flex-wrap: wrap;
 }
 .edu-skills h2 {
@@ -509,6 +549,8 @@ path {
   flex-grow: 1;
   width: 500px;
   padding: 80px 24px 0;
+  -webkit-box-wrap: wrap;
+  -ms-flexbox-wrap: wrap;
   flex-wrap: wrap;
 }
 
@@ -518,16 +560,28 @@ path {
   }
 }
 .cards {
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-wrap: wrap;
+  -ms-flexbox-wrap: wrap;
   flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: center;
   -webkit-perspective: 800px;
   -moz-perspective: 800px;
 }
 
 .two-cards {
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-wrap: wrap;
+  -ms-flexbox-wrap: wrap;
   flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: center;
 }
 
@@ -546,6 +600,8 @@ path {
 }
 
 .v-align {
+  -webkit-box-align-self: center;
+  -ms-flex-align-self: center;
   align-self: center;
 }
 
@@ -578,6 +634,8 @@ path {
 }
 
 .side-b {
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
   background: #fff;
   z-index: -10;
@@ -683,6 +741,8 @@ path {
   text-align: center;
 }
 .wrap-skill .container-app {
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
   margin-bottom: 6px;
   position: relative;
@@ -691,6 +751,8 @@ path {
   width: 100%;
 }
 .wrap-skill .state-prog .state {
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
   padding: 0 0 3px;
 }
@@ -699,6 +761,8 @@ path {
   position: relative;
 }
 .wrap-skill .wrap-prog {
+  -webkit-box-align-self: center;
+  -ms-flex-align-self: center;
   align-self: center;
   box-sizing: border-box;
   margin-left: 3%;
@@ -889,15 +953,27 @@ path {
   position: absolute;
   z-index: 300;
   width: 100%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: center;
 }
 .my-work #pan-container img {
+  -webkit-box-align-self: center;
+  -ms-flex-align-self: center;
   align-self: center;
 }
 .my-work .wrap-thumbs {
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-around;
+  -webkit-box-wrap: wrap;
+  -ms-flexbox-wrap: wrap;
   flex-wrap: wrap;
 }
 .my-work .wrap-thumb {
@@ -905,7 +981,11 @@ path {
   margin: 1%;
 }
 .my-work .wrap-thumb div {
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: center;
   position: absolute;
   z-index: 200;
@@ -921,6 +1001,8 @@ path {
   transition: .4s ease-out;
 }
 .my-work .wrap-thumb div p {
+  -webkit-box-align-self: flex-end;
+  -ms-flex-align-self: flex-end;
   align-self: flex-end;
   color: #fff;
   transition: .4s ease-out;
@@ -1071,6 +1153,8 @@ path {
   text-shadow: none;
   top: 0;
   z-index: 600;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
 }
 .contact .btn-holder .modal-wrap {
@@ -1079,6 +1163,8 @@ path {
   margin: -110px auto 0;
   max-width: 320px;
   width: 100%;
+  -webkit-box-align-self: center;
+  -ms-flex-align-self: center;
   align-self: center;
 }
 .contact .btn-holder .modal-wrap #modal_close {
