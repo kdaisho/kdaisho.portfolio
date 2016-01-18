@@ -904,17 +904,17 @@ path {
 	top: -20px;
 	left: 41%;
 }
-.good::before {
-	content: "good";
+.okay::before {
+	content: "okay";
 	position: absolute;
 	top: -20px;
 	left: 35%;
 }
-.excellent::before {
-	content: "excellent";
+.good::before {
+	content: "good!";
 	position: absolute;
 	top: -20px;
-	left: 25%;
+	left: 35%;
 }
 .ninja::before {
 	content: "ninja";
@@ -931,8 +931,8 @@ path {
 
 @media (max-width: 767px) {
 	.eh::before,
+	.okay::before,
 	.good::before,
-	.excellent::before,
 	.ninja::before {
 		font-size: .84em;
 	}
