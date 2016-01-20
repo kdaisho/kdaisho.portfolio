@@ -1020,14 +1020,36 @@ path {
 .gal-holder {
 	max-width: 1200px;
 	width: 100%;
+	position: relative;
 }
 #img_holder {
 	position: fixed;
 	z-index: 500;
+	top: 4em;
 	left: 0;
 	width: 100%;
-	top: 4em;
 	text-align: center;
+}
+#desc_holder {
+	position: fixed;
+	z-index: 520;
+	width: 290px;
+	top: 75%;
+	left: 50%;
+	margin-left: -145px;
+	padding: .3em 0;
+	text-align: center;
+	background: rgba(0,0,0,.5);
+	border: 1px solid #222;
+	display: none;
+
+	h4, p, a {
+		color: #fff;
+	}
+	a {
+		text-decoration: underline;
+		padding: .6em .8em;
+	}
 }
 #close_btn {
 	position: fixed;
