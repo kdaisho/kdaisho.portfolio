@@ -31,25 +31,139 @@ app.controller('timeCtrl', function($scope) {
 });
 
 var bigsrc = new Array();
-bigsrc[18] = {url:'pan-mh-website.jpg', id:18},
-bigsrc[17] = {url:'pan-carousel-bd.jpg', id:17},
-bigsrc[16] = {url:'pan-carousel-bf.jpg', id:16},
-bigsrc[15] = {url:'pan-email.jpg', id:15},
-bigsrc[14] = {url:'pan-social.jpg', id:14},
-bigsrc[13] = {url:'pan-tshirt-design.jpg', id:13},
-bigsrc[12] = {url:'pan-musician-website.jpg', id:12},
-bigsrc[11] = {url:'pan-coco-logo.jpg', id:11},
-bigsrc[10] = {url:'pan-icon-set.jpg', id:10},
-bigsrc[9] = {url:'pan-character-design.jpg', id:9},
-bigsrc[8] = {url:'pan-larocque-website.jpg', id:8},
-bigsrc[7] = {url:'pan-cafe-website.jpg', id:7},
-bigsrc[6] = {url:'pan-logo-design2.jpg', id:6},
-bigsrc[5] = {url:'pan-logo-design.jpg', id:5},
-bigsrc[4] = {url:'pan-infograph.jpg', id:4},
-bigsrc[3] = {url:'pan-printing.jpg', id:3},
-bigsrc[2] = {url:'pan-bookcover.jpg', id:2},
-bigsrc[1] = {url:'pan-poster.jpg', id:1},
-bigsrc[0] = {url:'pan-tapestry-vector.jpg', id:0}
+bigsrc[18] = {
+	url:'pan-mh-website.jpg',
+	id:18,
+	title:'Graphic/Integration',
+	desc:'Magento: Maple Harbour',
+	link:'//mapleharbour.ca'
+},
+bigsrc[17] = {
+	url:'pan-carousel-bd.jpg',
+	id:17,
+	title:'Visual Content: Carousel',
+	desc:'Photoshop',
+	link:''
+},
+bigsrc[16] = {
+	url:'pan-carousel-bf.jpg',
+	id:16,
+	title:'Visual Content: Carousel',
+	desc:'Photoshop',
+	link:''
+},
+bigsrc[15] = {
+	url:'pan-email.jpg',
+	id:15,
+	title:'Visual Content: Social Media',
+	desc:'Photoshop',
+	link:''
+},
+bigsrc[14] = {
+	url:'pan-social.jpg',
+	id:14,
+	title:'Visual Content: Social Media',
+	desc:'Photoshop',
+	link:''
+},
+bigsrc[13] = {
+	url:'pan-tshirt-design.jpg',
+	id:13,
+	title:'T-shirt Design',
+	desc:'Illustrator',
+	link:''
+},
+bigsrc[12] = {
+	url:'pan-musician-website.jpg',
+	id:12,
+	title:'Website Development',
+	desc:'PHP, jQuery',
+	link:'//bynki.com/'
+},
+bigsrc[11] = {
+	url:'pan-coco-logo.jpg',
+	id:11,
+	title:'Logo Design',
+	desc:'Illustrator',
+	link:''
+},
+bigsrc[10] = {
+	url:'pan-icon-set.jpg',
+	id:10,
+	title:'Icon Design',
+	desc:'Illustrator',
+	link:''
+},
+bigsrc[9] = {
+	url:'pan-character-design.jpg',
+	id:9,
+	title:'Logo Design',
+	desc:'Illustrator',
+	link:''
+},
+bigsrc[8] = {
+	url:'pan-larocque-website.jpg',
+	id:8,
+	title:'Website Development',
+	desc:'HTML5, CSS3, jQuery',
+	link:'//eaularocque.com/'
+},
+bigsrc[7] = {
+	url:'pan-cafe-website.jpg',
+	id:7,
+	title:'Website Development',
+	desc:'HTML5, CSS3, jQuery',
+	link:''
+},
+bigsrc[6] = {
+	url:'pan-logo-design2.jpg',
+	id:6,
+	title:'Logo Design',
+	desc:'Illustrator',
+	link:''
+},
+bigsrc[5] = {
+	url:'pan-logo-design.jpg',
+	id:5,
+	title:'Business Card Design',
+	desc:'IIllustrator',
+	link:''
+},
+bigsrc[4] = {
+	url:'pan-infograph.jpg',
+	id:4,
+	title:'Infographic',
+	desc:'Illustrator',
+	link:''
+},
+bigsrc[3] = {
+	url:'pan-printing.jpg',
+	id:3,
+	title:'Desktop Publishing',
+	desc:'inDesign',
+	link:''
+},
+bigsrc[2] = {
+	url:'pan-bookcover.jpg',
+	id:2,
+	title:'Book Cover Design',
+	desc:'Photoshop',
+	link:''
+},
+bigsrc[1] = {
+	url:'pan-poster.jpg',
+	id:1,
+	title:'Movie Poster Recreation',
+	desc:'Photoshop',
+	link:''
+},
+bigsrc[0] = {
+	url:'pan-tapestry-vector.jpg',
+	id:0,
+	title:'Tapestry Imitation',
+	desc:'Illustrator',
+	link:''
+}
 
 $(document).ready(function() {
 
@@ -87,10 +201,17 @@ $(document).ready(function() {
 		$('.nav').removeClass('show-menu');
 	});
 
+/* ==== MY WORK section ==== */
 	$('.wrap-thumb').click(function() {
 		var pos = $(this).data('pos');
 		$('#img_holder').html('<img src="images/'+ bigsrc[pos].url +'" data-id="'+ bigsrc[pos].id +'">');
-		$('#img_holder, #modal_bg, #close_btn, #prev, #next').fadeIn();
+		$('#desc_holder').html('<h4>' + bigsrc[pos].title + '</h4><p>' + bigsrc[pos].desc
+			+ '</p>');
+		$('#img_holder, #desc_holder, #modal_bg, #close_btn, #prev, #next').fadeIn();
+
+		if(pos == 18 || pos == 12 || pos == 8) {
+			$('#desc_holder').append('<a href="' + bigsrc[pos].link + '" target="_blank">visit website</a>');
+		}
 		if(pos == (bigsrc.length-1)) {
 			$('#next').data('pos',(pos-1));
 			$('#prev').data('pos',0);
@@ -108,6 +229,13 @@ $(document).ready(function() {
 	$('.arrow').click(function() {
 		var pos = $(this).data("pos");
 		$('#img_holder').html('<img src="images/'+ bigsrc[pos].url +'" data-id="'+ bigsrc[pos].id +'">');
+		$('#desc_holder').html('<h4>' + bigsrc[pos].title + '</h4><p>' + bigsrc[pos].desc
+			+ '</p>');
+		$('#img_holder, #desc_holder, #modal_bg, #close_btn, #prev, #next').fadeIn();
+
+		if(pos == 18 || pos == 12 || pos == 8) {
+			$('#desc_holder').append('<a href="' + bigsrc[pos].link + '" target="_blank">visit website</a>');
+		}
 		if(pos == (bigsrc.length-1)) {
 			$('#next').data('pos',(pos-1));
 			$('#prev').data('pos',0);
@@ -121,16 +249,11 @@ $(document).ready(function() {
 	});
 
 	$('#modal_bg, #close_btn').click(function() {
-		$('#img_holder').fadeOut();
-		$('#close_btn').fadeOut();
-		$('#modal_bg').fadeOut();
-		$('#prev').fadeOut();
-		$('#next').fadeOut();
+		$('#img_holder, #desc_holder, #close_btn, #modal_bg, #prev, #next').fadeOut();
 	});
 
 	$('.link').click(function(e) {
 		e.preventDefault(); // disable the hyperlink
-		console.log('yse');
 		var href = $(this).attr('href');
 		href = href.replace('#','');
 		var togo = $('a[class="' + href + '"]');
