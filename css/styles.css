@@ -890,7 +890,7 @@ path {
     width: 0%;
   }
   100% {
-    width: 55%;
+    width: 62%;
   }
 }
 @keyframes grow-jquery {
@@ -898,7 +898,7 @@ path {
     width: 0%;
   }
   100% {
-    width: 55%;
+    width: 65%;
   }
 }
 @keyframes grow-angular {
