@@ -1,6 +1,8 @@
 var app = angular.module('myApp', []);
 app.controller('galleryCtrl', function($scope) {
 	$scope.images = [
+		{url: 'work-carousel-swarovski.jpg', alt:'mapleharbour website', desc:'website content: carousel', pos:20},
+		{url: 'work-carousel-new-year.jpg', alt:'mapleharbour website', desc:'website content: carousel', pos:19},
 		{url: 'work-mh.jpg', alt:'mapleharbour website', desc:'website development', pos:18},
 		{url: 'work-boxingday.jpg', alt:'carousel design', desc:'website content: carousel', pos:17},
 		{url: 'work-blackfriday.jpg', alt:'carousel design', desc:'website content: carousel', pos:16},
@@ -31,6 +33,20 @@ app.controller('timeCtrl', function($scope) {
 });
 
 var bigsrc = new Array();
+bigsrc[20] = {
+	url:'pan-carousel-swarovski.jpg',
+	id:20,
+	title:'Visual Content: Carousel',
+	desc:'Photoshop',
+	link:''
+},
+bigsrc[19] = {
+	url:'pan-carousel-new-year.jpg',
+	id:19,
+	title:'Visual Content: Carousel',
+	desc:'Photoshop',
+	link:''
+},
 bigsrc[18] = {
 	url:'pan-mh-website.jpg',
 	id:18,
