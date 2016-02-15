@@ -178,149 +178,25 @@
           </div>
         </div>
       </div>
-      <div class="skills">
+      <div class="skills" data-ng-controller="skillsCtrl">
         <h2>Skills &amp; Experiences</h2>
         <div id="wrap_skill" class="wrap-skill">
-          <div class="container-app">
-            <img class="icon-skill" src="images/icon-ps.png" alt="photoshop">
+
+          <div data-ng-repeat="progbar in progbars" class="container-app">
+            <img class="icon-skill" ng-src="images/icon-{{progbar.url}}.png" alt="{{progbar.alt}}">
             <div class="state-prog">
               <div class="state">
-                <span class="first-gauge eh">|</span>
-                <span class="okay">|</span>
-                <span class="good">|</span>
-                <span class="ninja">|</span>
+                <span class="{{progbar.eh}}">|</span>
+                <span class="{{progbar.okay}}">|</span>
+                <span class="{{progbar.good}}">|</span>
+                <span class="{{progbar.ninja}}">|</span>
               </div>
               <div class="wrap-prog">
-                <div class="prog-bar ps"><span>Photoshop</span></div>
+                <div class="prog-bar {{progbar.skill}}"><span>Photoshop</span></div>
               </div>
             </div>
           </div>
-          <div class="container-app">
-            <img src="images/icon-ai.png" alt="illustrator">
-            <div class="state-prog">
-              <div class="state">
-                <span class="first-gauge">|</span>
-                <span>|</span>
-                <span>|</span>
-                <span>|</span>
-              </div>
-              <div class="wrap-prog">
-                <div class="prog-bar ai"><span>Illustrator</span></div>
-              </div>
-            </div>
-          </div>
-          <div class="container-app">
-            <img src="images/icon-html5.png" alt="html5">
-            <div class="state-prog">
-              <div class="state">
-                <span class="first-gauge">|</span>
-                <span>|</span>
-                <span>|</span>
-                <span>|</span>
-              </div>
-              <div class="wrap-prog">
-                <div class="prog-bar htm"><span>HTML5</span></div>
-              </div>
-            </div>
-          </div>
-          <div class="container-app">
-            <img src="images/icon-css3.png" alt="css3">
-            <div class="state-prog">
-              <div class="state">
-                <span class="first-gauge">|</span>
-                <span>|</span>
-                <span>|</span>
-                <span>|</span>
-              </div>
-              <div class="wrap-prog">
-                <div class="prog-bar css"><span>CSS3</span></div>
-              </div>
-            </div>
-          </div>
-          <div class="container-app">
-            <img src="images/icon-sass.png" alt="sass">
-            <div class="state-prog">
-              <div class="state">
-                <span class="first-gauge">|</span>
-                <span>|</span>
-                <span>|</span>
-                <span>|</span>
-              </div>
-              <div class="wrap-prog">
-                <div class="prog-bar sass"><span>Sass&nbsp;(SCSS)</span></div>
-              </div>
-            </div>
-          </div>
-          <div class="container-app">
-            <img src="images/icon-js.png" alt="javascript">
-            <div class="state-prog">
-              <div class="state">
-                <span class="first-gauge">|</span>
-                <span>|</span>
-                <span>|</span>
-                <span>|</span>
-              </div>
-              <div class="wrap-prog">
-                <div class="prog-bar js"><span>JavaScript</span></div>
-              </div>
-            </div>
-          </div>
-          <div class="container-app">
-            <img src="images/icon-jquery.png" alt="jquery">
-            <div class="state-prog">
-              <div class="state">
-                <span class="first-gauge">|</span>
-                <span>|</span>
-                <span>|</span>
-                <span>|</span>
-              </div>
-              <div class="wrap-prog">
-                <div class="prog-bar jquery"><span>jQuery</span></div>
-              </div>
-            </div>
-          </div>
-          <div class="container-app">
-            <img src="images/icon-angular.png" alt="angular">
-            <div class="state-prog">
-              <div class="state">
-                <span class="first-gauge">|</span>
-                <span>|</span>
-                <span>|</span>
-                <span>|</span>
-              </div>
-              <div class="wrap-prog">
-                <div class="prog-bar angular"><span>Angular.js</span></div>
-              </div>
-            </div>
-          </div>
-          <div class="container-app">
-            <img src="images/icon-php.png" alt="php">
-            <div class="state-prog">
-              <div class="state">
-                <span class="first-gauge">|</span>
-                <span>|</span>
-                <span>|</span>
-                <span>|</span>
-              </div>
-              <div class="wrap-prog">
-                <div class="prog-bar php"><span>PHP</span></div>
-              </div>
-            </div>
-          </div>
-          <div class="container-app">
-            <img src="images/icon-git.png" alt="git">
-            <div class="state-prog">
-              <div class="state">
-                <span class="first-gauge">|</span>
-                <span>|</span>
-                <span>|</span>
-                <span>|</span>
-              </div>
-              <div class="wrap-prog">
-                <div class="prog-bar git"><span>Git</span></div>
-              </div>
-            </div>
-          </div>
+
         </div>
       </div>
     </section>
@@ -424,7 +300,7 @@ eraser.onclick = function() {
   document.getElementById("modal-overlay").classList.remove("modal-on"); 
 }
 
-window.onscroll = function() { // Trigger for growing skill gauges
+window.onscroll = function() { // Trigger for 
   var mobile = false;
   var scroll = window.scrollY; // detect amount of scroll for proper browsers
   var scroll_ie = pageYOffset; // detect amount of scroll for IE 9+

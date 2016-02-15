@@ -1,4 +1,21 @@
 var app = angular.module('myApp', []);
+
+//Skills & Experiences Section
+app.controller('skillsCtrl', function($scope) {
+	$scope.progbars = [
+		{url: 'ps', alt:'Photoshop', skill:'ps', eh:'eh', okay:'okay', good:'good', ninja:'ninja'},
+		{url: 'ai', alt:'Illustrator', skill:'ai'},
+		{url: 'html5', alt:'HTML5', skill:'htm'},
+		{url: 'css3', alt:'CSS3', skill:'css'},
+		{url: 'sass', alt:'Sass', skill:'sass'},
+		{url: 'js', alt:'JavaScript', skill:'js'},
+		{url: 'jquery', alt:'jQuery', skill:'jquery'},
+		{url: 'php', alt:'PHP', skill:'php'},
+		{url: 'git', alt:'Git', skill:'git'},
+	];
+});
+
+//My Work Section
 app.controller('galleryCtrl', function($scope) {
 	$scope.images = [
 		{url: 'work-carousel-swarovski.jpg', alt:'mapleharbour website', desc:'website content: carousel', pos:20},
