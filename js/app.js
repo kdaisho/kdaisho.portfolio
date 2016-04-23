@@ -1,5 +1,15 @@
 var app = angular.module('myApp', []);
 
+//Educations Section
+app.controller('eduCtrl', function($scope) {
+	$scope.cards = [
+		{inst:'treehouse', period:'2015 - Present', url:'treehouse', title:'Web Development', type:'Online Education', desc:'PHP, JavaScript, Angular.js, CSS3 animations, CSS3 flexbox; etc.'},
+		{inst:'herzing', period:'2013 - 2014', url:'herzing-college', title:'Graphic Design for Websites', type:'Montreal, QC', desc:'Photoshop, Illustrator, HTML5, CSS3, JavaScript, Responsive layout; etc.'},
+		{inst:'sdf', period:'Apr - Oct 2008', url:'sdf', title:'Advance Officer\'s Course', type:'<span>JGSDF;</span><br>Japan Ground Self-Defense Force<br>陸上自衛隊 JPN', desc:'Army doctrine / tactics; offensive, defensive and maneuver companies / battalions; etc.'},
+		{inst:'hokkai', period:'1996 - 2000', url:'hokkai', title:'Bachelor of Laws', type:'<span>Hokkai Gakuen University</span><br>Sappro, JPN', desc:'Leagl method and procedures, Criminal law, Administrative law, Law of property; etc.'}	
+	];
+});
+
 //Skills & Experiences Section
 app.controller('skillsCtrl', function($scope) {
 	$scope.progbars = [
@@ -10,35 +20,36 @@ app.controller('skillsCtrl', function($scope) {
 		{url: 'sass', alt:'Sass', skill:'sass'},
 		{url: 'js', alt:'JavaScript', skill:'js'},
 		{url: 'jquery', alt:'jQuery', skill:'jquery'},
+		{url: 'angular', alt:'angular', skill:'angular'},
 		{url: 'php', alt:'PHP', skill:'php'},
-		{url: 'git', alt:'Git', skill:'git'},
+		{url: 'git', alt:'Git', skill:'git'}
 	];
 });
 
 //My Work Section
 app.controller('galleryCtrl', function($scope) {
 	$scope.images = [
-		{url: 'work-carousel-swarovski.jpg', alt:'mapleharbour website', desc:'website content: carousel', pos:20},
-		{url: 'work-carousel-new-year.jpg', alt:'mapleharbour website', desc:'website content: carousel', pos:19},
-		{url: 'work-mh.jpg', alt:'mapleharbour website', desc:'website development', pos:18},
-		{url: 'work-boxingday.jpg', alt:'carousel design', desc:'website content: carousel', pos:17},
-		{url: 'work-blackfriday.jpg', alt:'carousel design', desc:'website content: carousel', pos:16},
-		{url: 'work-email.jpg', alt:'email header design', desc:'visual content: email', pos:15},
-		{url: 'work-social.jpg', alt:'visual content for social media', desc:'visual content: social media', pos:14},
-		{url: 'work-tshirt.jpg', alt:'tshirt design', desc:'vector: t-shirt design', pos:13},
-		{url: 'work-musician.jpg', alt:'website for a musician', desc:'website development', pos:12},
-		{url: 'work-coco.jpg', alt:'logo design', desc:'vector: logo design', pos:11},
-		{url: 'work-icons.jpg', alt:'vector icon design', desc:'vector: icon design', pos:10},
-		{url: 'work-vector.jpg', alt:'vector character design', desc:'vector: character design', pos:9},
-		{url: 'work-larocque.jpg', alt:'website design', desc:'website development 2014', pos:8},
-		{url: 'work-cafe.jpg', alt:'website design', desc:'website development 2013', pos:7},
-		{url: 'work-logo-design.jpg', alt:'logo design', desc:'vector: logo design', pos:6},
-		{url: 'work-logo-design2.jpg', alt:'logo design', desc:'business card design', pos:5},
-		{url: 'work-infographic.jpg', alt:'infographic design', desc:'vector: infographic', pos:4},
-		{url: 'work-printing.jpg', alt:'printing design', desc:'indesign: printing content', pos:3},
-		{url: 'work-bookcover.jpg', alt:'bookcover design', desc:'bitmap: book cover design', pos:2},
-		{url: 'work-poster.jpg', alt:'poster design', desc:'bitmap: movie poster recreation', pos:1},
-		{url: 'work-tapestry.jpg', alt:'vector tapestry', desc:'vector: tapestry imitaion', pos:0}
+		{url:'work-carousel-swarovski.jpg', alt:'mapleharbour website', desc:'website content: carousel', pos:20},
+		{url:'work-carousel-new-year.jpg', alt:'mapleharbour website', desc:'website content: carousel', pos:19},
+		{url:'work-mh.jpg', alt:'mapleharbour website', desc:'website development', pos:18},
+		{url:'work-boxingday.jpg', alt:'carousel design', desc:'website content: carousel', pos:17},
+		{url:'work-blackfriday.jpg', alt:'carousel design', desc:'website content: carousel', pos:16},
+		{url:'work-email.jpg', alt:'email header design', desc:'visual content: email', pos:15},
+		{url:'work-social.jpg', alt:'visual content for social media', desc:'visual content: social media', pos:14},
+		{url:'work-tshirt.jpg', alt:'tshirt design', desc:'vector: t-shirt design', pos:13},
+		{url:'work-musician.jpg', alt:'website for a musician', desc:'website development', pos:12},
+		{url:'work-coco.jpg', alt:'logo design', desc:'vector: logo design', pos:11},
+		{url:'work-icons.jpg', alt:'vector icon design', desc:'vector: icon design', pos:10},
+		{url:'work-vector.jpg', alt:'vector character design', desc:'vector: character design', pos:9},
+		{url:'work-larocque.jpg', alt:'website design', desc:'website development 2014', pos:8},
+		{url:'work-cafe.jpg', alt:'website design', desc:'website development 2013', pos:7},
+		{url:'work-logo-design.jpg', alt:'logo design', desc:'vector: logo design', pos:6},
+		{url:'work-logo-design2.jpg', alt:'logo design', desc:'business card design', pos:5},
+		{url:'work-infographic.jpg', alt:'infographic design', desc:'vector: infographic', pos:4},
+		{url:'work-printing.jpg', alt:'printing design', desc:'indesign: printing content', pos:3},
+		{url:'work-bookcover.jpg', alt:'bookcover design', desc:'bitmap: book cover design', pos:2},
+		{url:'work-poster.jpg', alt:'poster design', desc:'bitmap: movie poster recreation', pos:1},
+		{url:'work-tapestry.jpg', alt:'vector tapestry', desc:'vector: tapestry imitaion', pos:0}
 	];
 });
 

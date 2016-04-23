@@ -109,8 +109,45 @@
     <section class="edu-skills">
       <div class="education">
         <h2>Education</h2>
-        <div class="cards">
-          <div class="two-cards">
+        <div class="cards" data-ng-controller="eduCtrl">
+
+          <!-- <div data-ng-repeat="card in cards" class="two-cards"> -->
+            <div data-ng-repeat="card in cards" class="card">
+              <div class="side-a {{card.inst}}-a card-style">
+                <h4>{{card.period}}</h4>
+                <img ng-src="images/{{card.url}}-logo.png" alt="{{card.inst}}">
+                <p>{{card.type}}</p>
+              </div>
+              <div class="side-b {{card.inst}}-b card-style">
+                <div class="v-align">
+                  <div class="edu-title">
+                    <h4>{{card.title}}</h4>
+                    <p>{{card.type}}</p>
+                  </div>
+                  <p>{{card.desc}}</p>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="card">
+              <div class="side-a herzing-a card-style">
+                <h4>2013 - 2014</h4>
+                <img src="images/herzing-college-logo.png" alt="herzing college">
+                <p>Montreal, QC</p>
+              </div>
+              <div class="side-b herzing-b card-style">
+                <div class="v-align">
+                  <div class="edu-title">
+                    <h4>Graphic Design for Websites</h4>
+                  </div>
+                  <p>
+                    Photoshop, Illustrator, HTML5, CSS3, JavaScript, Responsive layout; etc.
+                  </p>
+                </div>
+              </div>
+            </div> -->
+          <!-- </div> -->
+
+       <!--    <div class="two-cards">
             <div class="card">
               <div class="side-a treehouse-a card-style">
                 <h4>2015 - Present</h4>
@@ -143,8 +180,8 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="two-cards">
+          </div> -->
+<!--           <div class="two-cards">
             <div class="card">
               <div class="side-a sdf-a card-style">
                 <h4>Apr - Oct 2008</h4>
@@ -175,7 +212,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
       <div class="skills" data-ng-controller="skillsCtrl">
@@ -192,7 +229,7 @@
                 <span class="{{progbar.ninja}}">|</span>
               </div>
               <div class="wrap-prog">
-                <div class="prog-bar {{progbar.skill}}"><span>Photoshop</span></div>
+                <div class="prog-bar {{progbar.skill}}"><span>{{progbar.alt}}</span></div>
               </div>
             </div>
           </div>
@@ -204,12 +241,14 @@
     <section class="my-work goto-work" data-ng-controller="galleryCtrl">
       <h2>MY WORK</h2>
       <div class="wrap-thumbs">
+
         <div data-ng-repeat="image in images" class="wrap-thumb" data-pos="{{image.pos}}">
             <div>
               <p>{{image.desc}}</p>
             </div>
             <img data-ng-src="images/{{image.url}}" alt="{{image.alt}}">
         </div>
+
       </div>
       <div class="gal-holder">
         <div id="img_holder"></div>
