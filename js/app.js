@@ -1,17 +1,206 @@
-var app = angular.module('myApp', []);
+
+$(document).ready(function() {
+
+  $(window).on("load resize scroll", function(e) { // bind windows load, resize and scroll together
+    var $window = $(window);
+    var windowsize = $window.width();
+    var scrl_amount = $(window).scrollTop();
+
+    if(windowsize < 768 ) { // contract header when screen is mobile
+      $('#site_logo').addClass('mini-logo');
+      $('#alt_logo').addClass('mini-alt-logo');
+    }
+    else if(windowsize > 767 ) { // expand header when screen is desktop
+      $('#site_logo').removeClass('mini-logo');
+      $('#alt_logo').removeClass('mini-alt-logo');
+    }
+
+    if((scrl_amount > 199) || (windowsize < 768)) { // contract header when scroll 
+      $('#site_logo').addClass('mini-logo');
+      $('#alt_logo').addClass('mini-alt-logo');
+    }
+    else if((scrl_amount < 200) && (windowsize > 767)) {
+      $('#site_logo').removeClass('mini-logo');
+      $('#alt_logo').removeClass('mini-alt-logo');
+    }
+  });
+
+  $('#main-menu').click(function() { // open nav menu
+    $('.nav').addClass('show-menu');
+  });
+
+  $('.close-nav').click(function() {
+    $('.nav').removeClass('show-menu');
+  });
+
+/* ==== MY WORK section ==== */
+  $('.wrap-thumb').click(function() {
+    var pos = $(this).data('pos');
+    $('#img_holder').html('<img src="images/'+ bigsrc[pos].url +'" data-id="'+ bigsrc[pos].id +'">');
+    $('#desc_holder').html('<h4>' + bigsrc[pos].title + '</h4><p>' + bigsrc[pos].desc
+      + '</p>');
+    $('#img_holder, #desc_holder, #modal_bg, #close_btn, #prev, #next').fadeIn();
+
+    if(pos == 18 || pos == 12 || pos == 8) {
+      $('#desc_holder').append('<a href="' + bigsrc[pos].link + '" target="_blank">visit website</a>');
+    }
+    if(pos == (bigsrc.length-1)) {
+      $('#next').data('pos',(pos-1));
+      $('#prev').data('pos',0);
+    }
+    else if(pos == 0) {
+      $('#next').data('pos',(bigsrc.length-1));
+      $('#prev').data('pos',(pos+1));
+    }
+    else {
+      $('#next').data('pos',(pos-1));
+      $('#prev').data('pos',(pos+1));
+    }
+  });
+
+  $('.arrow').click(function() {
+    var pos = $(this).data("pos");
+    $('#img_holder').html('<img src="images/'+ bigsrc[pos].url +'" data-id="'+ bigsrc[pos].id +'">');
+    $('#desc_holder').html('<h4>' + bigsrc[pos].title + '</h4><p>' + bigsrc[pos].desc
+      + '</p>');
+    $('#img_holder, #desc_holder, #modal_bg, #close_btn, #prev, #next').fadeIn();
+
+    if(pos == 18 || pos == 12 || pos == 8) {
+      $('#desc_holder').append('<a href="' + bigsrc[pos].link + '" target="_blank">visit website</a>');
+    }
+    if(pos == (bigsrc.length-1)) {
+      $('#next').data('pos',(pos-1));
+      $('#prev').data('pos',0);
+    } else if(pos == 0) {
+      $('#next').data('pos',(bigsrc.length-1));
+      $('#prev').data('pos',(pos+1));
+    } else {
+      $('#next').data('pos',(pos-1));
+      $('#prev').data('pos',(pos+1));
+    }
+  });
+
+  $('#modal_bg, #close_btn').click(function() {
+    $('#img_holder, #desc_holder, #close_btn, #modal_bg, #prev, #next').fadeOut();
+  });
+
+  $('.link').click(function(e) {
+    e.preventDefault(); // disable the hyperlink
+    var href = $(this).attr('href');
+    href = href.replace('#','');
+    var togo = $('a[class="' + href + '"]');
+    $('html,body').animate({
+      scrollTop:togo.offset().top
+    },300)
+  });
+
+  /* ==== form validation ==== */
+  $('#submit').click(function() {
+    var error = false;
+    var user = $('#user').val();
+    var email = $('#email').val();
+    var message = $('#message').val();
+
+    if(user.length < 2) {
+      $('#user').val('','');
+      $('#user').attr('placeholder','please enter a valid name');
+      error = true;
+    };
+
+    function validateEmail(em) {
+      var filter = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]/; // allows any email without extension (e.g. .ca)
+      if(filter.test(email)) {
+        return true;
+      }
+      else {
+        return false;
+      }
+    }
+
+    if(validateEmail(email) == false) {
+      $('#email').val('','');
+      $('#email').attr('placeholder','please enter a valid email');
+      error = true;
+    };
+
+    if(error == false) {
+      $('#user').css('border','none');
+      $('#user').attr('placeholder','');
+      $('#email').css('border','none');
+      $('#email').attr('placeholder','');
+    };
+
+    /* === send to php === */
+    if(error == false) {
+      $.ajax({
+        url:'igetEmail.php',
+        type:'POST',
+        data:{
+          Name:user,
+          email:email,
+          question:message
+        },
+        success:function(response){
+          $('#form').html(response);
+        }
+      });
+    }
+  });
+});
+var trigger = document.getElementById("modal_trigger");
+var eraser = document.getElementById("modal_close");
+
+trigger.onclick = function() {
+  document.getElementById("modal-overlay").classList.add("modal-on");
+}
+eraser.onclick = function() {
+  document.getElementById("modal-overlay").classList.remove("modal-on"); 
+}
+
+window.onscroll = function() { // Trigger for 
+  var mobile = false;
+  var scroll = window.scrollY; // detect amount of scroll for proper browsers
+  var scroll_ie = pageYOffset; // detect amount of scroll for IE 9+
+
+  if (window.innerWidth <= 767) {
+    mobile = true;
+  }
+  if (mobile && ((scroll || scroll_ie) >= 1490)) {
+    document.getElementById("wrap_skill").classList.add("grow-bar");
+  }
+  else if (!mobile && ((scroll || scroll_ie) >= 910)) {
+    document.getElementById("wrap_skill").classList.add("grow-bar");
+  }
+};
+
+if (!("ontouchstart" in document.documentElement)) { // limit hover interactions to desktops
+    document.documentElement.className += "no-touch";
+}
+
+var iOS = /iPad|iPhone|iPod/.test(navigator.platform);  // display alternative logo image for iOS and IE as svg animation doesn't work right on them
+if(!iOS && (!(navigator.userAgent.indexOf('MSIE')!== -1 || navigator.appVersion.indexOf('Trident/') > 0))) {
+  // if NOT iOS or IE
+  document.getElementById('site_logo').classList.add("logo-display");
+  document.getElementById('alt_logo').classList.add("logo-hide");
+}
+var app = angular.module('myApp', [])
 
 //Educations Section
-app.controller('eduCtrl', function($scope) {
+app.controller('eduCtrl', ['$scope', function($scope) {
 	$scope.cards = [
-		{inst:'treehouse', period:'2015 - Present', url:'treehouse', title:'Web Development', type:'Online Education', desc:'PHP, JavaScript, Angular.js, CSS3 animations, CSS3 flexbox; etc.'},
-		{inst:'herzing', period:'2013 - 2014', url:'herzing-college', title:'Graphic Design for Websites', type:'Montreal, QC', desc:'Photoshop, Illustrator, HTML5, CSS3, JavaScript, Responsive layout; etc.'},
-		{inst:'sdf', period:'Apr - Oct 2008', url:'sdf', title:'Advance Officer\'s Course', type:'<span>JGSDF;</span><br>Japan Ground Self-Defense Force<br>陸上自衛隊 JPN', desc:'Army doctrine / tactics; offensive, defensive and maneuver companies / battalions; etc.'},
-		{inst:'hokkai', period:'1996 - 2000', url:'hokkai', title:'Bachelor of Laws', type:'<span>Hokkai Gakuen University</span><br>Sappro, JPN', desc:'Leagl method and procedures, Criminal law, Administrative law, Law of property; etc.'}	
+		{inst:'treehouse', period:'2015 - Present', url:'treehouse', title:'Web Development', location: 'Online',
+		desc:'PHP, JavaScript, Angular.js, CSS3 animations, CSS3 flexbox; etc.'},
+		{inst:'herzing', period:'2013 - 2014', url:'herzing-college', title:'Graphic Design for Websites', location: 'Montreal',
+		desc:'Photoshop, Illustrator, HTML5, CSS3, JavaScript, Responsive layout; etc.'},
+		{inst:'sdf', period:'Apr - Oct 2008', url:'sdf', title:'Advance Officer\'s Course', location: 'Shizuoka, Japan',
+		desc:'Army doctrine / tactics; offensive, defensive and maneuver companies / battalions; etc.'},
+		{inst:'hokkai', period:'1996 - 2000', url:'hokkai', title:'Bachelor of Laws', location: 'Sapporo, Japan',
+		desc:'Leagl method and procedures, Criminal law, Administrative law, Law of property; etc.'}	
 	];
-});
+}]);
 
 //Skills & Experiences Section
-app.controller('skillsCtrl', function($scope) {
+app.controller('skillsCtrl', ['$scope', function($scope) {
 	$scope.progbars = [
 		{url: 'ps', alt:'Photoshop', skill:'ps', eh:'eh', okay:'okay', good:'good', ninja:'ninja'},
 		{url: 'ai', alt:'Illustrator', skill:'ai'},
@@ -24,10 +213,10 @@ app.controller('skillsCtrl', function($scope) {
 		{url: 'php', alt:'PHP', skill:'php'},
 		{url: 'git', alt:'Git', skill:'git'}
 	];
-});
+}]);
 
 //My Work Section
-app.controller('galleryCtrl', function($scope) {
+app.controller('galleryCtrl', ['$scope', function($scope) {
 	$scope.images = [
 		{url:'work-carousel-swarovski.jpg', alt:'mapleharbour website', desc:'website content: carousel', pos:20},
 		{url:'work-carousel-new-year.jpg', alt:'mapleharbour website', desc:'website content: carousel', pos:19},
@@ -51,14 +240,14 @@ app.controller('galleryCtrl', function($scope) {
 		{url:'work-poster.jpg', alt:'poster design', desc:'bitmap: movie poster recreation', pos:1},
 		{url:'work-tapestry.jpg', alt:'vector tapestry', desc:'vector: tapestry imitaion', pos:0}
 	];
-});
+}]);
 
-app.controller('validateCtrl', function($scope) {
-});
+app.controller('validateCtrl', ['$scope', function($scope) {
+}]);
 
-app.controller('timeCtrl', function($scope) {
+app.controller('timeCtrl', ['$scope', function($scope) {
 	$scope.getDatetime = new Date();
-});
+}]);
 
 var bigsrc = new Array();
 bigsrc[20] = {
@@ -208,154 +397,3 @@ bigsrc[0] = {
 	desc:'Illustrator',
 	link:''
 }
-
-$(document).ready(function() {
-
-	$(window).on("load resize scroll", function(e) { // bind windows load, resize and scroll together
-		var $window = $(window);
-		var windowsize = $window.width();
-		var scrl_amount = $(window).scrollTop();
-
-		if(windowsize < 768 ) { // contract header when screen is mobile
-			$('#site_logo').addClass('mini-logo');
-			$('#alt_logo').addClass('mini-alt-logo');
-		}
-		else if(windowsize > 767 ) { // expand header when screen is desktop
-			$('#site_logo').removeClass('mini-logo');
-			$('#alt_logo').removeClass('mini-alt-logo');
-		}
-
-		if((scrl_amount > 199) || (windowsize < 768)) {	// contract header when scroll 
-			$('#site_logo').addClass('mini-logo');
-			$('#alt_logo').addClass('mini-alt-logo');
-		}
-		else if((scrl_amount < 200) && (windowsize > 767)) {
-			$('#site_logo').removeClass('mini-logo');
-			$('#alt_logo').removeClass('mini-alt-logo');
-		}
-
-	});
-
-
-	$('#main-menu').click(function() { // open nav menu
-		$('.nav').addClass('show-menu');
-	});
-
-	$('.close-nav').click(function() {
-		$('.nav').removeClass('show-menu');
-	});
-
-/* ==== MY WORK section ==== */
-	$('.wrap-thumb').click(function() {
-		var pos = $(this).data('pos');
-		$('#img_holder').html('<img src="images/'+ bigsrc[pos].url +'" data-id="'+ bigsrc[pos].id +'">');
-		$('#desc_holder').html('<h4>' + bigsrc[pos].title + '</h4><p>' + bigsrc[pos].desc
-			+ '</p>');
-		$('#img_holder, #desc_holder, #modal_bg, #close_btn, #prev, #next').fadeIn();
-
-		if(pos == 18 || pos == 12 || pos == 8) {
-			$('#desc_holder').append('<a href="' + bigsrc[pos].link + '" target="_blank">visit website</a>');
-		}
-		if(pos == (bigsrc.length-1)) {
-			$('#next').data('pos',(pos-1));
-			$('#prev').data('pos',0);
-		}
-		else if(pos == 0) {
-			$('#next').data('pos',(bigsrc.length-1));
-			$('#prev').data('pos',(pos+1));
-		}
-		else {
-			$('#next').data('pos',(pos-1));
-			$('#prev').data('pos',(pos+1));
-		}
-	});
-
-	$('.arrow').click(function() {
-		var pos = $(this).data("pos");
-		$('#img_holder').html('<img src="images/'+ bigsrc[pos].url +'" data-id="'+ bigsrc[pos].id +'">');
-		$('#desc_holder').html('<h4>' + bigsrc[pos].title + '</h4><p>' + bigsrc[pos].desc
-			+ '</p>');
-		$('#img_holder, #desc_holder, #modal_bg, #close_btn, #prev, #next').fadeIn();
-
-		if(pos == 18 || pos == 12 || pos == 8) {
-			$('#desc_holder').append('<a href="' + bigsrc[pos].link + '" target="_blank">visit website</a>');
-		}
-		if(pos == (bigsrc.length-1)) {
-			$('#next').data('pos',(pos-1));
-			$('#prev').data('pos',0);
-		} else if(pos == 0) {
-			$('#next').data('pos',(bigsrc.length-1));
-			$('#prev').data('pos',(pos+1));
-		} else {
-			$('#next').data('pos',(pos-1));
-			$('#prev').data('pos',(pos+1));
-		}
-	});
-
-	$('#modal_bg, #close_btn').click(function() {
-		$('#img_holder, #desc_holder, #close_btn, #modal_bg, #prev, #next').fadeOut();
-	});
-
-	$('.link').click(function(e) {
-		e.preventDefault(); // disable the hyperlink
-		var href = $(this).attr('href');
-		href = href.replace('#','');
-		var togo = $('a[class="' + href + '"]');
-		$('html,body').animate({
-			scrollTop:togo.offset().top
-		},300)
-	});
-
-	/* ==== form validation ==== */
-	$('#submit').click(function() {
-		var error = false;
-		var user = $('#user').val();
-		var email = $('#email').val();
-		var message = $('#message').val();
-
-		if(user.length < 2) {
-			$('#user').val('','');
-			$('#user').attr('placeholder','please enter a valid name');
-			error = true;
-		};
-
-		function validateEmail(em) {
-			var filter = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]/; // allows any email without extension (e.g. .ca)
-			if(filter.test(email)) {
-				return true;
-			}
-			else {
-				return false;
-			}
-		}
-
-		if(validateEmail(email) == false) {
-			$('#email').val('','');
-			$('#email').attr('placeholder','please enter a valid email');
-			error = true;
-		};
-
-		if(error == false) {
-			$('#user').css('border','none');
-			$('#user').attr('placeholder','');
-			$('#email').css('border','none');
-			$('#email').attr('placeholder','');
-		};
-
-		/* === send to php === */
-		if(error == false) {
-			$.ajax({
-				url:'igetEmail.php',
-				type:'POST',
-				data:{
-					Name:user,
-					email:email,
-					question:message
-				},
-				success:function(response){
-					$('#form').html(response);
-				}
-			});
-		}
-	});
-});
