@@ -45,6 +45,10 @@ a {
 
 $blue: #4f89c8; /* Corporate Blue */
 $dark-blue: #30639b;
+$treehouse: #69c773;
+$herzing: #318dde;
+$sdf: #3a6027;
+$hokkai: #ffc107;
 
 h1 {
 	font: 100%/1.1 'Roboto', Arial, sans-serif;
@@ -425,7 +429,7 @@ path {
 	}
 }
 
-/* ==== about ==== */
+/* ==== About ==== */
 .about {
 	padding: 0 2%;
 
@@ -650,12 +654,13 @@ path {
 		transform:perspective(800px) rotateY(0deg);
 
 	h4 {
-		margin-top: 30px;
+		margin-top: 14px;
+		padding: 0 4px;
 	}
-	span {
-		font-size: 1.2em;
-		font-weight: bold;
-	}
+	// span {	
+	// 	font-size: 1.2em;
+	// 	font-weight: bold;
+	// }
 }
 
 .side-b {
@@ -693,51 +698,51 @@ path {
 }
 
 .treehouse-a {
-	background: #69c773;
+	background: $treehouse;
 
 	img {
-		margin: 0 auto;
+		margin: 42px auto 30px;
 		display: block;
 	}
 }
 .treehouse-b {
-	border: 3px solid #69c773;
+	border: 3px solid $treehouse;
 
 	h4, p {
-		color: #69c773;
+		color: $treehouse;
 	}
 }
 
 .herzing-a {
-	background: #318dde;
+	background: $herzing;
 	padding: 0 4px;
 
 	img {
-		margin: 66px auto 0;
-		width: 100%;
+		margin: 50px auto 57px;
 		display: block;
 	}
 }
 .herzing-b {
-	border: 3px solid #318dde;
+	border: 3px solid $herzing;
 
 	h4, p {
-		color: #318dde;
+		color: $herzing;
 	}
 }
 
 .sdf-a {
 	background: url('../images/camou.jpg') no-repeat;
 
-	p {
-		margin-top: 40px;
+	img {
+		display: block;
+		margin: 66px auto 50px;
 	}
 }
 .sdf-b {
-	border: 3px solid #3a6027;
+	border: 3px solid $sdf;
 
 	h4, p {
-		color: #3a6027;
+		color: $sdf;
 	}
 
 	h4 {
@@ -746,17 +751,18 @@ path {
 }
 
 .hokkai-a {
-	background: #dfa722;
+	background: $hokkai;
 
-	p {
-		margin-top: 58px;
+	img {
+		margin: 70px auto 56px;
+		display: block;
 	}
 }
 .hokkai-b {
-	border: 3px solid #deaf31;
+	border: 3px solid $hokkai;
 
 	h4, p {
-		color: #deaf31;
+		color: $hokkai;
 	}
 }
 

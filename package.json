@@ -1,0 +1,29 @@
+{
+  "name": "kdaisho.portfolio",
+  "version": "1.0.0",
+  "description": "This is a portfolio website build on Angular.js. jQuery handles some interactions but I wrote CSS animation rules for the most of interactions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kdaisho/kdaisho.portfolio.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kdaisho/kdaisho.portfolio/issues"
+  },
+  "homepage": "https://github.com/kdaisho/kdaisho.portfolio#readme",
+  "devDependencies": {
+    "del": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.1",
+    "gulp-sourcemaps": "^2.0.0-alpha",
+    "gulp-uglify": "^1.5.3",
+    "gulp-uglifycss": "^1.0.6"
+  }
+}
