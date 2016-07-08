@@ -1,19 +1,52 @@
+"use strict";
 
-$(document).ready(function() {
+// $(document).ready(function() {
+document.addEventListener("DOMContentLoaded", function() {
+  var windowsize;
+  var scrl_amount;
 
-  $(window).on("load resize scroll", function(e) { // bind windows load, resize and scroll together
-    var $window = $(window);
-    var windowsize = $window.width();
-    var scrl_amount = $(window).scrollTop();
-
-    if(windowsize < 768 ) { // contract header when screen is mobile
+  window.addEventListener("load", function(){
+    windowsize = window.innerWidth;
+    if ((windowsize <= 767) || (scrl_amount >= 200)) { // contract header when screen is mobile
       $('#site_logo').addClass('mini-logo');
       $('#alt_logo').addClass('mini-alt-logo');
     }
-    else if(windowsize > 767 ) { // expand header when screen is desktop
+    else if (windowsize > 767 || (scrl_amount < 200)) { // expand header when screen is desktop
       $('#site_logo').removeClass('mini-logo');
       $('#alt_logo').removeClass('mini-alt-logo');
     }
+  });
+  //$(window).on("load resize scroll", function(e) { // bind windows load, resize and scroll together
+  window.addEventListener("resize", function(){
+    // var $window = $(window);
+    // var windowsize = $window.width();
+    
+    windowsize = window.innerWidth;
+    if (windowsize <= 767 ) { // contract header when screen is mobile
+      $('#site_logo').addClass('mini-logo');
+      $('#alt_logo').addClass('mini-alt-logo');
+    }
+    else if (windowsize => 767 ) { // expand header when screen is desktop
+      $('#site_logo').removeClass('mini-logo');
+      $('#alt_logo').removeClass('mini-alt-logo');
+    }
+  });
+
+  window.addEventListener("scroll", function(){
+    // var scrl_amount = $(window).scrollTop();
+    // var scrl_amount = window.scrollY;
+    scrl_amount = window.pageYOffset;
+    console.log(windowsize);
+
+
+    // if(windowsize < 767 ) { // contract header when screen is mobile
+    //   $('#site_logo').addClass('mini-logo');
+    //   $('#alt_logo').addClass('mini-alt-logo');
+    // }
+    // else if(windowsize > 767 ) { // expand header when screen is desktop
+    //   $('#site_logo').removeClass('mini-logo');
+    //   $('#alt_logo').removeClass('mini-alt-logo');
+    // }
 
     if((scrl_amount > 199) || (windowsize < 768)) { // contract header when scroll 
       $('#site_logo').addClass('mini-logo');
