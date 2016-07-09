@@ -32,7 +32,7 @@
 </head>
 <body data-ng-app="myApp">
   <header class="main-header">
-    <a id="site_logo" class="site-logo link" href="#goback-home" data-ng-include="'images/logo.svg'"></a>
+    <div id="site_logo" class="site-logo link" data-ng-include="'images/logo.svg'"></div>
     <img id="alt_logo" class="site-logo" src="images/logo-alt.svg" alt="daisho logo">
     <ul class="social-icons">
       <li>
@@ -71,7 +71,7 @@
       <img id="close-nav" src="images/close-btn.svg" onError="this.onerror=null; this.src='images/close-btn.png'" alt="close menu">
     </ul>
   </header>
-  <a class="goback-home"></a>
+
   <section class="home">
     <div class="title">
       <h1>DAISHO<br>KOMIYAMA</h1>
@@ -157,7 +157,7 @@
       <div id="wrap-thumbs">
 
         <div data-ng-repeat="image in images" class="wrap-thumb">
-            <div data-pos="{{image.pos}}">
+            <div>
               <p data-pos="{{image.pos}}">{{image.desc}}</p>
             </div>
             <img data-ng-src="images/{{image.url}}" alt="{{image.alt}}">

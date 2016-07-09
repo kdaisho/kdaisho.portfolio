@@ -109,8 +109,7 @@ path {
   display: none; }
 
 .site-logo {
-  margin: .35em auto 0 .35em;
-  cursor: pointer; }
+  margin: .35em auto 0 .35em; }
 
 .site-logo.mini-logo {
   margin: .15em auto 0 .4em;
@@ -843,14 +842,12 @@ path {
         background: transparent;
         transition: .4s ease-out; }
       .my-work .wrap-thumb div p {
-        -webkit-box-align-self: flex-end;
-        -ms-flex-align-self: flex-end;
-        align-self: flex-end;
         color: #fff;
-        transition: .4s ease-out;
-        padding: 0 2px 2px;
+        line-height: 1.3;
+        padding: 68% 2px 2px;
         text-align: center;
-        line-height: 1.3; }
+        transition: .4s ease-out;
+        width: 100%; }
       .no-touch .my-work .wrap-thumb div:hover p {
         opacity: 0;
         transition: .4s ease-out; }
