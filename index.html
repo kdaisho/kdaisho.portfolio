@@ -52,7 +52,7 @@
       </li>
     </ul>
     <img id="main-menu" src="images/menu.svg" onError="this.onerror=null; this.src='images/menu.png'" alt="menu">
-    <ul class="nav">
+    <ul id="nav" style="right: -320px;">
       <li>
         <a href="#goto-about" class="link"><img class="nav-icon" src="images/icon-about-opt.svg" onError="this.onerror=null; this.src='images/icon-about.png'" alt="about me">
           <span></span>ABOUT
@@ -68,7 +68,7 @@
           <span></span>CONTACT
         </a>
       </li>
-      <img class="close-nav" src="images/close-btn.svg" onError="this.onerror=null; this.src='images/close-btn.png'" alt="close menu">
+      <img id="close-nav" src="images/close-btn.svg" onError="this.onerror=null; this.src='images/close-btn.png'" alt="close menu">
     </ul>
   </header>
   <a class="goback-home"></a>
@@ -154,11 +154,11 @@
     <a class="goto-work"></a>
     <section class="my-work goto-work" data-ng-controller="galleryCtrl">
       <h2>My Work</h2>
-      <div class="wrap-thumbs">
+      <div id="wrap-thumbs">
 
-        <div data-ng-repeat="image in images" class="wrap-thumb" data-pos="{{image.pos}}">
-            <div>
-              <p>{{image.desc}}</p>
+        <div data-ng-repeat="image in images" class="wrap-thumb">
+            <div data-pos="{{image.pos}}">
+              <p data-pos="{{image.pos}}">{{image.desc}}</p>
             </div>
             <img data-ng-src="images/{{image.url}}" alt="{{image.alt}}">
         </div>

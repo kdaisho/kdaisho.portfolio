@@ -143,25 +143,25 @@ path {
   background: #f9f9f9; }
 
 .main-header,
-.nav,
+#nav,
 .social-icons {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex; }
 
-.nav {
+#nav {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: flex-end; }
-  .nav li {
+  #nav li {
     display: block;
     -webkit-box-align-self: center;
     -ms-flex-align-self: center;
     align-self: center;
     transition: padding 2s ease-out; }
-    .no-touch .nav li:hover span {
+    .no-touch #nav li:hover span {
       display: block; }
-    .nav li a {
+    #nav li a {
       padding: 6px 15px;
       margin: 0 .35em;
       background: #4f89c8;
@@ -172,14 +172,14 @@ path {
       display: block;
       overflow: hidden;
       transition: padding 0.2s ease-out; }
-      .no-touch .nav li a:hover {
+      .no-touch #nav li a:hover {
         padding: 6px 15px 6px 52px; }
-      .no-touch .nav li a:hover span {
+      .no-touch #nav li a:hover span {
         left: 0; }
-      .no-touch .nav li a:hover .nav-icon {
+      .no-touch #nav li a:hover .nav-icon {
         left: 8px;
         top: 7px; }
-    .nav li span {
+    #nav li span {
       position: absolute;
       z-index: 100;
       width: 40px;
@@ -189,7 +189,7 @@ path {
       left: -45px;
       background: #30639b;
       transition: left 0.2s ease-out; }
-    .nav li .nav-icon {
+    #nav li .nav-icon {
       position: absolute;
       left: 0;
       z-index: 200;
@@ -218,7 +218,7 @@ path {
   margin: 0 .6em 0 1em;
   cursor: pointer; }
 
-.close-nav {
+#close-nav {
   width: 40px;
   padding: .75em;
   float: right;
@@ -235,23 +235,22 @@ path {
     align-self: center; }
   #main-menu {
     display: block; }
-  .nav {
+  #nav {
     -webkit-box-direction: column;
     -ms-flexbox-direction: column;
     flex-direction: column;
     position: absolute;
     top: 0;
-    right: -320px;
     width: 310px;
     margin-top: -5px;
     transition: all .2s ease-out; }
-    .nav li {
+    #nav li {
       background: rgba(0, 0, 0, 0.85);
       border: 1px solid #111;
       -webkit-box-align-self: stretch;
       -ms-flex-align-self: stretch;
       align-self: stretch; }
-      .nav li a {
+      #nav li a {
         background: transparent;
         border-radius: 0;
         text-align: center;
@@ -260,24 +259,21 @@ path {
         margin: 0;
         transition: none;
         box-shadow: 0 3px 0px #fff; }
-        .no-touch .nav li a:hover {
+        .no-touch #nav li a:hover {
           transition: none;
           padding: 16px 15px 11px 25px; }
-        .no-touch .nav li a:hover .nav-icon {
+        .no-touch #nav li a:hover .nav-icon {
           top: 16px; }
-        .nav li a .nav-icon {
+        #nav li a .nav-icon {
           left: 12px;
           top: 16px; }
-        .no-touch .nav li a:hover span {
+        .no-touch #nav li a:hover span {
           display: none; }
-        .nav li a span {
+        #nav li a span {
           display: none; }
-    .nav .close-nav {
+    #nav #close-nav {
       display: block;
-      margin-left: auto; }
-  .show-menu {
-    right: 0;
-    transition: all .2s ease-out; } }
+      margin-left: auto; } }
 
 /* ==== section home ===== */
 .home {
@@ -815,7 +811,7 @@ path {
       -webkit-box-align-self: center;
       -ms-flex-align-self: center;
       align-self: center; }
-  .my-work .wrap-thumbs {
+  .my-work #wrap-thumbs {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;

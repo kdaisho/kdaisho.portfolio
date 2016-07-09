@@ -7,14 +7,21 @@ document.addEventListener("DOMContentLoaded", function() {
   var windowsize;
   var scrl_amount;
 
-  // Add the same listener for multiple different events on the same element
+  var main_menu = document.getElementById("main-menu");
+  var nav = document.getElementById("nav");
+  var close_nav = document.getElementById("close-nav");
+  // var wrap_thumb = document.getElementsByClassName("wrap-thumb");
+  // var wrap_thumb = document.querySelectorAll(".wrap-thumb");
+
+  //* Add the same listener for multiple different events on the same element
+  //* Trying to make the same function as element.on("load, resize, scroll", function(){...}); in jQuery
   function addListenerMulti(el, s, fn) {
     var events = s.split(" ");
     for (var i = 0; i < events.length; i++) {
       el.addEventListener(events[i], fn, false);
     }
   }
-  // Then excute it
+  //* Then excute it
   addListenerMulti(window, "load resize scroll", function() {
     windowsize = window.innerWidth;
     scrl_amount = window.pageYOffset;
@@ -29,38 +36,76 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
-  $('#main-menu').click(function() { // open nav menu
-    $('.nav').addClass('show-menu');
+  main_menu.addEventListener("click", function() {
+    nav.style.right = 0;
   });
 
-  $('.close-nav').click(function() {
-    $('.nav').removeClass('show-menu');
+  close_nav.addEventListener("click", function() {
+    nav.style.right = "-320px";
   });
+
+
+
 
 /* ==== MY WORK section ==== */
-  $('.wrap-thumb').click(function() {
-    var pos = $(this).data('pos');
-    $('#img_holder').html('<img src="images/'+ bigsrc[pos].url +'" data-id="'+ bigsrc[pos].id +'">');
-    $('#desc_holder').html('<h4>' + bigsrc[pos].title + '</h4><p>' + bigsrc[pos].desc
-      + '</p>');
-    $('#img_holder, #desc_holder, #modal_bg, #close_btn, #prev, #next').fadeIn();
+  var thumbs_parent = document.getElementById("wrap-thumbs");
+  thumbs_parent.addEventListener("click", displayWork, false);
 
-    if(pos == 18 || pos == 12 || pos == 8) {
-      $('#desc_holder').append('<a href="' + bigsrc[pos].link + '" target="_blank">visit website</a>');
+  function displayWork(event) {
+    if (event.target !== event.currentTarget) {
+      var pos = event.target.getAttribute("data-pos");
+      console.log("Hello " + pos);
+      // var pos = clicked_item.getAttribute("class");
+      // $('#img_holder').html('<img src="images/'+ bigsrc[pos].url +'" data-id="'+ bigsrc[pos].id +'">');
+      document.getElementById("img_holder").innerHTML = '<img src="images/'+ bigsrc[pos].url +'" data-id="'+ bigsrc[pos].id +'">';
+      document.getElementById("desc_holder").innerHTML = '<h4>' + bigsrc[pos].title + '</h4><p>' + bigsrc[pos].desc + '</p>';
+
+      
+      $('#img_holder, #desc_holder, #modal_bg, #close_btn, #prev, #next').fadeIn();
+
+      if(pos == 18 || pos == 12 || pos == 8) {
+        $('#desc_holder').append('<a href="' + bigsrc[pos].link + '" target="_blank">visit website</a>');
+      }
+      if(pos == (bigsrc.length-1)) {
+        $('#next').data('pos',(pos-1));
+        $('#prev').data('pos',0);
+      }
+      else if(pos == 0) {
+        $('#next').data('pos',(bigsrc.length-1));
+        $('#prev').data('pos',(pos+1));
+      }
+      else {
+        $('#next').data('pos',(pos-1));
+        $('#prev').data('pos',(pos+1));
+      }
     }
-    if(pos == (bigsrc.length-1)) {
-      $('#next').data('pos',(pos-1));
-      $('#prev').data('pos',0);
-    }
-    else if(pos == 0) {
-      $('#next').data('pos',(bigsrc.length-1));
-      $('#prev').data('pos',(pos+1));
-    }
-    else {
-      $('#next').data('pos',(pos-1));
-      $('#prev').data('pos',(pos+1));
-    }
-  });
+    event.stopPropagation();
+  }
+
+  // This should be ditched
+  // $('.wrap-thumb').click(function() {
+  //   var pos = $(this).data('pos');
+  //   $('#img_holder').html('<img src="images/'+ bigsrc[pos].url +'" data-id="'+ bigsrc[pos].id +'">');
+  //   $('#desc_holder').html('<h4>' + bigsrc[pos].title + '</h4><p>' + bigsrc[pos].desc
+  //     + '</p>');
+  //   $('#img_holder, #desc_holder, #modal_bg, #close_btn, #prev, #next').fadeIn();
+
+  //   if(pos == 18 || pos == 12 || pos == 8) {
+  //     $('#desc_holder').append('<a href="' + bigsrc[pos].link + '" target="_blank">visit website</a>');
+  //   }
+  //   if(pos == (bigsrc.length-1)) {
+  //     $('#next').data('pos',(pos-1));
+  //     $('#prev').data('pos',0);
+  //   }
+  //   else if(pos == 0) {
+  //     $('#next').data('pos',(bigsrc.length-1));
+  //     $('#prev').data('pos',(pos+1));
+  //   }
+  //   else {
+  //     $('#next').data('pos',(pos-1));
+  //     $('#prev').data('pos',(pos+1));
+  //   }
+  // });
 
   $('.arrow').click(function() {
     var pos = $(this).data("pos");
