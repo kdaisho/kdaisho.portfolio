@@ -48,35 +48,59 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 /* ==== MY WORK section ==== */
-  var thumbs_parent = document.getElementById("wrap-thumbs");
+  var thumbs_parent = document.getElementById("wrap-thumbs"),
+      gal_holder = document.getElementById("gal_holder"),
+      img_holder = document.getElementById("img_holder"),
+      desc_holder = document.getElementById("desc_holder"),
+      modal_bg = document.getElementById("modal_bg"),
+      close_btn = document.getElementById("close_btn"),
+      prev = document.getElementById("prev"),
+      next = document.getElementById("next");
+
   thumbs_parent.addEventListener("click", displayWork, false);
 
   function displayWork(event) {
     if (event.target !== event.currentTarget) {
       var pos = event.target.getAttribute("data-pos");
-      console.log("Hello " + pos);
       // var pos = clicked_item.getAttribute("class");
       // $('#img_holder').html('<img src="images/'+ bigsrc[pos].url +'" data-id="'+ bigsrc[pos].id +'">');
-      document.getElementById("img_holder").innerHTML = '<img src="images/'+ bigsrc[pos].url +'" data-id="'+ bigsrc[pos].id +'">';
-      document.getElementById("desc_holder").innerHTML = '<h4>' + bigsrc[pos].title + '</h4><p>' + bigsrc[pos].desc + '</p>';
+      img_holder.innerHTML = '<img src="images/'+ bigsrc[pos].url +'" data-id="'+ bigsrc[pos].id +'">';
+      desc_holder.innerHTML = '<h4>' + bigsrc[pos].title + '</h4><p>' + bigsrc[pos].desc + '</p>';
 
-      
-      $('#img_holder, #desc_holder, #modal_bg, #close_btn, #prev, #next').fadeIn();
 
-      if(pos == 18 || pos == 12 || pos == 8) {
-        $('#desc_holder').append('<a href="' + bigsrc[pos].link + '" target="_blank">visit website</a>');
+
+
+
+      gal_holder.className = "is-active";
+      modal_bg.className = "is-active";
+      // $('#img_holder, #desc_holder, #modal_bg, #close_btn, #prev, #next').fadeIn();
+
+      if (pos == 18 || pos == 12 || pos == 8) {
+        var anchor = document.createElement("a");
+        anchor.href = bigsrc[pos].link;
+        anchor.setAttribute("target", "_blank");
+        anchor.innerHTML = "visit website";
+        // $('#desc_holder').append('<a href="' + bigsrc[pos].link + '" target="_blank">visit website</a>');
+
+        desc_holder.appendChild(anchor);
       }
-      if(pos == (bigsrc.length-1)) {
-        $('#next').data('pos',(pos-1));
-        $('#prev').data('pos',0);
+      if (pos == (bigsrc.length - 1)) {
+        //$('#next').data('pos',(pos-1));
+        //next.setAttribute("data-pos", pos - 1);
+        //$('#prev').data('pos',0);
+        //prev.setAttribute("data-pos", 0);
       }
-      else if(pos == 0) {
-        $('#next').data('pos',(bigsrc.length-1));
-        $('#prev').data('pos',(pos+1));
+      else if (pos == 0) {
+        // $('#next').data('pos',(bigsrc.length-1));
+        //next.setAttribute("data-pos", bigsrc.length - 1);
+        // $('#prev').data('pos',(pos+1));
+        //prev.setAttribute("data-pos", pos + 1);
       }
       else {
-        $('#next').data('pos',(pos-1));
-        $('#prev').data('pos',(pos+1));
+        // $('#next').data('pos',(pos-1));
+        //next.setAttribute("data-pos", pos - 1);
+        // $('#prev').data('pos',(pos+1));
+        //prev.setAttribute("data-pos", pos+1);
       }
     }
     event.stopPropagation();
