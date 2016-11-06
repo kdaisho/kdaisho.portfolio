@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
   //* Trying to make the same function as element.on("load, resize, scroll", function(){...}); in jQuery
   function addListenerMulti(el, s, fn) {
     var events = s.split(" ");
-    for (var i = 0; i < events.length; i++) {
+    for (var i = 0, len = events.length; i < len; i++) {
       el.addEventListener(events[i], fn, false);
     }
   }
@@ -49,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 /* ==== MY WORK section ==== */
   var thumbs_parent = document.getElementById("wrap-thumbs"),
+  // var thumbs_parent = document.getElementsByClassName("wrap-thumb"),
       gal_holder = document.getElementById("gal_holder"),
       img_holder = document.getElementById("img_holder"),
       desc_holder = document.getElementById("desc_holder"),
@@ -57,18 +58,31 @@ document.addEventListener("DOMContentLoaded", function() {
       prev = document.getElementById("prev"),
       next = document.getElementById("next");
 
+      var toggle_el = document.getElementsByClassName("toggle-el");
+  // console.log("1 " + toggle_el);
+  // var arr = Array.prototype.slice.call(toggle_el);
+  // console.log(arr);
+
   thumbs_parent.addEventListener("click", displayWork, false);
 
   function displayWork(event) {
     if (event.target !== event.currentTarget) {
+      console.log("work clicked");
+
       var pos = event.target.getAttribute("data-pos");
       // var pos = clicked_item.getAttribute("class");
       // $('#img_holder').html('<img src="images/'+ bigsrc[pos].url +'" data-id="'+ bigsrc[pos].id +'">');
       img_holder.innerHTML = '<img src="images/'+ bigsrc[pos].url +'" data-id="'+ bigsrc[pos].id +'">';
       desc_holder.innerHTML = '<h4>' + bigsrc[pos].title + '</h4><p>' + bigsrc[pos].desc + '</p>';
 
-
-
+      // img_holder.style.display = "block";
+      // desc_holder.style.display = "block";
+      // close_btn.style.display = "block";
+      //toggle_el.style.display = "block";
+     
+      // for(var i = 0, len = toggle_el.length; i < len; i++) {
+      //   toggle_el[i].style.display = "block";
+      // }
 
 
       gal_holder.className = "is-active";
@@ -85,58 +99,42 @@ document.addEventListener("DOMContentLoaded", function() {
         desc_holder.appendChild(anchor);
       }
       if (pos == (bigsrc.length - 1)) {
-        //$('#next').data('pos',(pos-1));
-        //next.setAttribute("data-pos", pos - 1);
-        //$('#prev').data('pos',0);
-        //prev.setAttribute("data-pos", 0);
+        
+        // $('#next').data('pos',(pos-1));
+        next.setAttribute("data-pos", pos - 1);
+        // $('#prev').data('pos',0);
+        prev.setAttribute("data-pos", 0);
       }
       else if (pos == 0) {
         // $('#next').data('pos',(bigsrc.length-1));
-        //next.setAttribute("data-pos", bigsrc.length - 1);
+        next.setAttribute("data-pos", bigsrc.length - 1);
         // $('#prev').data('pos',(pos+1));
-        //prev.setAttribute("data-pos", pos + 1);
+        prev.setAttribute("data-pos", pos + 1);
       }
       else {
         // $('#next').data('pos',(pos-1));
-        //next.setAttribute("data-pos", pos - 1);
+        next.setAttribute("data-pos", pos - 1);
         // $('#prev').data('pos',(pos+1));
-        //prev.setAttribute("data-pos", pos+1);
+        prev.setAttribute("data-pos", pos+1);
       }
     }
     event.stopPropagation();
   }
 
-  // This should be ditched
-  // $('.wrap-thumb').click(function() {
-  //   var pos = $(this).data('pos');
-  //   $('#img_holder').html('<img src="images/'+ bigsrc[pos].url +'" data-id="'+ bigsrc[pos].id +'">');
-  //   $('#desc_holder').html('<h4>' + bigsrc[pos].title + '</h4><p>' + bigsrc[pos].desc
-  //     + '</p>');
-  //   $('#img_holder, #desc_holder, #modal_bg, #close_btn, #prev, #next').fadeIn();
+  // var arrows = document.getElementsByClassName("arrow");
+  // var _next = document.getElementById("next");
+  // console.log(_next);
+  // _next.addEventListener("click", displayWork, false);
 
-  //   if(pos == 18 || pos == 12 || pos == 8) {
-  //     $('#desc_holder').append('<a href="' + bigsrc[pos].link + '" target="_blank">visit website</a>');
-  //   }
-  //   if(pos == (bigsrc.length-1)) {
-  //     $('#next').data('pos',(pos-1));
-  //     $('#prev').data('pos',0);
-  //   }
-  //   else if(pos == 0) {
-  //     $('#next').data('pos',(bigsrc.length-1));
-  //     $('#prev').data('pos',(pos+1));
-  //   }
-  //   else {
-  //     $('#next').data('pos',(pos-1));
-  //     $('#prev').data('pos',(pos+1));
-  //   }
-  // });
 
-  $('.arrow').click(function() {
+  $('.arrow').click(function() { // Block of code below is identical as above!! Create a function for them.
     var pos = $(this).data("pos");
+    // var pos = event.target.getAttribute("data-pos");
+    console.log("pos is " + pos);
     $('#img_holder').html('<img src="images/'+ bigsrc[pos].url +'" data-id="'+ bigsrc[pos].id +'">');
     $('#desc_holder').html('<h4>' + bigsrc[pos].title + '</h4><p>' + bigsrc[pos].desc
       + '</p>');
-    $('#img_holder, #desc_holder, #modal_bg, #close_btn, #prev, #next').fadeIn();
+    // $('#img_holder, #desc_holder, #modal_bg, #close_btn, #prev, #next').fadeIn();
 
     if(pos == 18 || pos == 12 || pos == 8) {
       $('#desc_holder').append('<a href="' + bigsrc[pos].link + '" target="_blank">visit website</a>');
@@ -154,7 +152,10 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   $('#modal_bg, #close_btn').click(function() {
-    $('#img_holder, #desc_holder, #close_btn, #modal_bg, #prev, #next').fadeOut();
+    console.log("work closed");
+    // $('#img_holder, #desc_holder, #close_btn, #modal_bg, #prev, #next').fadeOut();
+      gal_holder.className = "";
+      modal_bg.className = "";
   });
 
   $('.link').click(function(e) {

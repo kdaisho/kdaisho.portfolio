@@ -61,6 +61,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function displayWork(event) {
     if (event.target !== event.currentTarget) {
+
       var pos = event.target.getAttribute("data-pos");
       // var pos = clicked_item.getAttribute("class");
       // $('#img_holder').html('<img src="images/'+ bigsrc[pos].url +'" data-id="'+ bigsrc[pos].id +'">');
@@ -85,53 +86,30 @@ document.addEventListener("DOMContentLoaded", function() {
         desc_holder.appendChild(anchor);
       }
       if (pos == (bigsrc.length - 1)) {
-        //$('#next').data('pos',(pos-1));
-        //next.setAttribute("data-pos", pos - 1);
-        //$('#prev').data('pos',0);
-        //prev.setAttribute("data-pos", 0);
+        
+        // $('#next').data('pos',(pos-1));
+        next.setAttribute("data-pos", pos - 1);
+        // $('#prev').data('pos',0);
+        prev.setAttribute("data-pos", 0);
       }
       else if (pos == 0) {
         // $('#next').data('pos',(bigsrc.length-1));
-        //next.setAttribute("data-pos", bigsrc.length - 1);
+        next.setAttribute("data-pos", bigsrc.length - 1);
         // $('#prev').data('pos',(pos+1));
-        //prev.setAttribute("data-pos", pos + 1);
+        prev.setAttribute("data-pos", pos + 1);
       }
       else {
         // $('#next').data('pos',(pos-1));
-        //next.setAttribute("data-pos", pos - 1);
+        next.setAttribute("data-pos", pos - 1);
         // $('#prev').data('pos',(pos+1));
-        //prev.setAttribute("data-pos", pos+1);
+        prev.setAttribute("data-pos", pos+1);
       }
     }
     event.stopPropagation();
   }
 
-  // This should be ditched
-  // $('.wrap-thumb').click(function() {
-  //   var pos = $(this).data('pos');
-  //   $('#img_holder').html('<img src="images/'+ bigsrc[pos].url +'" data-id="'+ bigsrc[pos].id +'">');
-  //   $('#desc_holder').html('<h4>' + bigsrc[pos].title + '</h4><p>' + bigsrc[pos].desc
-  //     + '</p>');
-  //   $('#img_holder, #desc_holder, #modal_bg, #close_btn, #prev, #next').fadeIn();
 
-  //   if(pos == 18 || pos == 12 || pos == 8) {
-  //     $('#desc_holder').append('<a href="' + bigsrc[pos].link + '" target="_blank">visit website</a>');
-  //   }
-  //   if(pos == (bigsrc.length-1)) {
-  //     $('#next').data('pos',(pos-1));
-  //     $('#prev').data('pos',0);
-  //   }
-  //   else if(pos == 0) {
-  //     $('#next').data('pos',(bigsrc.length-1));
-  //     $('#prev').data('pos',(pos+1));
-  //   }
-  //   else {
-  //     $('#next').data('pos',(pos-1));
-  //     $('#prev').data('pos',(pos+1));
-  //   }
-  // });
-
-  $('.arrow').click(function() {
+  $('.arrow').click(function() { // Block of code below is identical as above!! Create a function for them.
     var pos = $(this).data("pos");
     $('#img_holder').html('<img src="images/'+ bigsrc[pos].url +'" data-id="'+ bigsrc[pos].id +'">');
     $('#desc_holder').html('<h4>' + bigsrc[pos].title + '</h4><p>' + bigsrc[pos].desc
