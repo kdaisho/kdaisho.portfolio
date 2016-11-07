@@ -1,17 +1,12 @@
 "use strict";
 
-// $(document).ready(function() {
-
 document.addEventListener("DOMContentLoaded", function() {
 
-  var windowsize;
-  var scrl_amount;
-
-  var main_menu = document.getElementById("main-menu");
-  var nav = document.getElementById("nav");
-  var close_nav = document.getElementById("close-nav");
-  // var wrap_thumb = document.getElementsByClassName("wrap-thumb");
-  // var wrap_thumb = document.querySelectorAll(".wrap-thumb");
+  var windowsize,
+      scrl_amount,
+      main_menu = document.getElementById("main-menu"),
+      nav = document.getElementById("nav"),
+      close_nav = document.getElementById("close-nav");
 
   //* Add the same listener for multiple different events on the same element
   //* Trying to make the same function as element.on("load, resize, scroll", function(){...}); in jQuery
@@ -44,12 +39,8 @@ document.addEventListener("DOMContentLoaded", function() {
     nav.style.right = "-320px";
   });
 
-
-
-
 /* ==== MY WORK section ==== */
   var thumbs_parent = document.getElementById("wrap-thumbs"),
-  // var thumbs_parent = document.getElementsByClassName("wrap-thumb"),
       gal_holder = document.getElementById("gal_holder"),
       img_holder = document.getElementById("img_holder"),
       desc_holder = document.getElementById("desc_holder"),
@@ -58,126 +49,92 @@ document.addEventListener("DOMContentLoaded", function() {
       prev = document.getElementById("prev"),
       next = document.getElementById("next");
 
-      var toggle_el = document.getElementsByClassName("toggle-el");
-  // console.log("1 " + toggle_el);
-  // var arr = Array.prototype.slice.call(toggle_el);
-  // console.log(arr);
 
-  thumbs_parent.addEventListener("click", displayWork, false);
+  thumbs_parent.addEventListener("click", displayBox, false);
 
-  function displayWork(event) {
+  next.addEventListener("click", function() {
+    var pos = document.getElementById("data_img").getAttribute("data-id");
+    nextBox(pos);
+  }, false);
+
+  prev.addEventListener("click", function() {
+    var pos = document.getElementById("data_img").getAttribute("data-id");
+    prevBox(pos);
+  }, false);
+
+  function injectEl(pos) {
+    img_holder.innerHTML = '<img id="data_img" src="images/'+ bigsrc[pos].url +'" data-id="'+ bigsrc[pos].id +'">';
+    desc_holder.innerHTML = '<h4>' + bigsrc[pos].title + '</h4><p>' + bigsrc[pos].desc + '</p>';
+
+    if (pos == 18 || pos == 12 || pos == 8) {
+      var anchor = document.createElement("a");
+      anchor.href = bigsrc[pos].link;
+      anchor.setAttribute("target", "_blank");
+      anchor.innerHTML = "visit website";
+      desc_holder.appendChild(anchor);
+    }
+  }
+  
+  function displayBox(event) {
+    //Prevent the parent element being clickable
     if (event.target !== event.currentTarget) {
-      console.log("work clicked");
-
       var pos = event.target.getAttribute("data-pos");
-      // var pos = clicked_item.getAttribute("class");
-      // $('#img_holder').html('<img src="images/'+ bigsrc[pos].url +'" data-id="'+ bigsrc[pos].id +'">');
-      img_holder.innerHTML = '<img src="images/'+ bigsrc[pos].url +'" data-id="'+ bigsrc[pos].id +'">';
-      desc_holder.innerHTML = '<h4>' + bigsrc[pos].title + '</h4><p>' + bigsrc[pos].desc + '</p>';
-
-      // img_holder.style.display = "block";
-      // desc_holder.style.display = "block";
-      // close_btn.style.display = "block";
-      //toggle_el.style.display = "block";
-     
-      // for(var i = 0, len = toggle_el.length; i < len; i++) {
-      //   toggle_el[i].style.display = "block";
-      // }
-
+      injectEl(pos);
 
       gal_holder.className = "is-active";
       modal_bg.className = "is-active";
-      // $('#img_holder, #desc_holder, #modal_bg, #close_btn, #prev, #next').fadeIn();
-
-      if (pos == 18 || pos == 12 || pos == 8) {
-        var anchor = document.createElement("a");
-        anchor.href = bigsrc[pos].link;
-        anchor.setAttribute("target", "_blank");
-        anchor.innerHTML = "visit website";
-        // $('#desc_holder').append('<a href="' + bigsrc[pos].link + '" target="_blank">visit website</a>');
-
-        desc_holder.appendChild(anchor);
-      }
-      if (pos == (bigsrc.length - 1)) {
-        
-        // $('#next').data('pos',(pos-1));
-        next.setAttribute("data-pos", pos - 1);
-        // $('#prev').data('pos',0);
-        prev.setAttribute("data-pos", 0);
-      }
-      else if (pos == 0) {
-        // $('#next').data('pos',(bigsrc.length-1));
-        next.setAttribute("data-pos", bigsrc.length - 1);
-        // $('#prev').data('pos',(pos+1));
-        prev.setAttribute("data-pos", pos + 1);
-      }
-      else {
-        // $('#next').data('pos',(pos-1));
-        next.setAttribute("data-pos", pos - 1);
-        // $('#prev').data('pos',(pos+1));
-        prev.setAttribute("data-pos", pos+1);
-      }
     }
     event.stopPropagation();
   }
 
-  // var arrows = document.getElementsByClassName("arrow");
-  // var _next = document.getElementById("next");
-  // console.log(_next);
-  // _next.addEventListener("click", displayWork, false);
-
-
-  $('.arrow').click(function() { // Block of code below is identical as above!! Create a function for them.
-    var pos = $(this).data("pos");
-    // var pos = event.target.getAttribute("data-pos");
-    console.log("pos is " + pos);
-    $('#img_holder').html('<img src="images/'+ bigsrc[pos].url +'" data-id="'+ bigsrc[pos].id +'">');
-    $('#desc_holder').html('<h4>' + bigsrc[pos].title + '</h4><p>' + bigsrc[pos].desc
-      + '</p>');
-    // $('#img_holder, #desc_holder, #modal_bg, #close_btn, #prev, #next').fadeIn();
-
-    if(pos == 18 || pos == 12 || pos == 8) {
-      $('#desc_holder').append('<a href="' + bigsrc[pos].link + '" target="_blank">visit website</a>');
+  function nextBox(pos) {
+    if(pos == 0) {
+      pos = bigsrc.length - 1;
     }
-    if(pos == (bigsrc.length-1)) {
-      $('#next').data('pos',(pos-1));
-      $('#prev').data('pos',0);
-    } else if(pos == 0) {
-      $('#next').data('pos',(bigsrc.length-1));
-      $('#prev').data('pos',(pos+1));
-    } else {
-      $('#next').data('pos',(pos-1));
-      $('#prev').data('pos',(pos+1));
+    else {
+      pos--;
     }
-  });
+    injectEl(pos);
+  }
+
+  function prevBox(pos) {
+    if(pos == bigsrc.length - 1) {
+      pos = 0;
+    }
+    else {
+      pos++;
+    }
+    injectEl(pos);
+  }
+
+  /* ===== KOKOMADE YATTAZO !! ===== */
 
   $('#modal_bg, #close_btn').click(function() {
-    console.log("work closed");
-    // $('#img_holder, #desc_holder, #close_btn, #modal_bg, #prev, #next').fadeOut();
-      gal_holder.className = "";
-      modal_bg.className = "";
+    gal_holder.className = "";
+    modal_bg.className = "";
   });
 
   $('.link').click(function(e) {
     e.preventDefault(); // disable the hyperlink
     var href = $(this).attr('href');
-    href = href.replace('#','');
+    href = href.replace('#', '');
     var togo = $('a[class="' + href + '"]');
     $('html,body').animate({
+      
       scrollTop:togo.offset().top
     },300)
   });
 
   /* ==== form validation ==== */
   $('#submit').click(function() {
-    var error = false;
-    var user = $('#user').val();
-    var email = $('#email').val();
-    var message = $('#message').val();
+    var error = false,
+        user = $('#user').val(),
+        email = $('#email').val(),
+        message = $('#message').val();
 
     if(user.length < 2) {
       $('#user').val('','');
-      $('#user').attr('placeholder','please enter a valid name');
+      $('#user').attr('placeholder', 'please enter a valid name');
       error = true;
     };
 
@@ -192,37 +149,37 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     if(validateEmail(email) == false) {
-      $('#email').val('','');
-      $('#email').attr('placeholder','please enter a valid email');
+      $('#email').val('', '');
+      $('#email').attr('placeholder', 'please enter a valid email');
       error = true;
     };
 
     if(error == false) {
-      $('#user').css('border','none');
-      $('#user').attr('placeholder','');
-      $('#email').css('border','none');
-      $('#email').attr('placeholder','');
+      $('#user').css('border', 'none');
+      $('#user').attr('placeholder', '');
+      $('#email').css('border', 'none');
+      $('#email').attr('placeholder', '');
     };
 
     /* === send to php === */
     if(error == false) {
       $.ajax({
-        url:'igetEmail.php',
-        type:'POST',
-        data:{
-          Name:user,
-          email:email,
-          question:message
+        url: 'igetEmail.php',
+        type: 'POST',
+        data: {
+          Name: user,
+          email: email,
+          question: message
         },
-        success:function(response){
+        success: function(response) {
           $('#form').html(response);
         }
       });
     }
   });
 });
-var trigger = document.getElementById("modal_trigger");
-var eraser = document.getElementById("modal_close");
+var trigger = document.getElementById("modal_trigger"),
+    eraser = document.getElementById("modal_close");
 
 trigger.onclick = function() {
   document.getElementById("modal-overlay").classList.add("modal-on");
@@ -232,9 +189,9 @@ eraser.onclick = function() {
 }
 
 window.onscroll = function() { // Trigger for 
-  var mobile = false;
-  var scroll = window.scrollY; // detect amount of scroll for proper browsers
-  var scroll_ie = pageYOffset; // detect amount of scroll for IE 9+
+  var mobile = false,
+      scroll = window.scrollY, // detect amount of scroll for proper browsers
+      scroll_ie = pageYOffset; // detect amount of scroll for IE 9+
 
   if (window.innerWidth <= 767) {
     mobile = true;
@@ -257,62 +214,62 @@ if(!iOS && (!(navigator.userAgent.indexOf('MSIE')!== -1 || navigator.appVersion.
   document.getElementById('site_logo').classList.add("logo-display");
   document.getElementById('alt_logo').classList.add("logo-hide");
 }
-var app = angular.module('myApp', [])
+var app = angular.module('myApp', []);
 
 //Educations Section
 app.controller('eduCtrl', ['$scope', function($scope) {
 	$scope.cards = [
-		{inst:'treehouse', period:'2015 - Present', url:'treehouse', title:'Web Development', location: 'Online',
-		desc:'PHP, JavaScript, Angular.js, CSS3 animations, CSS3 flexbox; etc.'},
-		{inst:'herzing', period:'2013 - 2014', url:'herzing-college', title:'Graphic Design for Websites', location: 'Montreal',
-		desc:'Photoshop, Illustrator, HTML5, CSS3, JavaScript, Responsive layout; etc.'},
-		{inst:'sdf', period:'Apr - Oct 2008', url:'sdf', title:'Advance Officer\'s Course', location: 'Shizuoka, Japan',
-		desc:'Army doctrine / tactics; offensive, defensive and maneuver companies / battalions; etc.'},
-		{inst:'hokkai', period:'1996 - 2000', url:'hokkai', title:'Bachelor of Laws', location: 'Sapporo, Japan',
-		desc:'Leagl method and procedures, Criminal law, Administrative law, Law of property; etc.'}	
+		{inst: 'treehouse', period: '2015 - Present', url: 'treehouse', title: 'Web Development', location: 'Online',
+		desc: 'PHP, JavaScript, Angular.js, CSS3 animations, CSS3 flexbox; etc.'},
+		{inst:'herzing', period: '2013 - 2014', url: 'herzing-college', title: 'Graphic Design for Websites', location: 'Montreal',
+		desc: 'Photoshop, Illustrator, HTML5, CSS3, JavaScript, Responsive layout; etc.'},
+		{inst:'sdf', period: 'Apr - Oct 2008', url: 'sdf', title: 'Advance Officer\'s Course', location: 'Shizuoka, Japan',
+		desc: 'Army doctrine / tactics; offensive, defensive and maneuver companies / battalions; etc.'},
+		{inst:'hokkai', period: '1996 - 2000', url: 'hokkai', title: 'Bachelor of Laws', location: 'Sapporo, Japan',
+		desc: 'Leagl method and procedures, Criminal law, Administrative law, Law of property; etc.'}	
 	];
 }]);
 
 //Skills & Experiences Section
 app.controller('skillsCtrl', ['$scope', function($scope) {
 	$scope.progbars = [
-		{url: 'ps', alt:'Photoshop', skill:'ps', eh:'eh', okay:'okay', good:'good', ninja:'ninja'},
-		{url: 'ai', alt:'Illustrator', skill:'ai'},
-		{url: 'html5', alt:'HTML5', skill:'htm'},
-		{url: 'css3', alt:'CSS3', skill:'css'},
-		{url: 'sass', alt:'Sass', skill:'sass'},
-		{url: 'js', alt:'JavaScript', skill:'js'},
-		{url: 'jquery', alt:'jQuery', skill:'jquery'},
-		{url: 'angular', alt:'angular', skill:'angular'},
-		{url: 'php', alt:'PHP', skill:'php'},
-		{url: 'git', alt:'Git', skill:'git'}
+		{url: 'ps', alt:  'Photoshop', skill: ' ps', eh:'eh', okay: 'okay', good: 'good', ninja: 'ninja'},
+		{url: 'ai', alt: 'Illustrator', skill: 'ai'},
+		{url: 'html5', alt: 'HTML5', skill: 'htm'},
+		{url: 'css3', alt: 'CSS3', skill: 'css'},
+		{url: 'sass', alt: 'Sass', skill: 'sass'},
+		{url: 'js', alt: 'JavaScript', skill: 'js'},
+		{url: 'jquery', alt: 'jQuery', skill: 'jquery'},
+		{url: 'angular', alt: 'angular', skill: 'angular'},
+		{url: 'php', alt: 'PHP', skill: 'php'},
+		{url: 'git', alt: 'Git', skill: 'git'}
 	];
 }]);
 
 //My Work Section
 app.controller('galleryCtrl', ['$scope', function($scope) {
 	$scope.images = [
-		{url:'work-carousel-swarovski.jpg', alt:'mapleharbour website', desc:'website content: carousel', pos:20},
-		{url:'work-carousel-new-year.jpg', alt:'mapleharbour website', desc:'website content: carousel', pos:19},
-		{url:'work-mh.jpg', alt:'mapleharbour website', desc:'website development', pos:18},
-		{url:'work-boxingday.jpg', alt:'carousel design', desc:'website content: carousel', pos:17},
-		{url:'work-blackfriday.jpg', alt:'carousel design', desc:'website content: carousel', pos:16},
-		{url:'work-email.jpg', alt:'email header design', desc:'visual content: email', pos:15},
-		{url:'work-social.jpg', alt:'visual content for social media', desc:'visual content: social media', pos:14},
-		{url:'work-tshirt.jpg', alt:'tshirt design', desc:'vector: t-shirt design', pos:13},
-		{url:'work-musician.jpg', alt:'website for a musician', desc:'website development', pos:12},
-		{url:'work-coco.jpg', alt:'logo design', desc:'vector: logo design', pos:11},
-		{url:'work-icons.jpg', alt:'vector icon design', desc:'vector: icon design', pos:10},
-		{url:'work-vector.jpg', alt:'vector character design', desc:'vector: character design', pos:9},
-		{url:'work-larocque.jpg', alt:'website design', desc:'website development 2014', pos:8},
-		{url:'work-cafe.jpg', alt:'website design', desc:'website development 2013', pos:7},
-		{url:'work-logo-design.jpg', alt:'logo design', desc:'vector: logo design', pos:6},
-		{url:'work-logo-design2.jpg', alt:'logo design', desc:'business card design', pos:5},
-		{url:'work-infographic.jpg', alt:'infographic design', desc:'vector: infographic', pos:4},
-		{url:'work-printing.jpg', alt:'printing design', desc:'indesign: printing content', pos:3},
-		{url:'work-bookcover.jpg', alt:'bookcover design', desc:'bitmap: book cover design', pos:2},
-		{url:'work-poster.jpg', alt:'poster design', desc:'bitmap: movie poster recreation', pos:1},
-		{url:'work-tapestry.jpg', alt:'vector tapestry', desc:'vector: tapestry imitaion', pos:0}
+		{url: 'work-carousel-swarovski.jpg', alt: 'mapleharbour website', desc: 'website content: carousel', pos: 20},
+		{url: 'work-carousel-new-year.jpg', alt: 'mapleharbour website', desc: 'website content: carousel', pos: 19},
+		{url: 'work-mh.jpg', alt: 'mapleharbour website', desc: 'website development', pos: 18},
+		{url: 'work-boxingday.jpg', alt: 'carousel design', desc: 'website content: carousel', pos: 17},
+		{url: 'work-blackfriday.jpg', alt: 'carousel design', desc: 'website content: carousel', pos: 16},
+		{url: 'work-email.jpg', alt: 'email header design', desc: 'visual content: email', pos: 15},
+		{url: 'work-social.jpg', alt: 'visual content for social media', desc: 'visual content: social media', pos: 14},
+		{url: 'work-tshirt.jpg', alt: 'tshirt design', desc: 'vector: t-shirt design', pos: 13},
+		{url: 'work-musician.jpg', alt: 'website for a musician', desc: 'website development', pos: 12},
+		{url: 'work-coco.jpg', alt: 'logo design', desc: 'vector: logo design', pos: 11},
+		{url: 'work-icons.jpg', alt: 'vector icon design', desc: 'vector: icon design', pos: 10},
+		{url: 'work-vector.jpg', alt: 'vector character design', desc: 'vector: character design', pos: 9},
+		{url: 'work-larocque.jpg', alt: 'website design', desc: 'website development 2014', pos: 8},
+		{url: 'work-cafe.jpg', alt: 'website design', desc: 'website development 2013', pos: 7},
+		{url: 'work-logo-design.jpg', alt: 'logo design', desc: 'vector: logo design', pos: 6},
+		{url: 'work-logo-design2.jpg', alt: 'logo design', desc: 'business card design', pos: 5},
+		{url: 'work-infographic.jpg', alt: 'infographic design', desc: 'vector: infographic', pos: 4},
+		{url: 'work-printing.jpg', alt: 'printing design', desc: 'indesign: printing content', pos: 3},
+		{url: 'work-bookcover.jpg', alt: 'bookcover design', desc: 'bitmap: book cover design', pos: 2},
+		{url: 'work-poster.jpg', alt: 'poster design', desc: 'bitmap: movie poster recreation', pos: 1},
+		{url: 'work-tapestry.jpg', alt: 'vector tapestry', desc: 'vector: tapestry imitaion', pos: 0}
 	];
 }]);
 
@@ -323,151 +280,151 @@ app.controller('timeCtrl', ['$scope', function($scope) {
 	$scope.getDatetime = new Date();
 }]);
 
-var bigsrc = new Array();
+var bigsrc = [];
 bigsrc[20] = {
-	url:'pan-carousel-swarovski.jpg',
-	id:20,
-	title:'Visual Content: Carousel',
-	desc:'Photoshop',
-	link:''
+  url: 'pan-carousel-swarovski.jpg',
+  id: 20,
+  title: 'Visual Content: Carousel',
+  desc: 'Photoshop',
+  link: ''
 },
 bigsrc[19] = {
-	url:'pan-carousel-new-year.jpg',
-	id:19,
-	title:'Visual Content: Carousel',
-	desc:'Photoshop',
-	link:''
+  url: 'pan-carousel-new-year.jpg',
+  id: 19,
+  title: 'Visual Content: Carousel',
+  desc: 'Photoshop',
+  link: ''
 },
 bigsrc[18] = {
-	url:'pan-mh-website.jpg',
-	id:18,
-	title:'Graphic/Integration',
-	desc:'Magento: Maple Harbour',
-	link:'//mapleharbour.ca'
+  url: 'pan-mh-website.jpg',
+  id: 18,
+  title: 'Graphic/Integration',
+  desc: 'Magento: Maple Harbour',
+  link: '//mapleharbour.ca'
 },
 bigsrc[17] = {
-	url:'pan-carousel-bd.jpg',
-	id:17,
-	title:'Visual Content: Carousel',
-	desc:'Photoshop',
-	link:''
+  url: 'pan-carousel-bd.jpg',
+  id: 17,
+  title: 'Visual Content: Carousel',
+  desc: 'Photoshop',
+  link: ''
 },
 bigsrc[16] = {
-	url:'pan-carousel-bf.jpg',
-	id:16,
-	title:'Visual Content: Carousel',
-	desc:'Photoshop',
-	link:''
+  url: 'pan-carousel-bf.jpg',
+  id: 16,
+  title: 'Visual Content: Carousel',
+  desc: 'Photoshop',
+  link: ''
 },
 bigsrc[15] = {
-	url:'pan-email.jpg',
-	id:15,
-	title:'Visual Content: Social Media',
-	desc:'Photoshop',
-	link:''
+  url: 'pan-email.jpg',
+  id: 15,
+  title: 'Visual Content: Social Media',
+  desc: 'Photoshop',
+  link: ''
 },
 bigsrc[14] = {
-	url:'pan-social.jpg',
-	id:14,
-	title:'Visual Content: Social Media',
-	desc:'Photoshop',
-	link:''
+  url: 'pan-social.jpg',
+  id: 14,
+  title: 'Visual Content: Social Media',
+  desc: 'Photoshop',
+  link: ''
 },
 bigsrc[13] = {
-	url:'pan-tshirt-design.jpg',
-	id:13,
-	title:'T-shirt Design',
-	desc:'Illustrator',
-	link:''
+  url: 'pan-tshirt-design.jpg',
+  id: 13,
+  title: 'T-shirt Design',
+  desc: 'Illustrator',
+  link: ''
 },
 bigsrc[12] = {
-	url:'pan-musician-website.jpg',
-	id:12,
-	title:'Website Development',
-	desc:'PHP, jQuery',
-	link:'//bynki.com/'
+  url: 'pan-musician-website.jpg',
+  id: 12,
+  title: 'Website Development',
+  desc: 'PHP, jQuery',
+  link: '//bynki.com/'
 },
 bigsrc[11] = {
-	url:'pan-coco-logo.jpg',
-	id:11,
-	title:'Logo Design',
-	desc:'Illustrator',
-	link:''
+  url: 'pan-coco-logo.jpg',
+  id: 11,
+  title: 'Logo Design',
+  desc: 'Illustrator',
+  link: ''
 },
 bigsrc[10] = {
-	url:'pan-icon-set.jpg',
-	id:10,
-	title:'Icon Design',
-	desc:'Illustrator',
-	link:''
+  url: 'pan-icon-set.jpg',
+  id: 10,
+  title: 'Icon Design',
+  desc: 'Illustrator',
+  link: ''
 },
 bigsrc[9] = {
-	url:'pan-character-design.jpg',
-	id:9,
-	title:'Logo Design',
-	desc:'Illustrator',
-	link:''
+  url: 'pan-character-design.jpg',
+  id: 9,
+  title: 'Logo Design',
+  desc: 'Illustrator',
+  link: ''
 },
 bigsrc[8] = {
-	url:'pan-larocque-website.jpg',
-	id:8,
-	title:'Website Development',
-	desc:'HTML5, CSS3, jQuery',
-	link:'//eaularocque.com/'
+  url: 'pan-larocque-website.jpg',
+  id: 8,
+  title: 'Website Development',
+  desc: 'HTML5, CSS3, jQuery',
+  link: '//eaularocque.com/'
 },
 bigsrc[7] = {
-	url:'pan-cafe-website.jpg',
-	id:7,
-	title:'Website Development',
-	desc:'HTML5, CSS3, jQuery',
-	link:''
+  url: 'pan-cafe-website.jpg',
+  id: 7,
+  title: 'Website Development',
+  desc: 'HTML5, CSS3, jQuery',
+  link: ''
 },
 bigsrc[6] = {
-	url:'pan-logo-design2.jpg',
-	id:6,
-	title:'Logo Design',
-	desc:'Illustrator',
-	link:''
+  url: 'pan-logo-design2.jpg',
+  id: 6,
+  title: 'Logo Design',
+  desc: 'Illustrator',
+  link: ''
 },
 bigsrc[5] = {
-	url:'pan-logo-design.jpg',
-	id:5,
-	title:'Business Card Design',
-	desc:'IIllustrator',
-	link:''
+  url: 'pan-logo-design.jpg',
+  id: 5,
+  title: 'Business Card Design',
+  desc: 'IIllustrator',
+  link: ''
 },
 bigsrc[4] = {
-	url:'pan-infograph.jpg',
-	id:4,
-	title:'Infographic',
-	desc:'Illustrator',
-	link:''
+  url: 'pan-infograph.jpg',
+  id: 4,
+  title: 'Infographic',
+  desc: 'Illustrator',
+  link: ''
 },
 bigsrc[3] = {
-	url:'pan-printing.jpg',
-	id:3,
-	title:'Desktop Publishing',
-	desc:'inDesign',
-	link:''
+  url: 'pan-printing.jpg',
+  id: 3,
+  title: 'Desktop Publishing',
+  desc: 'inDesign',
+  link: ''
 },
 bigsrc[2] = {
-	url:'pan-bookcover.jpg',
-	id:2,
-	title:'Book Cover Design',
-	desc:'Photoshop',
-	link:''
+  url: 'pan-bookcover.jpg',
+  id: 2,
+  title: 'Book Cover Design',
+  desc: 'Photoshop',
+  link: ''
 },
 bigsrc[1] = {
-	url:'pan-poster.jpg',
-	id:1,
-	title:'Movie Poster Recreation',
-	desc:'Photoshop',
-	link:''
+  url: 'pan-poster.jpg',
+  id: 1,
+  title: 'Movie Poster Recreation',
+  desc: 'Photoshop',
+  link: ''
 },
 bigsrc[0] = {
-	url:'pan-tapestry-vector.jpg',
-	id:0,
-	title:'Tapestry Imitation',
-	desc:'Illustrator',
-	link:''
+  url: 'pan-tapestry-vector.jpg',
+  id: 0,
+  title: 'Tapestry Imitation',
+  desc: 'Illustrator',
+  link: ''
 }
