@@ -107,23 +107,68 @@ document.addEventListener("DOMContentLoaded", function() {
     injectEl(pos);
   }
 
+  /* --- IIFE to avoid polluting global namespace --- */
+  (function closeModal() {
+    var arr = [modal_bg, close_btn];
+    for(var i = 0, len = arr.length; i < len; i++) {
+      arr[i].addEventListener("click", function() {
+        gal_holder.className = "";
+        modal_bg.className = "";
+        //location.hash = "#" + "goto-about";
+      }, false);
+    }
+  }());
+  
   /* ===== KOKOMADE YATTAZO !! ===== */
+  var test = document.getElementById("test"),
+      test_dest = document.getElementById("test_dest");
+  test.addEventListener("click", function() {
+    console.log("yes clicked");
+    test_dest.scrollIntoView();
+  }, false);
+  // var links = document.getElementsByClassName("link");
+  // for(var i = 0, len = links.length; i < len; i++) {
+  //   // links[i].addEventListener("click", function(e) {
+  //   //   e.preventDefault();
+  //     console.log(links[i].getAttribute("href"));
+  //     var hrefs = links[i].getAttribute("href");
+  //   // });
+  // }
+  // console.log(hrefs);
+  // function clickJump(hrefs[0]) {
 
-  $('#modal_bg, #close_btn').click(function() {
-    gal_holder.className = "";
-    modal_bg.className = "";
-  });
+  // }
+  //element.scrollIntoView();
+  // links.addEventListener("click", function(e) {
+  //   e.preventDefault();
+  //   var href = target.getAttribute("href");
+  //   console.log(href);
+  // });
+  // $('.link').click(function(e) {
+  //   e.preventDefault(); // disable the hyperlink
+  //   var href = $(this).attr('href');
+  //   href = href.replace('#', '');
+  //   var togo = $('a[class="' + href + '"]');
+  //   $('html,body').animate({
+  // var test = document.getElementById("test");
+  // console.log(test);
+  // test.addEventListener("click", function() {
+  //   test.scrollIntoView();
+  // });
+  // function jumpto(anchor){
+  //   window.location.href = "#"+anchor;
+  //   console.log("CCCLIKL");
+  // }
+  // var hash1 = gal_holder;
+  // console.log(hash1);
+  // (function scrollTo() {
+  //   console.log(hash1);
+  //   location.hash = "#" + hash1;
+  //   console.log("see");
+  //   console.log(hash1);
 
-  $('.link').click(function(e) {
-    e.preventDefault(); // disable the hyperlink
-    var href = $(this).attr('href');
-    href = href.replace('#', '');
-    var togo = $('a[class="' + href + '"]');
-    $('html,body').animate({
-      
-      scrollTop:togo.offset().top
-    },300)
-  });
+  // }());
+  //scrollTo();
 
   /* ==== form validation ==== */
   $('#submit').click(function() {
@@ -178,6 +223,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 });
+
 var trigger = document.getElementById("modal_trigger"),
     eraser = document.getElementById("modal_close");
 
@@ -226,7 +272,7 @@ app.controller('eduCtrl', ['$scope', function($scope) {
 		{inst:'sdf', period: 'Apr - Oct 2008', url: 'sdf', title: 'Advance Officer\'s Course', location: 'Shizuoka, Japan',
 		desc: 'Army doctrine / tactics; offensive, defensive and maneuver companies / battalions; etc.'},
 		{inst:'hokkai', period: '1996 - 2000', url: 'hokkai', title: 'Bachelor of Laws', location: 'Sapporo, Japan',
-		desc: 'Leagl method and procedures, Criminal law, Administrative law, Law of property; etc.'}	
+		desc: 'Leagl method and procedures, Criminal law, Administrative law, Law of property; etc.'} 
 	];
 }]);
 
@@ -282,149 +328,149 @@ app.controller('timeCtrl', ['$scope', function($scope) {
 
 var bigsrc = [];
 bigsrc[20] = {
-  url: 'pan-carousel-swarovski.jpg',
-  id: 20,
-  title: 'Visual Content: Carousel',
-  desc: 'Photoshop',
-  link: ''
+	url: 'pan-carousel-swarovski.jpg',
+	id: 20,
+	title: 'Visual Content: Carousel',
+	desc: 'Photoshop',
+	link: ''
 },
 bigsrc[19] = {
-  url: 'pan-carousel-new-year.jpg',
-  id: 19,
-  title: 'Visual Content: Carousel',
-  desc: 'Photoshop',
-  link: ''
+	url: 'pan-carousel-new-year.jpg',
+	id: 19,
+	title: 'Visual Content: Carousel',
+	desc: 'Photoshop',
+	link: ''
 },
 bigsrc[18] = {
-  url: 'pan-mh-website.jpg',
-  id: 18,
-  title: 'Graphic/Integration',
-  desc: 'Magento: Maple Harbour',
-  link: '//mapleharbour.ca'
+	url: 'pan-mh-website.jpg',
+	id: 18,
+	title: 'Graphic/Integration',
+	desc: 'Magento: Maple Harbour',
+	link: '//mapleharbour.ca'
 },
 bigsrc[17] = {
-  url: 'pan-carousel-bd.jpg',
-  id: 17,
-  title: 'Visual Content: Carousel',
-  desc: 'Photoshop',
-  link: ''
+	url: 'pan-carousel-bd.jpg',
+	id: 17,
+	title: 'Visual Content: Carousel',
+	desc: 'Photoshop',
+	link: ''
 },
 bigsrc[16] = {
-  url: 'pan-carousel-bf.jpg',
-  id: 16,
-  title: 'Visual Content: Carousel',
-  desc: 'Photoshop',
-  link: ''
+	url: 'pan-carousel-bf.jpg',
+	id: 16,
+	title: 'Visual Content: Carousel',
+	desc: 'Photoshop',
+	link: ''
 },
 bigsrc[15] = {
-  url: 'pan-email.jpg',
-  id: 15,
-  title: 'Visual Content: Social Media',
-  desc: 'Photoshop',
-  link: ''
+	url: 'pan-email.jpg',
+	id: 15,
+	title: 'Visual Content: Social Media',
+	desc: 'Photoshop',
+	link: ''
 },
 bigsrc[14] = {
-  url: 'pan-social.jpg',
-  id: 14,
-  title: 'Visual Content: Social Media',
-  desc: 'Photoshop',
-  link: ''
+	url: 'pan-social.jpg',
+	id: 14,
+	title: 'Visual Content: Social Media',
+	desc: 'Photoshop',
+	link: ''
 },
 bigsrc[13] = {
-  url: 'pan-tshirt-design.jpg',
-  id: 13,
-  title: 'T-shirt Design',
-  desc: 'Illustrator',
-  link: ''
+	url: 'pan-tshirt-design.jpg',
+	id: 13,
+	title: 'T-shirt Design',
+	desc: 'Illustrator',
+	link: ''
 },
 bigsrc[12] = {
-  url: 'pan-musician-website.jpg',
-  id: 12,
-  title: 'Website Development',
-  desc: 'PHP, jQuery',
-  link: '//bynki.com/'
+	url: 'pan-musician-website.jpg',
+	id: 12,
+	title: 'Website Development',
+	desc: 'PHP, jQuery',
+	link: '//bynki.com/'
 },
 bigsrc[11] = {
-  url: 'pan-coco-logo.jpg',
-  id: 11,
-  title: 'Logo Design',
-  desc: 'Illustrator',
-  link: ''
+	url: 'pan-coco-logo.jpg',
+	id: 11,
+	title: 'Logo Design',
+	desc: 'Illustrator',
+	link: ''
 },
 bigsrc[10] = {
-  url: 'pan-icon-set.jpg',
-  id: 10,
-  title: 'Icon Design',
-  desc: 'Illustrator',
-  link: ''
+	url: 'pan-icon-set.jpg',
+	id: 10,
+	title: 'Icon Design',
+	desc: 'Illustrator',
+	link: ''
 },
 bigsrc[9] = {
-  url: 'pan-character-design.jpg',
-  id: 9,
-  title: 'Logo Design',
-  desc: 'Illustrator',
-  link: ''
+	url: 'pan-character-design.jpg',
+	id: 9,
+	title: 'Logo Design',
+	desc: 'Illustrator',
+	link: ''
 },
 bigsrc[8] = {
-  url: 'pan-larocque-website.jpg',
-  id: 8,
-  title: 'Website Development',
-  desc: 'HTML5, CSS3, jQuery',
-  link: '//eaularocque.com/'
+	url: 'pan-larocque-website.jpg',
+	id: 8,
+	title: 'Website Development',
+	desc: 'HTML5, CSS3, jQuery',
+	link: '//eaularocque.com/'
 },
 bigsrc[7] = {
-  url: 'pan-cafe-website.jpg',
-  id: 7,
-  title: 'Website Development',
-  desc: 'HTML5, CSS3, jQuery',
-  link: ''
+	url: 'pan-cafe-website.jpg',
+	id: 7,
+	title: 'Website Development',
+	desc: 'HTML5, CSS3, jQuery',
+	link: ''
 },
 bigsrc[6] = {
-  url: 'pan-logo-design2.jpg',
-  id: 6,
-  title: 'Logo Design',
-  desc: 'Illustrator',
-  link: ''
+	url: 'pan-logo-design2.jpg',
+	id: 6,
+	title: 'Logo Design',
+	desc: 'Illustrator',
+	link: ''
 },
 bigsrc[5] = {
-  url: 'pan-logo-design.jpg',
-  id: 5,
-  title: 'Business Card Design',
-  desc: 'IIllustrator',
-  link: ''
+	url: 'pan-logo-design.jpg',
+	id: 5,
+	title: 'Business Card Design',
+	desc: 'IIllustrator',
+	link: ''
 },
 bigsrc[4] = {
-  url: 'pan-infograph.jpg',
-  id: 4,
-  title: 'Infographic',
-  desc: 'Illustrator',
-  link: ''
+	url: 'pan-infograph.jpg',
+	id: 4,
+	title: 'Infographic',
+	desc: 'Illustrator',
+	link: ''
 },
 bigsrc[3] = {
-  url: 'pan-printing.jpg',
-  id: 3,
-  title: 'Desktop Publishing',
-  desc: 'inDesign',
-  link: ''
+	url: 'pan-printing.jpg',
+	id: 3,
+	title: 'Desktop Publishing',
+	desc: 'inDesign',
+	link: ''
 },
 bigsrc[2] = {
-  url: 'pan-bookcover.jpg',
-  id: 2,
-  title: 'Book Cover Design',
-  desc: 'Photoshop',
-  link: ''
+	url: 'pan-bookcover.jpg',
+	id: 2,
+	title: 'Book Cover Design',
+	desc: 'Photoshop',
+	link: ''
 },
 bigsrc[1] = {
-  url: 'pan-poster.jpg',
-  id: 1,
-  title: 'Movie Poster Recreation',
-  desc: 'Photoshop',
-  link: ''
+	url: 'pan-poster.jpg',
+	id: 1,
+	title: 'Movie Poster Recreation',
+	desc: 'Photoshop',
+	link: ''
 },
 bigsrc[0] = {
-  url: 'pan-tapestry-vector.jpg',
-  id: 0,
-  title: 'Tapestry Imitation',
-  desc: 'Illustrator',
-  link: ''
+	url: 'pan-tapestry-vector.jpg',
+	id: 0,
+	title: 'Tapestry Imitation',
+	desc: 'Illustrator',
+	link: ''
 }

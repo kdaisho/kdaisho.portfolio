@@ -1,23 +1,18 @@
 "use strict";
 
-// $(document).ready(function() {
-
 document.addEventListener("DOMContentLoaded", function() {
 
-  var windowsize;
-  var scrl_amount;
-
-  var main_menu = document.getElementById("main-menu");
-  var nav = document.getElementById("nav");
-  var close_nav = document.getElementById("close-nav");
-  // var wrap_thumb = document.getElementsByClassName("wrap-thumb");
-  // var wrap_thumb = document.querySelectorAll(".wrap-thumb");
+  var windowsize,
+      scrl_amount,
+      main_menu = document.getElementById("main-menu"),
+      nav = document.getElementById("nav"),
+      close_nav = document.getElementById("close-nav");
 
   //* Add the same listener for multiple different events on the same element
   //* Trying to make the same function as element.on("load, resize, scroll", function(){...}); in jQuery
   function addListenerMulti(el, s, fn) {
     var events = s.split(" ");
-    for (var i = 0; i < events.length; i++) {
+    for (var i = 0, len = events.length; i < len; i++) {
       el.addEventListener(events[i], fn, false);
     }
   }
@@ -44,9 +39,6 @@ document.addEventListener("DOMContentLoaded", function() {
     nav.style.right = "-320px";
   });
 
-
-
-
 /* ==== MY WORK section ==== */
   var thumbs_parent = document.getElementById("wrap-thumbs"),
       gal_holder = document.getElementById("gal_holder"),
@@ -57,104 +49,137 @@ document.addEventListener("DOMContentLoaded", function() {
       prev = document.getElementById("prev"),
       next = document.getElementById("next");
 
-  thumbs_parent.addEventListener("click", displayWork, false);
 
-  function displayWork(event) {
+  thumbs_parent.addEventListener("click", displayBox, false);
+
+  next.addEventListener("click", function() {
+    var pos = document.getElementById("data_img").getAttribute("data-id");
+    nextBox(pos);
+  }, false);
+
+  prev.addEventListener("click", function() {
+    var pos = document.getElementById("data_img").getAttribute("data-id");
+    prevBox(pos);
+  }, false);
+
+  function injectEl(pos) {
+    img_holder.innerHTML = '<img id="data_img" src="images/'+ bigsrc[pos].url +'" data-id="'+ bigsrc[pos].id +'">';
+    desc_holder.innerHTML = '<h4>' + bigsrc[pos].title + '</h4><p>' + bigsrc[pos].desc + '</p>';
+
+    if (pos == 18 || pos == 12 || pos == 8) {
+      var anchor = document.createElement("a");
+      anchor.href = bigsrc[pos].link;
+      anchor.setAttribute("target", "_blank");
+      anchor.innerHTML = "visit website";
+      desc_holder.appendChild(anchor);
+    }
+  }
+  
+  function displayBox(event) {
+    //Prevent the parent element being clickable
     if (event.target !== event.currentTarget) {
-
       var pos = event.target.getAttribute("data-pos");
-      // var pos = clicked_item.getAttribute("class");
-      // $('#img_holder').html('<img src="images/'+ bigsrc[pos].url +'" data-id="'+ bigsrc[pos].id +'">');
-      img_holder.innerHTML = '<img src="images/'+ bigsrc[pos].url +'" data-id="'+ bigsrc[pos].id +'">';
-      desc_holder.innerHTML = '<h4>' + bigsrc[pos].title + '</h4><p>' + bigsrc[pos].desc + '</p>';
-
-
-
-
+      injectEl(pos);
 
       gal_holder.className = "is-active";
       modal_bg.className = "is-active";
-      // $('#img_holder, #desc_holder, #modal_bg, #close_btn, #prev, #next').fadeIn();
-
-      if (pos == 18 || pos == 12 || pos == 8) {
-        var anchor = document.createElement("a");
-        anchor.href = bigsrc[pos].link;
-        anchor.setAttribute("target", "_blank");
-        anchor.innerHTML = "visit website";
-        // $('#desc_holder').append('<a href="' + bigsrc[pos].link + '" target="_blank">visit website</a>');
-
-        desc_holder.appendChild(anchor);
-      }
-      if (pos == (bigsrc.length - 1)) {
-        
-        // $('#next').data('pos',(pos-1));
-        next.setAttribute("data-pos", pos - 1);
-        // $('#prev').data('pos',0);
-        prev.setAttribute("data-pos", 0);
-      }
-      else if (pos == 0) {
-        // $('#next').data('pos',(bigsrc.length-1));
-        next.setAttribute("data-pos", bigsrc.length - 1);
-        // $('#prev').data('pos',(pos+1));
-        prev.setAttribute("data-pos", pos + 1);
-      }
-      else {
-        // $('#next').data('pos',(pos-1));
-        next.setAttribute("data-pos", pos - 1);
-        // $('#prev').data('pos',(pos+1));
-        prev.setAttribute("data-pos", pos+1);
-      }
     }
     event.stopPropagation();
   }
 
-
-  $('.arrow').click(function() { // Block of code below is identical as above!! Create a function for them.
-    var pos = $(this).data("pos");
-    $('#img_holder').html('<img src="images/'+ bigsrc[pos].url +'" data-id="'+ bigsrc[pos].id +'">');
-    $('#desc_holder').html('<h4>' + bigsrc[pos].title + '</h4><p>' + bigsrc[pos].desc
-      + '</p>');
-    $('#img_holder, #desc_holder, #modal_bg, #close_btn, #prev, #next').fadeIn();
-
-    if(pos == 18 || pos == 12 || pos == 8) {
-      $('#desc_holder').append('<a href="' + bigsrc[pos].link + '" target="_blank">visit website</a>');
+  function nextBox(pos) {
+    if(pos == 0) {
+      pos = bigsrc.length - 1;
     }
-    if(pos == (bigsrc.length-1)) {
-      $('#next').data('pos',(pos-1));
-      $('#prev').data('pos',0);
-    } else if(pos == 0) {
-      $('#next').data('pos',(bigsrc.length-1));
-      $('#prev').data('pos',(pos+1));
-    } else {
-      $('#next').data('pos',(pos-1));
-      $('#prev').data('pos',(pos+1));
+    else {
+      pos--;
     }
-  });
+    injectEl(pos);
+  }
 
-  $('#modal_bg, #close_btn').click(function() {
-    $('#img_holder, #desc_holder, #close_btn, #modal_bg, #prev, #next').fadeOut();
-  });
+  function prevBox(pos) {
+    if(pos == bigsrc.length - 1) {
+      pos = 0;
+    }
+    else {
+      pos++;
+    }
+    injectEl(pos);
+  }
 
-  $('.link').click(function(e) {
-    e.preventDefault(); // disable the hyperlink
-    var href = $(this).attr('href');
-    href = href.replace('#','');
-    var togo = $('a[class="' + href + '"]');
-    $('html,body').animate({
-      scrollTop:togo.offset().top
-    },300)
-  });
+  /* --- IIFE to avoid polluting global namespace --- */
+  (function closeModal() {
+    var arr = [modal_bg, close_btn];
+    for(var i = 0, len = arr.length; i < len; i++) {
+      arr[i].addEventListener("click", function() {
+        gal_holder.className = "";
+        modal_bg.className = "";
+        //location.hash = "#" + "goto-about";
+      }, false);
+    }
+  }());
+  
+  /* ===== KOKOMADE YATTAZO !! ===== */
+  var test = document.getElementById("test"),
+      test_dest = document.getElementById("test_dest");
+  test.addEventListener("click", function() {
+    console.log("yes clicked");
+    test_dest.scrollIntoView();
+  }, false);
+  // var links = document.getElementsByClassName("link");
+  // for(var i = 0, len = links.length; i < len; i++) {
+  //   // links[i].addEventListener("click", function(e) {
+  //   //   e.preventDefault();
+  //     console.log(links[i].getAttribute("href"));
+  //     var hrefs = links[i].getAttribute("href");
+  //   // });
+  // }
+  // console.log(hrefs);
+  // function clickJump(hrefs[0]) {
+
+  // }
+  //element.scrollIntoView();
+  // links.addEventListener("click", function(e) {
+  //   e.preventDefault();
+  //   var href = target.getAttribute("href");
+  //   console.log(href);
+  // });
+  // $('.link').click(function(e) {
+  //   e.preventDefault(); // disable the hyperlink
+  //   var href = $(this).attr('href');
+  //   href = href.replace('#', '');
+  //   var togo = $('a[class="' + href + '"]');
+  //   $('html,body').animate({
+  // var test = document.getElementById("test");
+  // console.log(test);
+  // test.addEventListener("click", function() {
+  //   test.scrollIntoView();
+  // });
+  // function jumpto(anchor){
+  //   window.location.href = "#"+anchor;
+  //   console.log("CCCLIKL");
+  // }
+  // var hash1 = gal_holder;
+  // console.log(hash1);
+  // (function scrollTo() {
+  //   console.log(hash1);
+  //   location.hash = "#" + hash1;
+  //   console.log("see");
+  //   console.log(hash1);
+
+  // }());
+  //scrollTo();
 
   /* ==== form validation ==== */
   $('#submit').click(function() {
-    var error = false;
-    var user = $('#user').val();
-    var email = $('#email').val();
-    var message = $('#message').val();
+    var error = false,
+        user = $('#user').val(),
+        email = $('#email').val(),
+        message = $('#message').val();
 
     if(user.length < 2) {
       $('#user').val('','');
-      $('#user').attr('placeholder','please enter a valid name');
+      $('#user').attr('placeholder', 'please enter a valid name');
       error = true;
     };
 
@@ -169,29 +194,29 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     if(validateEmail(email) == false) {
-      $('#email').val('','');
-      $('#email').attr('placeholder','please enter a valid email');
+      $('#email').val('', '');
+      $('#email').attr('placeholder', 'please enter a valid email');
       error = true;
     };
 
     if(error == false) {
-      $('#user').css('border','none');
-      $('#user').attr('placeholder','');
-      $('#email').css('border','none');
-      $('#email').attr('placeholder','');
+      $('#user').css('border', 'none');
+      $('#user').attr('placeholder', '');
+      $('#email').css('border', 'none');
+      $('#email').attr('placeholder', '');
     };
 
     /* === send to php === */
     if(error == false) {
       $.ajax({
-        url:'igetEmail.php',
-        type:'POST',
-        data:{
-          Name:user,
-          email:email,
-          question:message
+        url: 'igetEmail.php',
+        type: 'POST',
+        data: {
+          Name: user,
+          email: email,
+          question: message
         },
-        success:function(response){
+        success: function(response) {
           $('#form').html(response);
         }
       });

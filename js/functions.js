@@ -1,5 +1,5 @@
-var trigger = document.getElementById("modal_trigger");
-var eraser = document.getElementById("modal_close");
+var trigger = document.getElementById("modal_trigger"),
+    eraser = document.getElementById("modal_close");
 
 trigger.onclick = function() {
   document.getElementById("modal-overlay").classList.add("modal-on");
@@ -9,9 +9,9 @@ eraser.onclick = function() {
 }
 
 window.onscroll = function() { // Trigger for 
-  var mobile = false;
-  var scroll = window.scrollY; // detect amount of scroll for proper browsers
-  var scroll_ie = pageYOffset; // detect amount of scroll for IE 9+
+  var mobile = false,
+      scroll = window.scrollY, // detect amount of scroll for proper browsers
+      scroll_ie = pageYOffset; // detect amount of scroll for IE 9+
 
   if (window.innerWidth <= 767) {
     mobile = true;

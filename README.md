@@ -1,15 +1,24 @@
-# Portfolio Website built in January 2016
+# Portfolio Website
 
-This is a portfolio website build on Angular.js.
-jQuery handles some interactions but I wrote CSS animation rules for the most of interactions.
+Portfolio website build on Angular.js
 
 All animations (except SVG inline animation) work on modern browsers.
-I have tested on IE11: it works well on it. I am not sure it works right on IE10 and below.
+Animation tested on IE11: Successful. Not sure on IE <= 10
+
+
+@ Directions:
+::Before working, 'gulp clean' is recommended to remove old distribution files in dist/
+::To start development, do 'gulp dev'. It handles concatenating js files and sass compilation dynamically.
+::Do not directly work on app.js. JavaScript working files are 'jquery.js', 'functions.js' and 'data.js'. Leave 'app.js' alone.
+::When ready to deploy, do 'gulp build'. Minified distribution files will be ready in dist/ just for you.
 
 
 This website can be reached at:
 
 url: www.daishodesign.com
-email: daishokomiyama@gmail.com
+email:  info@daishodesign.com
+        daishokomiyama@gmail.com
+
+2016-11-09
 
 

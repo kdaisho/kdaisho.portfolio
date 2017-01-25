@@ -1041,13 +1041,6 @@ path {
 	opacity: 1 !important;
 	transition: all .3s ease-out;
 }
-// .is-active #img_holder,
-// .is-active #desc_holder,
-// .is-active #close_btn
-// .is-active #prev,
-// .is-active #next {
-// 	display: block;
-// }
 #img_holder {
 	position: fixed;
 	z-index: 500;
@@ -1067,7 +1060,6 @@ path {
 	text-align: center;
 	background: rgba(0,0,0,.5);
 	border: 1px solid #222;
-	// display: none;
 
 	h4, p, a {
 		color: #fff;
@@ -1082,7 +1074,6 @@ path {
 	z-index: 600;
 	top: 4em;
 	right: 2em;
-	// display: none;
 	cursor: pointer;
 		
 	img {
@@ -1094,7 +1085,6 @@ path {
 	position: fixed;
 	z-index: 600;
 	top: 45%;
-	// display: none;
 	cursor: pointer;
 
 	img {
