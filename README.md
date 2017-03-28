@@ -12,6 +12,7 @@ Animation tested on IE11: Successful. Not sure on IE <= 10
 ::Do not directly work on app.js. JavaScript working files are 'jquery.js', 'functions.js' and 'data.js'. Leave 'app.js' alone.
 ::When ready to deploy, do 'gulp build'. Minified distribution files will be ready in dist/ just for you.
 
+::Watch out! You have to toggle comment for a script tag at the bottom of index.html, if you want to use app.min.js
 
 This website can be reached at:
 

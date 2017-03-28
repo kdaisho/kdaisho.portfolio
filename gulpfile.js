@@ -42,7 +42,7 @@ gulp.task("minifyCss", ["compileSass"], function() {
 
 gulp.task("watchFiles", function() {
   gulp.watch("scss/**/*.scss", ["compileSass"]);
-  gulp.watch(["js/functions.js", "js/jquery.js", "js/data.js"], ["minifyScripts"])// This was concatScripts instead of minifyScripts
+  gulp.watch(["js/functions.js", "js/jquery.js", "js/data.js"], ["concatScripts"])// This was concatScripts instead of minifyScripts
 });
 
 gulp.task("clean", function() {
@@ -50,7 +50,7 @@ gulp.task("clean", function() {
 })
 
 gulp.task("build", ["minifyScripts", "compileSass", "minifyCss"], function() {
-  return gulp.src(["css/styles.css", "js/app.min.js", "index.html",
+  return gulp.src(["css/styles.css", "css/styles.css.map", "js/app.min.js", "index.html",
     "images/**"], { base: "./"})
     .pipe(gulp.dest("dist"));
 });
