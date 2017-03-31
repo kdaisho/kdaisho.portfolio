@@ -21,13 +21,17 @@ document.addEventListener("DOMContentLoaded", function() {
 		windowsize = window.innerWidth;
 		scrl_amount = window.pageYOffset;
 
-		if((scrl_amount > 199) || (windowsize < 768)) {
-			$('#site_logo').addClass('mini-logo');
-			$('#alt_logo').addClass('mini-alt-logo');
+		if ((scrl_amount > 199) || (windowsize < 768)) {
+			// $('#site_logo').addClass('mini-logo');
+			document.getElementById("site_logo").className = "site-logo logo-display mini-logo";
+			// $('#alt_logo').addClass('mini-alt-logo');
+			document.getElementById("alt_logo").className = "site-logo logo-hide mini-alt-logo";
 		}
 		else {
-			$('#site_logo').removeClass('mini-logo');
-			$('#alt_logo').removeClass('mini-alt-logo');
+			// $('#site_logo').removeClass('mini-logo');
+			document.getElementById("site_logo").className = "site-logo logo-display";
+			// $('#alt_logo').removeClass('mini-alt-logo');
+			document.getElementById("alt_logo").className = "site-logo logo-hide";
 		}
 	});
 
@@ -88,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function() {
 }
 
 function nextBox(pos) {
-	if(pos == 0) {
+	if (pos == 0) {
 		pos = bigsrc.length - 1;
 	}
 	else {
@@ -98,7 +102,7 @@ function nextBox(pos) {
 }
 
 function prevBox(pos) {
-	if(pos == bigsrc.length - 1) {
+	if (pos == bigsrc.length - 1) {
 		pos = 0;
 	}
 	else {
@@ -110,12 +114,12 @@ function prevBox(pos) {
 /* --- IIFE to avoid polluting global namespace --- */
 (function closeModal() {
 	var arr = [modal_bg, close_btn];
-	for(var i = 0, len = arr.length; i < len; i++) {
+	for (var i = 0, len = arr.length; i < len; i++) {
 		arr[i].addEventListener("click", function() {
 			gal_holder.className = "";
 			modal_bg.className = "";
 		//location.hash = "#" + "goto-about";
-	}, false);
+		}, false);
 	}
 }());
 
@@ -139,7 +143,7 @@ function prevBox(pos) {
 		}, false);
 	}
 
-	for(var i = 0, len = links.length; i < len; i++) {
+	for (var i = 0, len = links.length; i < len; i++) {
 		clickListener(links[i], i);
 	}
 	// function jumpToElement(num) {
@@ -202,55 +206,64 @@ function prevBox(pos) {
 	//scrollTo();
 
 	/* ==== form validation ==== */
-	$('#submit').click(function() {
+	document.getElementById("submit").addEventListener("click", function() {
 		var error = false,
-		user = $('#user').val(),
-		email = $('#email').val(),
-		message = $('#message').val();
+			// user = document.getElementById("user"),
+			user = document.getElementById("user"),
+			userValue = document.getElementById("user").value,
+		// user = $('#user').val(),
+			email = document.getElementById("email"),
+			emailValue = document.getElementById("email").value,
+			email = document.getElementById("message"),
+			msgValue = document.getElementById("message").value;
 
-		if(user.length < 2) {
-			$('#user').val('','');
-			$('#user').attr('placeholder', 'please enter a valid name');
+		if (userValue.length < 2) {
+			// $('#user').val('');
+			user.value = "";
+			// console.log($('#user').val('',''));
+			user.setAttribute("placeholder", "please enter a valid name");
+			// $('#user').attr('placeholder', 'please enter a valid name');
 			error = true;
 		};
 
-		function validateEmail(em) {
-	  var filter = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]/; // allows any email without extension (e.g. .ca)
-	  if(filter.test(email)) {
-	  	return true;
-	  }
-	  else {
-	  	return false;
-	  }
-	}
-
-	if(validateEmail(email) == false) {
-		$('#email').val('', '');
-		$('#email').attr('placeholder', 'please enter a valid email');
-		error = true;
-	};
-
-	if(error == false) {
-		$('#user').css('border', 'none');
-		$('#user').attr('placeholder', '');
-		$('#email').css('border', 'none');
-		$('#email').attr('placeholder', '');
-	};
-
-	/* === send to php === */
-	if(error == false) {
-		$.ajax({
-			url: 'igetEmail.php',
-			type: 'POST',
-			data: {
-				Name: user,
-				email: email,
-				question: message
-			},
-			success: function(response) {
-				$('#form').html(response);
+		function validateEmail (em) {
+			var filter = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]/; // allows any email without extension (e.g. .ca)
+			if(filter.test(emailValue)) {
+				return true;
 			}
-		});
-	}
-});
+			else {
+				return false;
+			}
+		}
+
+		if (validateEmail(emailValue) == false) {
+			// $('#email').val('', '');
+			email.setAttribute("placeholder", "please enter a valid email");
+			error = true;
+		}
+
+		if (error == false) {
+			user.style.border = "none";
+			// $('#user').attr('placeholder', '');
+			user.setAttribute("placeholder", "");
+			email.style.border = "none";
+			email.setAttribute("placeholder", "");
+		}
+
+		/* === send to php === */
+		if (error == false) {
+			$.ajax({
+				url: 'igetEmail.php',
+				type: 'POST',
+				data: {
+					Name: user,
+					email: email,
+					question: msgValue
+				},
+				success: function(response) {
+					$('#form').html(response);
+				}
+			});
+		}
+	});
 });
