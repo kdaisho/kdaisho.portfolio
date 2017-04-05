@@ -4,9 +4,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	var windowsize,
 	scrl_amount,
+	site_logo,
+	alt_logo,
 	main_menu = document.getElementById("main-menu"),
 	nav = document.getElementById("nav"),
 	close_nav = document.getElementById("close-nav");
+
 
 	//* Add the same listener for multiple different events on the same element
 	//* Trying to make the same function as element.on("load, resize, scroll", function(){...}); in jQuery
@@ -16,22 +19,22 @@ document.addEventListener("DOMContentLoaded", function() {
 			el.addEventListener(events[i], fn, false);
 		}
 	}
-	//* Then excute it
+
 	addListenerMulti(window, "load resize scroll", function() {
 		windowsize = window.innerWidth;
 		scrl_amount = window.pageYOffset;
+		site_logo = document.getElementById("site_logo");
+		alt_logo = document.getElementById("alt_logo");
 
-		if ((scrl_amount > 199) || (windowsize < 768)) {
-			// $('#site_logo').addClass('mini-logo');
-			document.getElementById("site_logo").className = "site-logo logo-display mini-logo";
-			// $('#alt_logo').addClass('mini-alt-logo');
-			document.getElementById("alt_logo").className = "site-logo logo-hide mini-alt-logo";
-		}
-		else {
-			// $('#site_logo').removeClass('mini-logo');
-			document.getElementById("site_logo").className = "site-logo logo-display";
-			// $('#alt_logo').removeClass('mini-alt-logo');
-			document.getElementById("alt_logo").className = "site-logo logo-hide";
+		if (site_logo && alt_logo && windowsize && scrl_amount) {
+			if (scrl_amount >= 199 || windowsize <= 767) {
+				site_logo.className = "site-logo logo-display mini-logo";
+				alt_logo.className = "site-logo logo-hide mini-alt-logo";
+			}
+			else {
+				site_logo.className = "site-logo logo-display";
+				alt_logo.className = "site-logo logo-hide";
+			}
 		}
 	});
 
@@ -256,8 +259,8 @@ function prevBox(pos) {
 				url: 'igetEmail.php',
 				type: 'POST',
 				data: {
-					Name: user,
-					email: email,
+					Name: userValue,
+					email: emailValue,
 					question: msgValue
 				},
 				success: function(response) {
@@ -265,8 +268,55 @@ function prevBox(pos) {
 				}
 			});
 		}
+
+		// Ajax object
+		if (window.XMLHttpRequest) {
+			console.log("haha " + XMLHttpRequest);
+			var xhr = new XMLHttpRequest();
+		}
+		// Build request
+		var url = "igetEmail.php";
+		httpRequest.open("POST", url, true);
+		httpRequest.onreadystatechange = getData;
+		httpRequest.send();
+
+		function getData() {
+			if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+				console.log('aaa');
+			}
+		}
+		getData();
 	});
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var trigger = document.getElementById("modal_trigger"),
     eraser = document.getElementById("modal_close");
 
@@ -301,6 +351,7 @@ var iOS = /iPad|iPhone|iPod/.test(navigator.platform);  // display alternative l
 if(!iOS && (!(navigator.userAgent.indexOf('MSIE')!== -1 || navigator.appVersion.indexOf('Trident/') > 0))) {
   // if NOT iOS or IE
   document.getElementById('site_logo').classList.add("logo-display");
+  console.log('Not osx');
   document.getElementById('alt_logo').classList.add("logo-hide");
 }
 var app = angular.module('myApp', []);

@@ -1,7 +1,7 @@
 <?php
-  $user =  filter_var($_POST['Name'],FILTER_SANITIZE_STRING);
-  $email =  filter_var($_POST['email'],FILTER_SANITIZE_EMAIL);
-  $message =  filter_var($_POST['question'],FILTER_SANITIZE_STRING);
+  $user = filter_var($_POST['Name'],FILTER_SANITIZE_STRING);
+  $email = filter_var($_POST['email'],FILTER_SANITIZE_EMAIL);
+  $message = filter_var($_POST['question'],FILTER_SANITIZE_STRING);
   
   //mail(to,subject,message,from);
   
