@@ -32,6 +32,5 @@ var iOS = /iPad|iPhone|iPod/.test(navigator.platform);  // display alternative l
 if(!iOS && (!(navigator.userAgent.indexOf('MSIE')!== -1 || navigator.appVersion.indexOf('Trident/') > 0))) {
   // if NOT iOS or IE
   document.getElementById('site_logo').classList.add("logo-display");
-  console.log('Not osx');
   document.getElementById('alt_logo').classList.add("logo-hide");
 }

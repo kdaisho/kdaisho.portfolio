@@ -254,38 +254,64 @@ function prevBox(pos) {
 		}
 
 		/* === send to php === */
-		if (error == false) {
-			$.ajax({
-				url: 'igetEmail.php',
-				type: 'POST',
-				data: {
-					Name: userValue,
-					email: emailValue,
-					question: msgValue
-				},
-				success: function(response) {
-					$('#form').html(response);
-				}
-			});
-		}
+		// if (error == false) {
+		// 	$.ajax({
+		// 		url: 'igetEmail.php',
+		// 		type: 'POST',
+		// 		data: {
+		// 			Name: userValue,
+		// 			email: emailValue,
+		// 			question: msgValue
+		// 		},
+		// 		success: function(response) {
+		// 			$('#form').html(response);
+		// 		}
+		// 	});
+		// }
 
 		// Ajax object
-		if (window.XMLHttpRequest) {
-			console.log("haha " + XMLHttpRequest);
-			var xhr = new XMLHttpRequest();
-		}
-		// Build request
-		var url = "igetEmail.php";
-		httpRequest.open("POST", url, true);
-		httpRequest.onreadystatechange = getData;
-		httpRequest.send();
+		// if (window.XMLHttpRequest) {
+		// 	console.log("haha " + XMLHttpRequest);
+		// 	var request = new XMLHttpRequest();
+		// }
+		// // Build request
+		// var url = "igetEmail.php";
+		// httpRequest.open("POST", url, true);
+		// httpRequest.onreadystatechange = getData;
+		// httpRequest.send();
 
-		function getData() {
-			if (httpRequest.readyState == 4 && httpRequest.status == 200) {
-				console.log('aaa');
+		// function getData() {
+		// 	if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+		// 		console.log('aaa');
+		// 	}
+		// }
+		// getData();
+
+		var myObject = {
+			Name: userValue,
+			email: emailValue,
+			question: msgValue
+		};
+
+		var str_json = JSON.stringify(myObject);
+		console.log(str_json);
+
+		var request = new XMLHttpRequest();
+		request.open("POST", "igetEmail.php", true);
+		request.setRequestHeader("Content-type", "application/json");
+		request.send(str_json);
+
+		request.onload = function() {
+			if (request.readyState != 4 || request.status != 200) {
+				return;
 			}
-		}
-		getData();
+			else {
+				// alert(request.responseText);
+				console.log(request.responseText);
+				document.getElementById("form").innerHTML = request.responseText;
+			}
+		};
+
 	});
 });
 
@@ -351,7 +377,6 @@ var iOS = /iPad|iPhone|iPod/.test(navigator.platform);  // display alternative l
 if(!iOS && (!(navigator.userAgent.indexOf('MSIE')!== -1 || navigator.appVersion.indexOf('Trident/') > 0))) {
   // if NOT iOS or IE
   document.getElementById('site_logo').classList.add("logo-display");
-  console.log('Not osx');
   document.getElementById('alt_logo').classList.add("logo-hide");
 }
 var app = angular.module('myApp', []);
