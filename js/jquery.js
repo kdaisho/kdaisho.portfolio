@@ -126,14 +126,6 @@ function prevBox(pos) {
 	}
 }());
 
-/* ===== KOKOMADE YATTAZO !! ===== */
-	//  var test = document.getElementById("test"),
-	//   test_dest = document.getElementById("test_dest");
-	//  test.addEventListener("click", function() {
-	// console.log("nav clicked news");
-	// test_dest.scrollIntoView();
-	//  }, false);
-
 	//Get nav-buttons and destination anchor elements then convert them into an array
 	var links = document.getElementsByClassName("link"),
 	dest_links = document.getElementsByClassName("dest-link");
@@ -149,83 +141,20 @@ function prevBox(pos) {
 	for (var i = 0, len = links.length; i < len; i++) {
 		clickListener(links[i], i);
 	}
-	// function jumpToElement(num) {
-	// 	dest_links[num].scrollIntoView();
-	// }
-	// //Loop for assigning click events(jump to specific elements) to each nav button
-	// for(var i = 0, len = links.length; i < len; i++) {
-	// 	(function(n) {
-	// 		links[i].addEventListener("click", function(){
-	// 			dest_links[n].scrollIntoView();
-	// 		}, false);
-	// 	}(i));
-	// }
-
-	//
-
-
-	// var links = document.getElementsByClassName("link");
-	// for(var i = 0, len = links.length; i < len; i++) {
-	//   // links[i].addEventListener("click", function(e) {
-	//   //   e.preventDefault();
-	//     console.log(links[i].getAttribute("href"));
-	//     var hrefs = links[i].getAttribute("href");
-	//   // });
-	// }
-	// console.log(hrefs);
-	// function clickJump(hrefs[0]) {
-
-	// }
-	//element.scrollIntoView();
-	// links.addEventListener("click", function(e) {
-	//   e.preventDefault();
-	//   var href = target.getAttribute("href");
-	//   console.log(href);
-	// });
-	// $('.link').click(function(e) {
-	//   e.preventDefault(); // disable the hyperlink
-	//   var href = $(this).attr('href');
-	//   href = href.replace('#', '');
-	//   var togo = $('a[class="' + href + '"]');
-	//   $('html,body').animate({
-	// var test = document.getElementById("test");
-	// console.log(test);
-	// test.addEventListener("click", function() {
-	//   test.scrollIntoView();
-	// });
-	// function jumpto(anchor){
-	//   window.location.href = "#"+anchor;
-	//   console.log("CCCLIKL");
-	// }
-	// var hash1 = gal_holder;
-	// console.log(hash1);
-	// (function scrollTo() {
-	//   console.log(hash1);
-	//   location.hash = "#" + hash1;
-	//   console.log("see");
-	//   console.log(hash1);
-
-	// }());
-	//scrollTo();
 
 	/* ==== form validation ==== */
 	document.getElementById("submit").addEventListener("click", function() {
 		var error = false,
-			// user = document.getElementById("user"),
 			user = document.getElementById("user"),
 			userValue = document.getElementById("user").value,
-		// user = $('#user').val(),
 			email = document.getElementById("email"),
 			emailValue = document.getElementById("email").value,
 			email = document.getElementById("message"),
 			msgValue = document.getElementById("message").value;
 
 		if (userValue.length < 2) {
-			// $('#user').val('');
 			user.value = "";
-			// console.log($('#user').val('',''));
 			user.setAttribute("placeholder", "please enter a valid name");
-			// $('#user').attr('placeholder', 'please enter a valid name');
 			error = true;
 		};
 
@@ -240,61 +169,25 @@ function prevBox(pos) {
 		}
 
 		if (validateEmail(emailValue) == false) {
-			// $('#email').val('', '');
 			email.setAttribute("placeholder", "please enter a valid email");
 			error = true;
 		}
 
 		if (error == false) {
 			user.style.border = "none";
-			// $('#user').attr('placeholder', '');
 			user.setAttribute("placeholder", "");
 			email.style.border = "none";
 			email.setAttribute("placeholder", "");
 		}
 
 		/* === send to php === */
-		// if (error == false) {
-		// 	$.ajax({
-		// 		url: 'igetEmail.php',
-		// 		type: 'POST',
-		// 		data: {
-		// 			Name: userValue,
-		// 			email: emailValue,
-		// 			question: msgValue
-		// 		},
-		// 		success: function(response) {
-		// 			$('#form').html(response);
-		// 		}
-		// 	});
-		// }
-
-		// Ajax object
-		// if (window.XMLHttpRequest) {
-		// 	console.log("haha " + XMLHttpRequest);
-		// 	var request = new XMLHttpRequest();
-		// }
-		// // Build request
-		// var url = "igetEmail.php";
-		// httpRequest.open("POST", url, true);
-		// httpRequest.onreadystatechange = getData;
-		// httpRequest.send();
-
-		// function getData() {
-		// 	if (httpRequest.readyState == 4 && httpRequest.status == 200) {
-		// 		console.log('aaa');
-		// 	}
-		// }
-		// getData();
-
-		var myObject = {
+		var myUser = {
 			Name: userValue,
 			email: emailValue,
 			question: msgValue
 		};
 
-		var str_json = JSON.stringify(myObject);
-		console.log(str_json);
+		var str_json = JSON.stringify(myUser);
 
 		var request = new XMLHttpRequest();
 		request.open("POST", "igetEmail.php", true);
@@ -306,8 +199,6 @@ function prevBox(pos) {
 				return;
 			}
 			else {
-				// alert(request.responseText);
-				console.log(request.responseText);
 				document.getElementById("form").innerHTML = request.responseText;
 			}
 		};
