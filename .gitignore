@@ -3,3 +3,4 @@ assets*
 .sass-cache*
 .sass-cache/*
 css/styles.css.map
+node_modules/

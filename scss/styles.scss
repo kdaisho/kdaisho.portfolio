@@ -1197,8 +1197,9 @@ path {
 		.modal-wrap {
 			padding: 1em .7em;
 			position: relative;
-			margin: -110px auto 0;
-			max-width: 320px;
+			margin: 0 auto;
+			max-width: 312px;
+			height: 420px;
 			width: 100%;
 			-webkit-box-align-self: center;
 			-ms-flex-align-self: center;
@@ -1219,12 +1220,10 @@ path {
 
 			form {
 				div {
-					width: 200px;
 					margin: .4em 2em 0 0;
 					text-align: left;
 					span {  // validation error message
 						display: block;
-						width: 200px;
 						color: #fd3b3b;
 						padding: .2em 0 0 .1em;
 					}
@@ -1243,14 +1242,12 @@ path {
 					padding: 0 .3em;
 					font-size: .9em;
 					color: #555;
+					width: 100%;
 					&:focus {
 						outline: 2px solid #3ed847;
 					}
 				}
 
-				div:nth-child(3) input{
-					width: 18em;
-				}
 				textarea {
 					padding: .3em;
 					font-size: .9em;
@@ -1287,6 +1284,7 @@ path {
 
 		#modal-overlay.modal-on {
 			opacity: 1;
+			overflow: scroll;
 			transform: scale(1);
 			z-index: 800;
 		}
@@ -1323,16 +1321,16 @@ path {
 }
 
 @media (max-width: 767px) and (orientation: landscape) {	// make contact form fit in mobile-landscape
-	.contact .btn-holder .modal-wrap {
-		margin: 0 auto;
-		max-width: 550px;
-	}
-	.form-child {
-		float: left;
-	}
-	#submit {
-		margin: 1.8em 0 0 4em;
-	}
+	// .contact .btn-holder .modal-wrap {
+	// 	margin: 0 auto;
+	// 	max-width: 550px;
+	// }
+	// .form-child {
+	// 	float: left;
+	// }
+	// #submit {
+	// 	margin: 1.8em 0 0 4em;
+	// }
 }
 
 /* === bottom bar === */
