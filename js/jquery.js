@@ -83,48 +83,48 @@ document.addEventListener("DOMContentLoaded", function() {
 	}
 
 	function displayBox(event) {
-	//Prevent the parent element being clickable
-	if (event.target !== event.currentTarget) {
-		var pos = event.target.getAttribute("data-pos");
+		//Prevent the parent element being clickable
+		if (event.target !== event.currentTarget) {
+			var pos = event.target.getAttribute("data-pos");
+			injectEl(pos);
+
+			gal_holder.className = "is-active";
+			modal_bg.className = "is-active";
+		}
+		event.stopPropagation();
+	}
+
+	function nextBox(pos) {
+		if (pos == 0) {
+			pos = bigsrc.length - 1;
+		}
+		else {
+			pos--;
+		}
 		injectEl(pos);
+	}
 
-		gal_holder.className = "is-active";
-		modal_bg.className = "is-active";
+	function prevBox(pos) {
+		if (pos == bigsrc.length - 1) {
+			pos = 0;
+		}
+		else {
+			pos++;
+		}
+		injectEl(pos);
 	}
-	event.stopPropagation();
-}
 
-function nextBox(pos) {
-	if (pos == 0) {
-		pos = bigsrc.length - 1;
-	}
-	else {
-		pos--;
-	}
-	injectEl(pos);
-}
-
-function prevBox(pos) {
-	if (pos == bigsrc.length - 1) {
-		pos = 0;
-	}
-	else {
-		pos++;
-	}
-	injectEl(pos);
-}
-
-/* --- IIFE to avoid polluting global namespace --- */
-(function closeModal() {
-	var arr = [modal_bg, close_btn];
-	for (var i = 0, len = arr.length; i < len; i++) {
-		arr[i].addEventListener("click", function() {
-			gal_holder.className = "";
-			modal_bg.className = "";
-		//location.hash = "#" + "goto-about";
-		}, false);
-	}
-}());
+	/* --- IIFE to avoid polluting global namespace --- */
+	(function closeModal() {
+		var arr = [modal_bg, close_btn];
+		for (var i = 0, len = arr.length; i < len; i++) {
+			arr[i].addEventListener("click", function() {
+				gal_holder.className = "";
+				modal_bg.className = "";
+			//location.hash = "#" + "goto-about";
+			}, false);
+		}
+	}());
 
 	//Get nav-buttons and destination anchor elements then convert them into an array
 	var links = document.getElementsByClassName("link"),
@@ -206,31 +206,3 @@ function prevBox(pos) {
 		}
 	});
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
