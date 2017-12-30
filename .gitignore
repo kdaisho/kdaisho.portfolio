@@ -4,3 +4,4 @@ assets*
 .sass-cache/*
 css/styles.css.map
 node_modules/
+dist/
