@@ -21,6 +21,7 @@ gulp.task("minifyScripts", ["concatScripts"], function() {
   return gulp.src("js/app.js")
     .pipe(maps.init())
     .pipe(uglify())
+    // .pipe(rename("app.min.js"))
     .pipe(maps.write("./"))
     .pipe(gulp.dest("js"));
 });
@@ -41,11 +42,11 @@ gulp.task("minifyCss", ["compileSass"], function() {
 
 gulp.task("watchFiles", function() {
   gulp.watch("scss/**/*.scss", ["compileSass"]);
-  gulp.watch(["js/functions.js", "js/jquery.js", "js/data.js"], ["concatScripts"])// This was concatScripts instead of minifyScripts
+  gulp.watch(["js/functions.js", "js/jquery.js", "js/data.js", "js/app.js"], ["concatScripts"])// This was concatScripts instead of minifyScripts
 });
 
 gulp.task("clean", function() {
-  del(["dist", "css/styles.css*"]);
+  del(["dist", "css/styles.css*", "js/app*.js*"]);
 })
 
 gulp.task("build", ["minifyScripts", "compileSass", "minifyCss"], function() {

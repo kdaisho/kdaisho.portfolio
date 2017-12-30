@@ -160,7 +160,7 @@ function prevBox(pos) {
 
 		function validateEmail (em) {
 			var filter = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]/; // allows any email without extension (e.g. .ca)
-			if(filter.test(emailValue)) {
+			if(filter.test(em)) {
 				return true;
 			}
 			else {
@@ -181,28 +181,29 @@ function prevBox(pos) {
 		}
 
 		/* === send to php === */
-		var myUser = {
-			Name: userValue,
-			email: emailValue,
-			question: msgValue
-		};
+		if(!error) {
+			var myUser = {
+				Name: userValue,
+				email: emailValue,
+				question: msgValue
+			};
 
-		var str_json = JSON.stringify(myUser);
+			var str_json = JSON.stringify(myUser);
 
-		var request = new XMLHttpRequest();
-		request.open("POST", "igetEmail.php", true);
-		request.setRequestHeader("Content-type", "application/json");
-		request.send(str_json);
+			var request = new XMLHttpRequest();
+			request.open("POST", "igetEmail.php", true);
+			request.setRequestHeader("Content-type", "application/json");
+			request.send(str_json);
 
-		request.onload = function() {
-			if (request.readyState != 4 || request.status != 200) {
-				return;
-			}
-			else {
-				document.getElementById("form").innerHTML = request.responseText;
-			}
-		};
-
+			request.onload = function() {
+				if (request.readyState != 4 || request.status != 200) {
+					return;
+				}
+				else {
+					document.getElementById("form").innerHTML = request.responseText;
+				}
+			};
+		}
 	});
 });
 
