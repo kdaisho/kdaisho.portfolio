@@ -2,6 +2,6 @@
 assets*
 .sass-cache*
 .sass-cache/*
-css/styles.css.map
+css/*
 node_modules/
 dist/
