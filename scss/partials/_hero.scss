@@ -1,0 +1,100 @@
+/* ==== section hero ===== */
+.hero {
+	background: url('../images/snowb-cover2.3-opt.jpg') no-repeat;
+	background-size: cover;
+	background-position: 40% 0%;
+	height: 860px;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+
+	.title {
+		-webkit-box-align-self: center;
+		-ms-flex-align-self: center;
+		align-self: center;
+		margin: -20% 0 0 56%;
+		-webkit-animation: my-name .8s;
+		animation: my-name .8s;
+	}
+	@-moz-document url-prefix() { /* === Fix for firefox === */
+		.title {
+				margin: -36% 0 0 56%;
+		}
+	}
+
+	@keyframes my-name { // bounce animation
+		0% {
+			opacity: 0;
+			-webkit-transform: translateY(100%);
+			-ms-transform: translateY(100%);
+			transform: translateY(100%);
+		}
+		50% {
+			opacity: 0;
+			-webkit-transform: translateY(100%);
+			-ms-transform: translateY(100%);
+			transform: translateY(100%);
+		}
+		60% { opacity: 1; }
+		80% {
+			-webkit-transform: translateY(-6%);
+			-ms-transform: translateY(-6%);
+			transform: translateY(-6%);
+		}
+		85% {
+			-webkit-transform: translateY(6%);
+			-ms-transform: translateY(6%);
+			transform: translateY(6%);
+		}
+		90% {
+			-webkit-transform: translateY(-3%);
+			transform: translateY(-3%);
+			transform: translateY(-3%);
+		}
+		95% {
+			-webkit-transform: translateY(3%);
+			-ms-transform: translateY(3%);
+			transform: translateY(3%);
+		}
+		97% {
+			-webkit-transform: translateY(-1%);
+			-ms-transform: translateY(-1%);
+			transform: translateY(-1%);
+		}
+		99% {
+			-webkit-transform: translateY(1%);
+			-ms-transform: translateY(1%);
+			transform: translateY(1%);
+		}
+		100% {
+			-webkit-transform: translateY(0);
+			-ms-transform: translateY(0);
+			transform: translateY(0);
+		}
+	}
+
+	h1, h2 { // adds outline to text
+		color: #333;
+		text-shadow: 1px 1px 0 #ccc,
+		 -1px -1px 0 #ccc,
+			1px -1px 0 #ccc,
+		 -1px  1px 0 #ccc,
+			1px  1px 0 #ccc;
+	}
+}
+
+@media (max-width: 767px) {
+	.hero {
+		height: 460px;
+		.title {
+			-webkit-box-align-self: center;
+			-ms-flex-align-self: center;
+			align-self: center;
+			margin: 0 auto;
+		}
+
+		h1 {
+			font-size: 2.9em;
+		}
+	}
+}

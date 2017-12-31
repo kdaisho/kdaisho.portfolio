@@ -1,0 +1,180 @@
+/* ==== Contact Section ==== */
+.contact {
+
+	> p {
+		font-size: 1.6em;
+		text-align: center;
+		max-width: 600px;
+		width: 100%;
+		margin: 120px auto 60px;
+	}
+
+	.btn-holder {
+		background: #ebecee;
+		border-radius: 3px;
+		width: 222px;
+		margin: 0 auto;
+		padding: 9px 21px;
+		box-shadow: 0 3px 6px #999;
+
+			div#modal_trigger {
+				display: block;
+				background: url('../images/contact-btn.svg') no-repeat;
+				cursor: pointer;
+				color: #fff;
+				text-align: center;
+				font-size: 1.6em;
+				font-family: 'Roboto', Arial, sans-serif;
+				height: 61px;
+				padding: 15px 0;
+			}
+
+		#modal-overlay {
+			background: rgba(0,0,0,.92);
+			bottom: 0;
+			left: 0;
+			position: fixed;
+			right: 0;
+			text-shadow: none;
+			top: 0;
+			z-index: 600;
+			display: -webkit-flex;
+			display: -ms-flexbox;
+			display: flex;
+		}
+
+		.modal-wrap {
+			padding: 1em .7em;
+			position: relative;
+			margin: 0 auto;
+			max-width: 312px;
+			height: 420px;
+			width: 100%;
+			-webkit-box-align-self: center;
+			-ms-flex-align-self: center;
+			align-self: center;
+
+			#modal_close {
+				width: 30px;
+				height: 30px;
+				cursor: pointer;
+				margin-left: auto;
+				display: block;
+				padding: .3em;
+			}
+
+			h3 {
+				color: #fff;
+			}
+
+			form {
+				div {
+					margin: .4em 2em 0 0;
+					text-align: left;
+					span {  // validation error message
+						display: block;
+						color: #fd3b3b;
+						padding: .2em 0 0 .1em;
+					}
+				}
+				label {
+					font: 100%/1.6 'Roboto', Arial, sans-serif;
+					color: #fff;
+					padding-left: .1em;
+					vertical-align: top;
+					width: 78px;
+					display: block;
+				}
+
+				input {
+					height: 1.8em;
+					padding: 0 .3em;
+					font-size: .9em;
+					color: #555;
+					width: 100%;
+					&:focus {
+						outline: 2px solid #3ed847;
+					}
+				}
+
+				textarea {
+					padding: .3em;
+					font-size: .9em;
+					color: #555;
+					&:focus {
+						outline: 2px solid #3ed847;
+					}
+				}
+				button {
+					background: linear-gradient(to bottom, #3ed847, #1f9226);
+					border-radius: 3px;
+					color: #fff;
+					font-size: 1.2em;
+					padding: .2em 2em .3em;
+					border: none;
+					cursor: pointer;
+					outline: none;
+					margin-top: 1em;
+
+					&:disabled {
+						color: #3ed847;
+						cursor: initial;
+					}
+				}
+			}
+		}
+
+		#modal-overlay {
+			opacity: 0;
+			z-index: -100;
+			transform: scale(0.5);
+			transition: all 0.75s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+		}
+
+		#modal-overlay.modal-on {
+			opacity: 1;
+			overflow: scroll;
+			transform: scale(1);
+			z-index: 800;
+		}
+	}
+
+	.contact-info {
+		width: 300px;
+		margin: 80px auto 30px;
+		p {
+			color: $blue;
+			text-align: center;
+			font-size: 1.4em;
+		}
+		a {
+			color: $blue;
+			display: block;
+			text-decoration: underline;
+			text-align: center;
+		}
+	}
+	.social-icons {
+		padding: 24px 100px;
+	}
+}
+
+@media (max-width: 767px) {
+	.contact {
+	 > p {
+		font-size: 1.4em;
+		padding: 0 .3em;
+		box-sizing: border-box;
+	 }
+	}
+}
+
+/* === bottom bar === */
+.btm-statement {
+	background: $blue;
+	p {
+		text-align: center;
+		color: #fff;
+		padding: 4px 0;
+	}
+}

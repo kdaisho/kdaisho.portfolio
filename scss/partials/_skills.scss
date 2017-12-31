@@ -1,0 +1,177 @@
+/* ==== Skills ==== */
+.skills {
+	width: 604px;
+	margin: 0 auto;
+	padding: 80px 0 0;
+}
+
+.wrap-skill {
+	padding: 36px 3%;
+	text-align: center;
+
+	.container-app {
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+		margin-bottom: 6px;
+		position: relative;
+	}
+
+	.state-prog {
+		width: 100%;
+
+		.state {
+			display: -webkit-flex;
+			display: -ms-flexbox;
+			display: flex;
+			padding: 0 0 3px;
+
+			span {
+				flex-grow: 1;
+				position: relative;
+			}
+		}
+	}
+
+	.wrap-prog {
+		-webkit-box-align-self: center;
+		-ms-flex-align-self: center;
+		align-self: center;
+		box-sizing: border-box;
+		margin-left: 3%;
+		padding: 1px;
+		border: 1px solid #999;
+		border-radius: 6px;
+		background: #444;
+
+		.prog-bar {
+			height: 16px;
+			width: 0;
+			border-radius: 5px;
+			background: #e75481;
+
+			span {
+				color: #444;
+			}
+		}
+	}
+}
+.grow-bar .wrap-prog .prog-bar span {
+	font-size: .8em;
+	color: #fff;
+	padding: 0 1em;
+}
+
+.grow-bar {
+	.ps {
+		animation: grow-ps 2s forwards;
+	}
+	.ai {
+		animation: grow-ai 1.6s .3s forwards;
+	}
+	.htm {
+		animation: grow-htm 2s .8s forwards;
+	}
+	.css {
+		animation: grow-css 2s 1.1s forwards;
+	}
+	.sass {
+		animation: grow-sass 1.5s 1.4s forwards;
+	}
+	.js {
+		animation: grow-js 1.2s 1.7s forwards;
+	}
+	.jquery {
+		animation: grow-jquery 1.1s 2s forwards;
+	}
+	.angular {
+		animation: grow-angular .5s 2.3s forwards;
+	}
+	.php {
+		animation: grow-php 1.1s 2.6s forwards;
+	}
+	.git {
+		animation: grow-git 1s 2.9s forwards;
+	}
+}
+
+@keyframes grow-ps {
+	0% {width: 0%;}
+	100% {width: 93%;}
+}
+@keyframes grow-ai {
+	0% {width: 0%;}
+	100% {width: 70%;}
+}
+@keyframes grow-htm {
+	0% {width: 0%;}
+	100% {width: 95%;}
+}
+@keyframes grow-css {
+	0% {width: 0%;}
+	100% {width: 96%;}
+}
+@keyframes grow-sass {
+	0% {width: 0%;}
+	100% {width: 75%;}
+}
+@keyframes grow-js {
+	0% {width: 0%;}
+	100% {width: 65%;}
+}
+@keyframes grow-jquery {
+	0% {width: 0%;}
+	100% {width: 50%;}
+}
+@keyframes grow-angular {
+	0% {width: 0%;}
+	100% {width: 50%;}
+}
+@keyframes grow-php {
+	0% {width: 0%;}
+	100% {width: 50%;}
+}
+@keyframes grow-git {
+	0% {width: 0%;}
+	100% {width: 50%;}
+}
+
+.eh::before {
+	content: "eh";
+	position: absolute;
+	top: -20px;
+	left: 41%;
+}
+.okay::before {
+	content: "okay";
+	position: absolute;
+	top: -20px;
+	left: 35%;
+}
+.good::before {
+	content: "good!";
+	position: absolute;
+	top: -20px;
+	left: 35%;
+}
+.ninja::before {
+	content: "ninja";
+	position: absolute;
+	top: -20px;
+	left: 35%;
+}
+.ninja::after {
+	content: url('../images/icon-ninja.png');
+	position: absolute;
+	top: -48px;
+	left: 39%;
+}
+
+@media (max-width: 767px) {
+	.eh::before,
+	.okay::before,
+	.good::before,
+	.ninja::before {
+		font-size: .84em;
+	}
+}

@@ -1,0 +1,39 @@
+
+/* ========== Styles =========== */
+
+/* --- General Selectors --- */
+
+$blue: #4f89c8; /* Corporate Blue */
+$dark-blue: #30639b;
+$treehouse: #69c773;
+$herzing: #318dde;
+$sdf: #3a6027;
+$hokkai: #ffc107;
+
+h1 {
+	font: 100%/1.1 'Roboto', Arial, sans-serif;
+	color: #333;
+	font-size: 3.9em;
+}
+h2, h3, h4, p, a, li {
+	font: 100%/1.6 'Roboto', Arial, sans-serif;
+	color: #555;
+}
+h2 {
+	font-size: 1.8em;
+}
+h3 {
+	font-size: 1.6em;
+}
+h4 {
+	font-size: 1.3em;
+}
+span {
+	font: 100%/1 'Roboto', Arial, sans-serif;
+}
+
+.wrapper {
+	max-width: 1200px;
+	width: 100%;
+	margin: 0 auto;
+}
