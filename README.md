@@ -7,6 +7,7 @@ Animation tested on IE11: Successful. Not sure on IE <= 10
 
 
 @ Directions:
+::Run server 'http-server' for Angular to serve
 ::Before working, 'gulp clean' is recommended to remove old distribution files in dist/
 ::To start development, do 'gulp dev'. It handles concatenating js files and sass compilation dynamically.
 ::Do not directly work on app.js. JavaScript working files are 'jquery.js', 'functions.js' and 'data.js'. Leave 'app.js' alone.
