@@ -191,16 +191,19 @@ document.addEventListener("DOMContentLoaded", function() {
 			var str_json = JSON.stringify(myUser);
 
 			var request = new XMLHttpRequest();
-			request.open("POST", "igetEmail.php", true);
+			// request.open("POST", "igetEmail.php", true);
+			request.open("POST", "//formspree.io/info@daishodesign.com", true);
 			request.setRequestHeader("Content-type", "application/json");
 			request.send(str_json);
 
 			request.onload = function() {
-				if (request.readyState != 4 || request.status != 200) {
+				if (request.readyState !== 4 || request.status !== 200) {
+					document.getElementById("form").innerHTML = '<p style="color:rgb(255,0,0); font-size:24px;">Sorry, something went wrong!</p>';
 					return;
 				}
 				else {
-					document.getElementById("form").innerHTML = request.responseText;
+					// document.getElementById("form").innerHTML = request.responseText;
+					document.getElementById("form").innerHTML = '<p style="color:rgb(2,136,209); font-size:24px;">Thank you ' + userValue + ', I will get back to you soon!</p>';
 				}
 			};
 		}

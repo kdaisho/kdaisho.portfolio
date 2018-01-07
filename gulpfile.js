@@ -10,7 +10,7 @@ var gulp = require("gulp"),
 	uglifycss = require("gulp-uglifycss");
 
 gulp.task("concatScripts", function() {
-	return gulp.src(["js/jquery.js",
+	return gulp.src(["js/main.js",
 			"js/functions.js",
 			"js/data.js"
 		])
@@ -43,7 +43,7 @@ gulp.task("minifyCss", ["compileSass"], function() {
 
 gulp.task("watchFiles", function() {
 	gulp.watch("scss/**/*.scss", ["compileSass"]);
-	gulp.watch(["js/functions.js", "js/jquery.js", "js/data.js", "js/app.js"], ["concatScripts"]) // This was concatScripts instead of minifyScripts
+	gulp.watch(["js/functions.js", "js/main.js", "js/data.js", "js/app.js"], ["concatScripts"]) // This was concatScripts instead of minifyScripts
 });
 
 gulp.task("clean", function() {
