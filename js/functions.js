@@ -5,10 +5,10 @@ trigger.onclick = function() {
 	document.getElementById("modal-overlay").classList.add("modal-on");
 }
 eraser.onclick = function() {
-	document.getElementById("modal-overlay").classList.remove("modal-on"); 
+	document.getElementById("modal-overlay").classList.remove("modal-on");
 }
 
-window.onscroll = function() { // Trigger for 
+window.onscroll = function() { // Trigger for
 	var mobile = false,
 	scroll = window.scrollY, // detect amount of scroll for proper browsers
 	scroll_ie = pageYOffset; // detect amount of scroll for IE 9+

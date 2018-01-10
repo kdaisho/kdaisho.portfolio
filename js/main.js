@@ -192,7 +192,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 			var request = new XMLHttpRequest();
 			// request.open("POST", "igetEmail.php", true);
-			request.open("POST", "//formspree.io/info@daishodesign.com", true);
+			request.open("POST", "//formspree.io/daishokomiyama@gmail.com", true);
 			request.setRequestHeader("Content-type", "application/json");
 			request.send(str_json);
 
