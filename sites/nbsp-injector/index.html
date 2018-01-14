@@ -4,8 +4,8 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Non-Breaking Space Injector</title>
-	<meta name="description" content="Integrator help tool which dynamically adds &amp;nbsp;">
+	<title>French Formatter</title>
+	<meta name="description" content="Integrator help tool dynamically adds HTML entities;">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
 	<style>
 	.m-10 {
@@ -20,6 +20,9 @@
 	.found {
 		background: #ff0;
 	}
+	.found-dash {
+		background: #8fceff;
+	}
 	</style>
 </head>
 
@@ -27,10 +30,11 @@
 
 	<div class="section container">
 		<div class="m-10">
-			<h1 class="title is-size-1 m-10">Non-Breaking Space Injector</h1>
+			<h1 class="title is-size-1 m-10">French Formatter</h1>
 			<p class="subtitle">Integrator helper tool</p>
-			<p class="is-size-4">Super simple app frees you from adding <span class="has-text-weight-bold">&amp;nbsp;</span> by hand!</p>
-			<p>Target Patterns: <span class="has-text-weight-bold">whitespace + %|$|h|!|?</span> (e.g. <span class="found">30 %</span>, <span class="found">10 $</span>, <span class="found">23 h 59</span>, <span class="found">blah !</span> or <span class="found">blah ?</span> in French text)</p>
+			<p class="is-size-4">Super simple app frees you from adding <span class="has-text-weight-bold found">&amp;nbsp;</span> or <span class="has-text-weight-bold found-dash">&amp;#8209;</span> by hand!</p>
+			<p>Target Patterns: <span class="found">30 %</span>, <span class="found">10 $</span>, <span class="found">23 h</span>, <span class="found">blah ?</span>, <span class="found">blah !</span>, <span class="found-dash">Allez-y</span> or <span class="found-dash">Êtes-vous</span> etc.</p>
+
 		</div>
 
 		<div class="m-t-20">
@@ -58,8 +62,11 @@
 
 		submit.addEventListener('click', function() {
 			//get pattern
-			//e.g. "30 %", "30 $", "blah !", "blah ?" or "23 h 59" but not "23 home"
-			const re = /\d+\s{1}([%|\$]|h$|h\W)|\w+\s{1}[\!\?]/ig;
+			//for &nbsp; \d+\s{1}([%|\$]|h$|h\W)|\w+\s{1}[\!\?]
+			//target string e.g. "30 %", "30 $", "blah !", "blah ?" or "23 h 59" but not "23 home"
+			//for &#8209; ([a-zàâäèéêëîïôœùûüÿç])-([a-zàâäèéêëîïôœùûüÿç])
+			//target string e.g. "c'est-à-dire", "celui-ci" or "quatre-vingts"
+			const re = /\d+\s{1}([%|\$]|h$|h\W)|\w+\s{1}[\!\?]|([a-zàâäèéêëîïôœùûüÿç])-([a-zàâäèéêëîïôœùûüÿç])/ig;
 
 			//get string
 			const processString = document.getElementById('incoming').value;
@@ -69,23 +76,22 @@
 				first = 0,
 				last = 0,
 				target,
+				className,
 				counter = 0;
 
 			//find each match
-			while((matchArray = re.exec(processString)) !== null) {
+			while((matchArray = re.exec(processString)) !== null ) {
 				last = matchArray.index;
 
 				//get all of string up to match, concatenate
 				highlighting += processString.substring(first, last);
 
 				//insert &nbsp;
-				target = matchArray[0];
-				console.log('Target:' + target.length);
-				target = target.replace(/\s{1}/, '&nbsp;');
-				console.log('Target:' + target);
+				target = matchArray[0].replace(/\s{1}/, '&nbsp;').replace(/-/, '&#8209;');
 
 				//add matched, with class
-				highlighting += '<span class="found">' + target + '</span>';
+				className = target.indexOf('&nbsp;') > -1  ? 'found' : 'found-dash';
+				highlighting += '<span class="' + className + '">' + target + '</span>';
 				first = re.lastIndex;
 				counter++;
 			}
