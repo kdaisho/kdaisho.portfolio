@@ -7,7 +7,8 @@ var gulp = require("gulp"),
 	sass = require("gulp-sass"),
 	maps = require("gulp-sourcemaps"),
 	del = require("del"),
-	uglifycss = require("gulp-uglifycss");
+	uglifycss = require("gulp-uglifycss"),
+	livereload = require("gulp-livereload");
 
 gulp.task("concatScripts", function() {
 	return gulp.src(["js/main.js",
@@ -15,7 +16,8 @@ gulp.task("concatScripts", function() {
 			"js/data.js"
 		])
 		.pipe(concat("app.js"))
-		.pipe(gulp.dest("js"));
+		.pipe(gulp.dest("js"))
+		.pipe(livereload());
 });
 
 gulp.task("minifyScripts", ["concatScripts"], function() {
@@ -32,7 +34,8 @@ gulp.task("compileSass", function() {
 		.pipe(maps.init())
 		.pipe(sass())
 		.pipe(maps.write("./"))
-		.pipe(gulp.dest("css"));
+		.pipe(gulp.dest("css"))
+		.pipe(livereload());
 });
 
 gulp.task("minifyCss", ["compileSass"], function() {
@@ -43,7 +46,8 @@ gulp.task("minifyCss", ["compileSass"], function() {
 
 gulp.task("watchFiles", function() {
 	gulp.watch("scss/**/*.scss", ["compileSass"]);
-	gulp.watch(["js/functions.js", "js/main.js", "js/data.js", "js/app.js"], ["concatScripts"]) // This was concatScripts instead of minifyScripts
+	gulp.watch(["js/functions.js", "js/main.js", "js/data.js", "js/app.js"], ["concatScripts"]); // This was concatScripts instead of minifyScripts
+	livereload.listen({ start: true });
 });
 
 gulp.task("clean", function() {
