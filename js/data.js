@@ -3,14 +3,14 @@ var app = angular.module('myApp', []);
 //Educations Section
 app.controller('eduCtrl', ['$scope', function($scope) {
 	$scope.cards = [
-		{inst: 'treehouse', period: '2015 - Present', url: 'treehouse', title: 'Web Development', location: 'Online',
+		{inst: 'treehouse', period: '2015 - 2017', url: 'treehouse', title: 'Web Development', location: 'Online',
 		desc: 'PHP, JavaScript, Angular.js, CSS3 animations, CSS3 flexbox; etc.'},
 		{inst:'herzing', period: '2013 - 2014', url: 'herzing-college', title: 'Graphic Design for Websites', location: 'Montreal',
 		desc: 'Photoshop, Illustrator, HTML5, CSS3, JavaScript, Responsive layout; etc.'},
 		{inst:'sdf', period: 'Apr - Oct 2008', url: 'sdf', title: 'Advance Officer\'s Course', location: 'Shizuoka, Japan',
 		desc: 'Army doctrine / tactics; offensive, defensive and maneuver companies / battalions; etc.'},
 		{inst:'hokkai', period: '1996 - 2000', url: 'hokkai', title: 'Bachelor of Laws', location: 'Sapporo, Japan',
-		desc: 'Leagl method and procedures, Criminal law, Administrative law, Law of property; etc.'} 
+		desc: 'Legal method and procedures, Criminal law, Administrative law, Law of property; etc.'} 
 	];
 }]);
 
