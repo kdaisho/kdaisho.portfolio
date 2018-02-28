@@ -65,7 +65,7 @@
 			</li>
 			<li>
 				<a href="#work" class="link"><img class="nav-icon" src="images/icon-work-opt.svg" onError="this.onerror=null; this.src='images/icon-work.png'" alt="my work">
-					<span></span>WORK
+					<span></span>PROJECTS
 				</a>
 			</li>
 			<li>
@@ -160,17 +160,31 @@
 
 		<a class="dest-link"></a>
 		<section class="my-work goto-work" data-ng-controller="galleryCtrl">
-			<h2>My Work</h2>
-			<div id="wrap-thumbs">
+			<h2>Personal Projects (2016&nbsp;&#8209;&nbsp;Present)</h2>
 
+			<div id="wrap-thumbs">
 				<div data-ng-repeat="image in images" class="wrap-thumb">
 					<div>
 						<p data-pos="{{image.pos}}">{{image.desc}}</p>
 					</div>
 					<img data-ng-src="images/{{image.url}}" alt="{{image.alt}}">
 				</div>
-
 			</div>
+			
+			<!-- Contribution Calendar Widget -->
+			<script src="//cdn.rawgit.com/IonicaBizau/github-calendar/gh-pages/dist/github-calendar.min.js"></script>
+
+			<!-- Prepare a container for your calendar -->
+			<div class="calendar"></div>
+
+			<script>
+				new GitHubCalendar('.calendar', 'kdaisho');
+			</script>
+
+			<a class="repositories" href="//github.com/kdaisho?tab=repositories" target="_blank">
+				See all repositories &gt;
+			</a>
+
 			<div id="gal_holder">
 				<div id="img_holder"></div>
 				<div id="desc_holder"></div>

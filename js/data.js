@@ -17,15 +17,15 @@ app.controller('eduCtrl', ['$scope', function($scope) {
 //Skills & Experiences Section
 app.controller('skillsCtrl', ['$scope', function($scope) {
 	$scope.progbars = [
-		{url: 'ps', alt:  'Photoshop', skill: ' ps', eh:'eh', okay: 'okay', good: 'good', ninja: 'ninja'},
-		{url: 'ai', alt: 'Illustrator', skill: 'ai'},
-		{url: 'html5', alt: 'HTML5', skill: 'htm'},
-		{url: 'css3', alt: 'CSS3', skill: 'css'},
-		{url: 'sass', alt: 'Sass', skill: 'sass'},
-		{url: 'js', alt: 'JavaScript', skill: 'js'},
-		{url: 'jquery', alt: 'jQuery', skill: 'jquery'},
-		{url: 'angular', alt: 'angular', skill: 'angular'},
+		// {url: 'ai', alt: 'Illustrator', skill: 'ai'},
+		{url: 'js', alt: 'JavaScript', skill: 'js', eh:'eh', okay: 'okay', good: 'good', ninja: 'ninja'},
+		{url: 'html5', alt: 'HTML', skill: 'htm'},
+		{url: 'css3', alt: 'CSS', skill: 'css'},
+		// {url: 'sass', alt: 'Sass', skill: 'sass'},
 		{url: 'php', alt: 'PHP', skill: 'php'},
+		// {url: 'jquery', alt: 'jQuery', skill: 'jquery'},
+		{url: 'angular', alt: 'Angular', skill: 'angular'},
+		{url: 'ps', alt:  'Photoshop', skill: ' ps'},
 		{url: 'git', alt: 'Git', skill: 'git'}
 	];
 }]);
@@ -33,27 +33,27 @@ app.controller('skillsCtrl', ['$scope', function($scope) {
 //My Work Section
 app.controller('galleryCtrl', ['$scope', function($scope) {
 	$scope.images = [
-		{url: 'work-carousel-swarovski.jpg', alt: 'mapleharbour website', desc: 'website content: carousel', pos: 20},
-		{url: 'work-carousel-new-year.jpg', alt: 'mapleharbour website', desc: 'website content: carousel', pos: 19},
-		{url: 'work-mh.jpg', alt: 'mapleharbour website', desc: 'website development', pos: 18},
-		{url: 'work-boxingday.jpg', alt: 'carousel design', desc: 'website content: carousel', pos: 17},
-		{url: 'work-blackfriday.jpg', alt: 'carousel design', desc: 'website content: carousel', pos: 16},
-		{url: 'work-email.jpg', alt: 'email header design', desc: 'visual content: email', pos: 15},
-		{url: 'work-social.jpg', alt: 'visual content for social media', desc: 'visual content: social media', pos: 14},
-		{url: 'work-tshirt.jpg', alt: 'tshirt design', desc: 'vector: t-shirt design', pos: 13},
-		{url: 'work-musician.jpg', alt: 'website for a musician', desc: 'website development', pos: 12},
-		{url: 'work-coco.jpg', alt: 'logo design', desc: 'vector: logo design', pos: 11},
-		{url: 'work-icons.jpg', alt: 'vector icon design', desc: 'vector: icon design', pos: 10},
-		{url: 'work-vector.jpg', alt: 'vector character design', desc: 'vector: character design', pos: 9},
-		{url: 'work-larocque.jpg', alt: 'website design', desc: 'website development 2014', pos: 8},
-		{url: 'work-cafe.jpg', alt: 'website design', desc: 'website development 2013', pos: 7},
-		{url: 'work-logo-design.jpg', alt: 'logo design', desc: 'vector: logo design', pos: 6},
-		{url: 'work-logo-design2.jpg', alt: 'logo design', desc: 'business card design', pos: 5},
-		{url: 'work-infographic.jpg', alt: 'infographic design', desc: 'vector: infographic', pos: 4},
-		{url: 'work-printing.jpg', alt: 'printing design', desc: 'indesign: printing content', pos: 3},
-		{url: 'work-bookcover.jpg', alt: 'bookcover design', desc: 'bitmap: book cover design', pos: 2},
-		{url: 'work-poster.jpg', alt: 'poster design', desc: 'bitmap: movie poster recreation', pos: 1},
-		{url: 'work-tapestry.jpg', alt: 'vector tapestry', desc: 'vector: tapestry imitaion', pos: 0}
+		{url: 'work-mybrailler.gif', alt: 'My Brailler', desc: 'Electronic Braille Typewriter', pos: 20},
+		{url: 'work-email-builder.gif', alt: 'Email Builder', desc: 'Application: Email Build Tool', pos: 19},
+		{url: 'work-french-formatter.gif', alt: 'French formatter', desc: 'Integration Helper Tool', pos: 18},
+		{url: 'work-quebec3.gif', alt: 'Quebec3', desc: 'Blog: Quebec3', pos: 17},
+		{url: 'work-countdown.gif', alt: 'Countdown timer', desc: 'Micro Widget', pos: 16}
+		// {url: 'work-email.jpg', alt: 'email header design', desc: 'visual content: email', pos: 15},
+		// {url: 'work-social.jpg', alt: 'visual content for social media', desc: 'visual content: social media', pos: 14},
+		// {url: 'work-tshirt.jpg', alt: 'tshirt design', desc: 'vector: t-shirt design', pos: 13},
+		// {url: 'work-musician.jpg', alt: 'website for a musician', desc: 'website development', pos: 12},
+		// {url: 'work-coco.jpg', alt: 'logo design', desc: 'vector: logo design', pos: 11},
+		// {url: 'work-icons.jpg', alt: 'vector icon design', desc: 'vector: icon design', pos: 10},
+		// {url: 'work-vector.jpg', alt: 'vector character design', desc: 'vector: character design', pos: 9},
+		// {url: 'work-larocque.jpg', alt: 'website design', desc: 'website development 2014', pos: 8},
+		// {url: 'work-cafe.jpg', alt: 'website design', desc: 'website development 2013', pos: 7},
+		// {url: 'work-logo-design.jpg', alt: 'logo design', desc: 'vector: logo design', pos: 6},
+		// {url: 'work-logo-design2.jpg', alt: 'logo design', desc: 'business card design', pos: 5},
+		// {url: 'work-infographic.jpg', alt: 'infographic design', desc: 'vector: infographic', pos: 4},
+		// {url: 'work-printing.jpg', alt: 'printing design', desc: 'indesign: printing content', pos: 3},
+		// {url: 'work-bookcover.jpg', alt: 'bookcover design', desc: 'bitmap: book cover design', pos: 2},
+		// {url: 'work-poster.jpg', alt: 'poster design', desc: 'bitmap: movie poster recreation', pos: 1},
+		// {url: 'work-tapestry.jpg', alt: 'vector tapestry', desc: 'vector: tapestry imitaion', pos: 0}
 	];
 }]);
 
@@ -66,39 +66,39 @@ app.controller('timeCtrl', ['$scope', function($scope) {
 
 var bigsrc = [];
 bigsrc[20] = {
-	url: 'pan-carousel-swarovski.jpg',
+	url: 'pan-mybrailler.gif',
 	id: 20,
-	title: 'Visual Content: Carousel',
-	desc: 'Photoshop',
-	link: ''
+	title: 'Electronic Braille Typewriter',
+	desc: 'Braille typewriting practice website with Angular4',
+	link: '//mybrailler.com'
 },
 bigsrc[19] = {
-	url: 'pan-carousel-new-year.jpg',
+	url: 'pan-email-builder.jpg',
 	id: 19,
-	title: 'Visual Content: Carousel',
-	desc: 'Photoshop',
+	title: 'Email Builder3',
+	desc: 'Email building tool with Angular4',
 	link: ''
 },
 bigsrc[18] = {
-	url: 'pan-mh-website.jpg',
+	url: 'pan-french-formatter.gif',
 	id: 18,
-	title: 'Graphic/Integration',
-	desc: 'Magento: Maple Harbour',
-	link: '//mapleharbour.ca'
+	title: 'French Formatter',
+	desc: 'Non-braking space insertion tool with JavaScript',
+	link: '//daishodesign.com/sites/formatter/'
 },
 bigsrc[17] = {
-	url: 'pan-carousel-bd.jpg',
+	url: 'pan-quebec3.jpg',
 	id: 17,
-	title: 'Visual Content: Carousel',
-	desc: 'Photoshop',
-	link: ''
+	title: 'Quebec3',
+	desc: 'CMS with Laravel',
+	link: 'https://quebec3.com'
 },
 bigsrc[16] = {
-	url: 'pan-carousel-bf.jpg',
+	url: 'pan-countdown.gif',
 	id: 16,
-	title: 'Visual Content: Carousel',
-	desc: 'Photoshop',
-	link: ''
+	title: 'Countdown Timer',
+	desc: 'Micro widget with JavaScript',
+	link: '//github.com/kdaisho/Countdown'
 },
 bigsrc[15] = {
 	url: 'pan-email.jpg',

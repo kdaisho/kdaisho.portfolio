@@ -63,45 +63,32 @@
 }
 
 .grow-bar {
-	.ps {
-		animation: grow-ps 2s forwards;
-	}
-	.ai {
-		animation: grow-ai 1.6s .3s forwards;
+	.js {
+		animation: grow-js 1.2s forwards;
 	}
 	.htm {
-		animation: grow-htm 2s .8s forwards;
+		animation: grow-htm 2s .3s forwards;
 	}
 	.css {
-		animation: grow-css 2s 1.1s forwards;
-	}
-	.sass {
-		animation: grow-sass 1.5s 1.4s forwards;
-	}
-	.js {
-		animation: grow-js 1.2s 1.7s forwards;
-	}
-	.jquery {
-		animation: grow-jquery 1.1s 2s forwards;
-	}
-	.angular {
-		animation: grow-angular .5s 2.3s forwards;
+		animation: grow-css 2s .5s forwards;
 	}
 	.php {
-		animation: grow-php 1.1s 2.6s forwards;
+		animation: grow-php 1.1s .7s forwards;
+	}
+	.angular {
+		animation: grow-angular .5s .9s forwards;
+	}
+	.ps {
+		animation: grow-ps 2s 1.1s forwards;
 	}
 	.git {
-		animation: grow-git 1s 2.9s forwards;
+		animation: grow-git 1s 1.3s forwards;
 	}
 }
 
-@keyframes grow-ps {
+@keyframes grow-js {
 	0% {width: 0%;}
-	100% {width: 93%;}
-}
-@keyframes grow-ai {
-	0% {width: 0%;}
-	100% {width: 70%;}
+	100% {width: 65%;}
 }
 @keyframes grow-htm {
 	0% {width: 0%;}
@@ -109,31 +96,23 @@
 }
 @keyframes grow-css {
 	0% {width: 0%;}
-	100% {width: 96%;}
-}
-@keyframes grow-sass {
-	0% {width: 0%;}
-	100% {width: 75%;}
-}
-@keyframes grow-js {
-	0% {width: 0%;}
-	100% {width: 65%;}
-}
-@keyframes grow-jquery {
-	0% {width: 0%;}
-	100% {width: 50%;}
+	100% {width: 90%;}
 }
 @keyframes grow-angular {
 	0% {width: 0%;}
-	100% {width: 50%;}
+	100% {width: 65%;}
 }
 @keyframes grow-php {
 	0% {width: 0%;}
-	100% {width: 50%;}
+	100% {width: 55%;}
+}
+@keyframes grow-ps {
+	0% {width: 0%;}
+	100% {width: 90%;}
 }
 @keyframes grow-git {
 	0% {width: 0%;}
-	100% {width: 50%;}
+	100% {width: 60%;}
 }
 
 .eh::before {
