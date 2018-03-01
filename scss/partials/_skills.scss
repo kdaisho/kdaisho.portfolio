@@ -48,7 +48,7 @@
 			height: 16px;
 			width: 0;
 			border-radius: 5px;
-			background: #e75481;
+			background: #4095e0;
 
 			span {
 				color: #444;
@@ -84,6 +84,9 @@
 	.git {
 		animation: grow-git 1s 1.3s forwards;
 	}
+	.nginx {
+		animation: grow-nginx 1s 1.5s forwards;
+	}
 }
 
 @keyframes grow-js {
@@ -112,7 +115,11 @@
 }
 @keyframes grow-git {
 	0% {width: 0%;}
-	100% {width: 60%;}
+	100% {width: 55%;}
+}
+@keyframes grow-nginx {
+	0% {width: 0%;}
+	100% {width: 20%;}
 }
 
 .eh::before {
