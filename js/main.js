@@ -73,8 +73,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		img_holder.innerHTML = '<img id="data_img" src="images/'+ bigsrc[pos].url +'" data-id="'+ bigsrc[pos].id +'">';
 		desc_holder.innerHTML = '<h4>' + bigsrc[pos].title + '</h4><p>' + bigsrc[pos].desc + '</p>';
 
-		// if (pos == 18 || pos == 12 || pos == 8) {
-		if (pos == 20 || pos == 18 || pos == 17 || pos == 16) {
+		if (pos == 4 || pos == 2 || pos == 1 || pos == 0) {
 			var anchor = document.createElement("a");
 			anchor.href = bigsrc[pos].link;
 			anchor.setAttribute("target", "_blank");
@@ -88,7 +87,6 @@ document.addEventListener("DOMContentLoaded", function() {
 		if (event.target !== event.currentTarget) {
 			var pos = event.target.getAttribute("data-pos");
 			injectEl(pos);
-
 			gal_holder.className = "is-active";
 			modal_bg.className = "is-active";
 		}

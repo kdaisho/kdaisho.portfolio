@@ -31,11 +31,11 @@ app.controller('skillsCtrl', ['$scope', function($scope) {
 //My Work Section
 app.controller('galleryCtrl', ['$scope', function($scope) {
 	$scope.images = [
-		{url: 'work-mybrailler.gif', alt: 'My Brailler', title: 'Application', desc: 'Electronic Brailler', pos: 20},
-		{url: 'work-email-builder.gif', alt: 'Email Builder', title: 'Application', desc: 'Email Builder', pos: 19},
-		{url: 'work-french-formatter.gif', alt: 'French formatter', title: 'Helper Tool', desc: 'Non-Braking Injector', pos: 18},
-		{url: 'work-quebec3.gif', alt: 'Quebec3', title: 'CMS', desc: 'Blogging Platform', pos: 17},
-		{url: 'work-countdown.gif', alt: 'Countdown timer', title: 'Micro Widget', desc: 'Countdown Timer', pos: 16}
+		{url: 'work-mybrailler.gif', alt: 'My Brailler', title: 'Application', desc: 'Electronic Brailler', pos: 4},
+		{url: 'work-email-builder.gif', alt: 'Email Builder', title: 'Application', desc: 'Email Builder', pos: 3},
+		{url: 'work-french-formatter.gif', alt: 'French formatter', title: 'Helper Tool', desc: 'Non-Braking Injector', pos: 2},
+		{url: 'work-quebec3.gif', alt: 'Quebec3', title: 'CMS', desc: 'Blogging Platform', pos: 1},
+		{url: 'work-countdown.gif', alt: 'Countdown timer', title: 'Micro Widget', desc: 'Countdown Timer', pos: 0}
 	];
 }]);
 
@@ -47,37 +47,37 @@ app.controller('timeCtrl', ['$scope', function($scope) {
 }]);
 
 var bigsrc = [];
-bigsrc[20] = {
+bigsrc[4] = {
 	url: 'pan-mybrailler.gif',
-	id: 20,
+	id: 4,
 	title: 'My Brailler',
 	desc: 'Braille typewriting practice site with Angular4',
 	link: '//mybrailler.com'
 },
-bigsrc[19] = {
+bigsrc[3] = {
 	url: 'pan-email-builder.jpg',
-	id: 19,
+	id: 3,
 	title: 'Email Builder3',
 	desc: 'Email building tool with Angular4',
 	link: ''
 },
-bigsrc[18] = {
+bigsrc[2] = {
 	url: 'pan-french-formatter.gif',
-	id: 18,
+	id: 2,
 	title: 'French Formatter',
 	desc: 'Non-braking space injector tool with JavaScript',
 	link: '//daishodesign.com/sites/formatter/'
 },
-bigsrc[17] = {
+bigsrc[1] = {
 	url: 'pan-quebec3.jpg',
-	id: 17,
+	id: 1,
 	title: 'Quebec3',
 	desc: 'CMS with Laravel',
 	link: 'https://quebec3.com'
 },
-bigsrc[16] = {
+bigsrc[0] = {
 	url: 'pan-countdown.gif',
-	id: 16,
+	id: 0,
 	title: 'Countdown Timer',
 	desc: 'Micro widget with JavaScript',
 	link: '//github.com/kdaisho/Countdown'

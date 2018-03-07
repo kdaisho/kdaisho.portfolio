@@ -159,16 +159,18 @@
 
 		<a class="dest-link"></a>
 		<section class="my-work goto-work" data-ng-controller="galleryCtrl">
-			<h2>Personal Projects (2016&nbsp;&#8209;&nbsp;Present)</h2>
 
+			<h2>Personal Projects (2016&nbsp;&#8209;&nbsp;Present)</h2>
 			<div id="wrap-thumbs">
 				<div data-ng-repeat="image in images" class="wrap-thumb">
 					<div>
-						<p class="my-work-text" data-pos="{{image.pos}}">{{image.title}}<br>{{image.desc}}</p>
+						<span style="bottom: 10%; position: absolute; text-align: center; color: #fff; line-height: 1.2;">{{image.title}}<br>{{image.desc}}</span>
+						<p class="my-work-text" data-pos="{{image.pos}}"></p>
 					</div>
 					<img data-ng-src="images/{{image.url}}" alt="{{image.alt}}">
 				</div>
 			</div>
+
 		</section>
 
 		<section class="my-work">
@@ -200,6 +202,7 @@
 				</div>
 			</div>
 		</section>
+
 		<div id="modal_bg"></div>
 		<section class="contact goto-contact">
 			<a class="dest-link"></a> <!-- HTML5: anchor without an href attribute is valid -->
