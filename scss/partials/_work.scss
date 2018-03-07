@@ -59,7 +59,15 @@
 				background: transparent;
 				transition: .4s ease-out;
 			}
-			.my-work-text {
+			.my-work-desc {
+				bottom: 10%;
+				color: #fff;
+				font-size: 1.2rem;
+				line-height: 1.2;
+				position: absolute;
+				text-align: center;
+			}
+			.my-work-touchpanel {
 				color: #fff;
 				left: 0;
 				line-height: 1.3;

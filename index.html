@@ -164,8 +164,8 @@
 			<div id="wrap-thumbs">
 				<div data-ng-repeat="image in images" class="wrap-thumb">
 					<div>
-						<span style="bottom: 10%; position: absolute; text-align: center; color: #fff; line-height: 1.2;">{{image.title}}<br>{{image.desc}}</span>
-						<p class="my-work-text" data-pos="{{image.pos}}"></p>
+						<span class="my-work-desc">{{image.title}}<br>{{image.desc}}</span>
+						<p class="my-work-touchpanel" data-pos="{{image.pos}}"></p>
 					</div>
 					<img data-ng-src="images/{{image.url}}" alt="{{image.alt}}">
 				</div>
