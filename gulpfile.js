@@ -60,7 +60,7 @@ gulp.task("watchFiles", function() {
 
 gulp.task("clean", function() {
 	del(["dist", "css/styles.css*", "js/app*.js*"]);
-})
+});
 
 gulp.task("build", ["minifyScripts", "compileSass", "minifyCss"], function() {
 	return gulp.src(["css/styles.css", "css/styles.css.map", "js/app.js", "index.html",
