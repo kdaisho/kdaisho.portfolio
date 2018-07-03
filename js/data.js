@@ -10,7 +10,7 @@ app.controller('eduCtrl', ['$scope', function($scope) {
 		{inst:'sdf', period: 'Apr - Oct 2008', url: 'sdf', title: 'Advance Officer\'s Course', location: 'Shizuoka, Japan',
 		desc: 'Army doctrine / tactics; offensive, defensive and maneuver companies / battalions; etc.'},
 		{inst:'hokkai', period: '1996 - 2000', url: 'hokkai', title: 'Bachelor of Laws', location: 'Sapporo, Japan',
-		desc: 'Legal method and procedures, Criminal law, Administrative law, Law of property; etc.'} 
+		desc: 'Legal method and procedures, Criminal law, Administrative law, Law of property; etc.'}
 	];
 }]);
 
@@ -31,11 +31,12 @@ app.controller('skillsCtrl', ['$scope', function($scope) {
 //My Work Section
 app.controller('galleryCtrl', ['$scope', function($scope) {
 	$scope.images = [
-		{url: 'work-mybrailler.gif', alt: 'My Brailler', title: 'Application', desc: 'Electronic Brailler', pos: 4},
-		{url: 'work-email-builder.gif', alt: 'Email Builder', title: 'Application', desc: 'Email Builder', pos: 3},
-		{url: 'work-french-formatter.gif', alt: 'French formatter', title: 'Helper Tool', desc: 'Non-Braking Injector', pos: 2},
-		{url: 'work-quebec3.gif', alt: 'Quebec3', title: 'CMS', desc: 'Blogging Platform', pos: 1},
-		{url: 'work-countdown.gif', alt: 'Countdown timer', title: 'Micro Widget', desc: 'Countdown Timer', pos: 0}
+		{url: 'work-mybrailler.gif', alt: 'My Brailler', title: 'Application', desc: 'Electronic Brailler', pos: 5},
+		{url: 'work-email-builder.gif', alt: 'Email Builder', title: 'Application', desc: 'Email Builder', pos: 4},
+		{url: 'work-french-formatter.gif', alt: 'French formatter', title: 'Helper Tool', desc: 'Non-Braking Injector', pos: 3},
+		{url: 'work-quebec3.gif', alt: 'Quebec3', title: 'CMS', desc: 'Blogging Platform', pos: 2},
+		{url: 'work-countdown.gif', alt: 'Countdown timer', title: 'Micro Widget', desc: 'Countdown Timer', pos: 1},
+		{url: 'work-navy-css-grid.jpg', alt: 'Navy CSS Grid', title: 'CSS Grid', desc: 'Navy Vessels', pos: 0}
 	];
 }]);
 
@@ -47,38 +48,45 @@ app.controller('timeCtrl', ['$scope', function($scope) {
 }]);
 
 var bigsrc = [];
-bigsrc[4] = {
+bigsrc[5] = {
 	url: 'pan-mybrailler.gif',
-	id: 4,
+	id: 5,
 	title: 'My Brailler',
 	desc: 'Braille typewriting practice site with Angular4',
 	link: '//mybrailler.com'
 },
-bigsrc[3] = {
+bigsrc[4] = {
 	url: 'pan-email-builder.jpg',
-	id: 3,
+	id: 4,
 	title: 'Email Builder3',
 	desc: 'Email building tool with Angular4',
 	link: ''
 },
-bigsrc[2] = {
+bigsrc[3] = {
 	url: 'pan-french-formatter.gif',
-	id: 2,
+	id: 3,
 	title: 'French Formatter',
 	desc: 'Non-braking space injector tool with JavaScript',
 	link: '//daishodesign.com/sites/formatter/'
 },
-bigsrc[1] = {
+bigsrc[2] = {
 	url: 'pan-quebec3.jpg',
-	id: 1,
+	id: 2,
 	title: 'Quebec3',
 	desc: 'CMS with Laravel',
 	link: 'https://quebec3.com'
 },
-bigsrc[0] = {
+bigsrc[1] = {
 	url: 'pan-countdown.gif',
-	id: 0,
+	id: 1,
 	title: 'Countdown Timer',
 	desc: 'Micro widget with JavaScript',
 	link: '//github.com/kdaisho/Countdown'
+},
+bigsrc[0] = {
+	url: 'pan-navy-css-grid.jpg',
+	id: 0,
+	title: 'Royal Canadian Navy Vessels',
+	desc: 'Navy vessels catalog using CSS&nbsp;grid',
+	link: '//daishodesign.com/sites/navy/'
 }
