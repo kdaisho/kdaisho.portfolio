@@ -1,8 +1,0 @@
-.DS_Store
-assets*
-.sass-cache*
-.sass-cache/*
-css/styles.css
-css/styles.css.map
-node_modules/
-dist/
