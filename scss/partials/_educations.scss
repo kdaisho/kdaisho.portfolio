@@ -58,6 +58,8 @@
 
 .card {
 	position: relative;
+	user-select: none;
+	-webkit-user-select: none;
 	cursor: pointer;
 	-webkit-transform-style: preserve-3d;
 	-moz-transform-style: preserve-3d;
