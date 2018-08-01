@@ -31,6 +31,7 @@ app.controller('skillsCtrl', ['$scope', function($scope) {
 //My Work Section
 app.controller('galleryCtrl', ['$scope', function($scope) {
 	$scope.images = [
+		{url: 'work-canvas-game.jpg', alt: 'Breakout Game', title: 'Canvas Game', desc: 'Breakout Game', pos: 6},
 		{url: 'work-mybrailler.gif', alt: 'My Brailler', title: 'Application', desc: 'Electronic Brailler', pos: 5},
 		{url: 'work-email-builder.gif', alt: 'Email Builder', title: 'Application', desc: 'Email Builder', pos: 4},
 		{url: 'work-french-formatter.gif', alt: 'French formatter', title: 'Helper Tool', desc: 'Non-Braking Injector', pos: 3},
@@ -48,6 +49,13 @@ app.controller('timeCtrl', ['$scope', function($scope) {
 }]);
 
 var bigsrc = [];
+bigsrc[6] = {
+	url: 'pan-canvas-game.jpg',
+	id: 6,
+	title: 'HTML Canvas Game',
+	desc: 'HTML Canvas Game with Pure JavaScript',
+	link: '//daishodesign.com/sites/breakout/'
+},
 bigsrc[5] = {
 	url: 'pan-mybrailler.gif',
 	id: 5,

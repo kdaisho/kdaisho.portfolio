@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		img_holder.innerHTML = '<img id="data_img" src="images/'+ bigsrc[pos].url +'" data-id="'+ bigsrc[pos].id +'">';
 		desc_holder.innerHTML = '<h4>' + bigsrc[pos].title + '</h4><p>' + bigsrc[pos].desc + '</p>';
 
-		if (pos == 4 || pos == 2 || pos == 1 || pos == 0) {
+		if (pos == 6 || pos == 4 || pos == 2 || pos == 1 || pos == 0) {
 			var anchor = document.createElement("a");
 			anchor.href = bigsrc[pos].link;
 			anchor.setAttribute("target", "_blank");
