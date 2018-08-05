@@ -19,7 +19,7 @@
 <body>
 
 <script>
-    var game = new Phaser.Game(480, 320, Phaser.CANVAS, null, {
+    var game = new Phaser.Game(480, 420, Phaser.CANVAS, null, {
         preload: preload,
         create: create,
         update: update
@@ -38,6 +38,8 @@
     var textStyle;
     var playing = false;
     var startButton;
+    var floor;
+    var gameWorldCenter;
 
     function preload() {
         game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
@@ -47,13 +49,14 @@
         game.load.image('ball', 'img/ball.png');
         game.load.image('paddle', 'img/paddle.png');
         game.load.image('brick', 'img/brick.png');
+        game.load.image('floor', 'img/floor.png');
         game.load.spritesheet('ball', 'img/wobble.png', 20, 20);
         game.load.spritesheet('clickToStart', 'img/button.png', 120, 40);
     }
 
     function create() {
         game.physics.startSystem(Phaser.Physics.ARCADE);
-        ball = game.add.sprite(game.world.width * .5, game.world.height - 25, 'ball');
+        ball = game.add.sprite(game.world.width * .5, game.world.height - 110, 'ball');
         ball.animations.add('wobble', [0, 1, 0, 2, 0, 1, 0, 2, 0], 24);
         ball.anchor.set(.5);
         game.physics.enable(ball, Phaser.Physics.ARCADE);
@@ -62,10 +65,13 @@
         game.physics.arcade.checkCollision.down = false;
         ball.checkWorldBounds = true;
         ball.events.onOutOfBounds.add(ballLeaveScreen, this);
-        paddle = game.add.sprite(game.world.width * .5, game.world.height - 5, 'paddle');
+        paddle = game.add.sprite(game.world.width * .5, game.world.height - 85, 'paddle');
         paddle.anchor.set(.5, 1);
         game.physics.enable(paddle, Phaser.Physics.ARCADE);
         paddle.body.immovable = true;
+        floor = game.add.sprite(0, game.world.height - 80, 'floor');
+        gameWorldCenter = game.world.width * .5;
+
         initBricks();
 
         textStyle = { font: '18px Arial', fill: '#0095dd' };
@@ -75,7 +81,7 @@
         lifeLostText = game.add.text(game.world.width * .5, game.world.height * .5, 'Life lost, click to continue', textStyle);
         lifeLostText.anchor.set(.5);
         lifeLostText.visible = false;
-        startButton = game.add.button(game.world.width * .5, game.world.height * .5, 'clickToStart', startGame, this, 1, 0 ,2);
+        startButton = game.add.button(game.world.width * .5, game.world.height - 40, 'clickToStart', startGame, this, 1, 0 ,2);
         startButton.anchor.set(.5);
     }
 
@@ -83,7 +89,7 @@
         game.physics.arcade.collide(ball, paddle, ballHitPaddle);
         game.physics.arcade.collide(ball, bricks, ballHitBrick);
         if (playing) {
-            paddle.x = game.input.x || game.world.width * .5;
+            movePaddle(2);
         }
     }
 
@@ -139,8 +145,8 @@
         if (lives) {
             livesText.setText('Lives: ' + lives);
             lifeLostText.visible = true;
-            ball.reset(game.world.width * .5, game.world.height - 25);
-            paddle.reset(game.world.width * .5, game.world.height - 5);
+            ball.reset(game.world.width * .5, game.world.height - 110);
+            paddle.reset(game.world.width * .5, game.world.height - 85);
             game.input.onDown.addOnce(function() {
                 lifeLostText.visible = false;
                 ball.body.velocity.set(150, -150);
@@ -155,6 +161,15 @@
     function ballHitPaddle(ball, paddle) {
         ball.animations.play('wobble');
         ball.body.velocity.x = -5 * (paddle.x - ball.x);
+    }
+
+    function movePaddle(acceleration) {
+        var offset = gameWorldCenter - game.input.x;
+        offset = offset * acceleration;
+        var coordinateX = gameWorldCenter - offset;
+        if (coordinateX > 0 && coordinateX < game.world.width) {
+            paddle.x = coordinateX;
+        }
     }
 
     function startGame() {
