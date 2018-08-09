@@ -3,7 +3,7 @@
 	position: relative;
 
 	h2 {
-		line-height: 1.2; 
+		line-height: 1.2;
 		text-align: center;
 		padding-bottom: 18px;
 	}
@@ -63,9 +63,12 @@
 				bottom: 10%;
 				color: #fff;
 				font-size: 1.2rem;
+				left: 50%;
 				line-height: 1.2;
 				position: absolute;
 				text-align: center;
+				transform: translateX(-50%);
+				width: 100%;
 			}
 			.my-work-touchpanel {
 				color: #fff;
@@ -153,7 +156,7 @@
 	top: 4em;
 	right: 2em;
 	cursor: pointer;
-		
+
 	img {
 		width: 48px;
 		height: 48px;
@@ -215,7 +218,7 @@
 	#next {
 		right: .2em;
 	}
-	
+
 }
 @media (max-width: 767px) and (orientation: landscape) {    // make some gallery images fit in mobile-landscape
 	#img_holder {
