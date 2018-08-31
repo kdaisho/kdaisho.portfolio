@@ -1,0 +1,215 @@
+/* ========== Reset Styles =========== */
+/* http://meyerweb.com/eric/tools/css/reset/
+	 v2.0 | 20110126
+	 License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+em,
+img,
+ol,
+ul,
+li,
+form,
+label,
+table,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+details,
+embed,
+figure,
+footer,
+header,
+nav,
+section {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  /* font: inherit; */
+  /* vertical-align: baseline; */
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+figure,
+footer,
+header,
+section {
+  display: block;
+}
+div {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+/* === Reset End === */
+/* === Variables === */
+/* === Variables End === */
+body * {
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  color: #444;
+}
+.game-world {
+  height: 650px;
+  margin: 0 auto;
+  width: 100%;
+}
+.game-world:hover {
+  cursor: crosshair;
+}
+.status {
+  position: absolute;
+  top: 15px;
+  right: 10%;
+  font-size: 2em;
+  z-index: 20;
+}
+.status.timer {
+  left: 3%;
+  right: initial;
+}
+.reload {
+  display: none;
+  text-align: center;
+  color: #444;
+  font-size: 5em;
+  letter-spacing: .1em;
+  padding: .5em 1em;
+  background: lightgreen;
+  position: absolute;
+  top: 50%;
+  right: 3%;
+  transform: translate(0, -50%);
+  z-index: 10;
+}
+.reload.show {
+  display: block;
+}
+.reload.show:hover {
+  cursor: pointer;
+}
+.wall {
+  background: #444;
+  position: absolute;
+}
+.wall.is-01 {
+  top: 0;
+  left: 0;
+  width: 45%;
+  height: 100%;
+}
+.wall.is-02 {
+  top: 0;
+  left: 47%;
+  width: 55%;
+  height: 40%;
+}
+.wall.is-03 {
+  top: 45%;
+  left: 45%;
+  width: 35%;
+  height: 25%;
+}
+.wall.is-04 {
+  top: 40%;
+  right: 0;
+  width: 18%;
+  height: 80%;
+}
+.wall.is-05 {
+  bottom: 10%;
+  right: 0;
+  width: 54%;
+  height: 17%;
+}
+.field {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+}
+.field.blackout {
+  background: red;
+}
+.text {
+  font-size: 2em;
+  letter-spacing: .1em;
+  padding: .5em 0;
+  text-align: center;
+}
+.start {
+  background: lightgreen;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+.goal {
+  background: lightblue;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+}
+.course {
+  opacity: 0;
+}
+.course:hover,
+.course:hover ~ .course {
+  opacity: 1;
+}
+.game-over {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3em;
+  z-index: -99;
+  opacity: 0;
+}
+#gameOverImage {
+  position: absolute;
+  top: 0;
+  left: -600px;
+  opacity: 0;
+  z-index: 8;
+  transition: left 1s, opacity 2s;
+}
+#gameOverImage.appear {
+  left: 0;
+  opacity: 1;
+}
