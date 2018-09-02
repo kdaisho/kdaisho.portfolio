@@ -36,32 +36,28 @@
 
 <ui-view></ui-view>
 
-<md-content class="md-padding main-container">
+<md-content class="md-padding__ main-container">
     <h1 class="md-headline color-primary md-padding">Hi, I'm StasHash.</h1>
-    <p class="color-primary md-padding md-subhead offset-top">I help you stash list of web pages safely. When you need your list, just paste your encryption key in DECODE field, then click DECODE.</p>
+    <p class="color-primary md-padding md-subhead offset-top">I help you stash list of web pages safely. When you need your list, just paste your encryption key in DECODE field, then
+        click DECODE.</p>
     <h2 class="md-headline color-primary md-padding">What makes me unique?</h2>
     <ul class="color-primary md-padding offset-top">
         <li>You don't need to create account</li>
         <li>You are the only one who keeps the encription key</li>
     </ul>
     <p class="md-headline color-primary md-padding">How to use?</p>
-    <p class="uppercase color-primary clickable md-padding offset-top" ng-click="showVideo = !showVideo"><i class="fas fa-video"></i> See video</p>
-    <div class="modal" ng-class="{active: showVideo}" ng-click="showVideo = false">
-        <div class="video-container-wrapper">
-            <div class="video-container">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/6BGwvxHgmZA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-            </div>
-        </div>
-    </div>
+    <p class="uppercase color-primary clickable md-padding offset-top" ng-click="showVideo = !showVideo">
+        <i class="fas fa-video"></i> See video</p>
 </md-content>
 
-<md-content class="md-padding main-container" layout="row" layout-wrap>
+<md-content class="md-padding__ main-container" layout="row" layout-wrap>
     <md-card class="item" ng-repeat="item in ctrl.list | filter: listFilter | filter: category">
         <md-card-content class="md-primary">
 
             <div class="item-info" ng-show="!showContact" layout-padding>
                 <h3>
-                    <a ng-href="{{item.url}}" class="item-title md-primary" target="_blank"><i class="fas fa-link"></i> {{item.title}}</a>
+                    <a ng-href="{{item.url}}" class="item-title md-primary" target="_blank">
+                        <i class="fas fa-link"></i> {{item.title}}</a>
                 </h3>
                 <p class="md-primary">{{item.categories}}</p>
             </div>
@@ -77,6 +73,12 @@
         </md-card-content>
     </md-card>
 </md-content>
+
+<!-- Video modal -->
+<div class="modal" ng-class="{active: showVideo}" ng-click="showVideo = false"></div>
+<div class="video-container" ng-class="{active: showVideo}" ng-if="showVideo">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/6BGwvxHgmZA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
 
 <md-content class="md-padding" layout-gt-sm="row" layout-align="center">
     <md-content layout="column" class="md-padding">
@@ -96,7 +98,8 @@
 
     <md-content layout="column" class="md-padding">
         <md-input-container>
-            <md-button class="md-warn md-raised" ng-click="ctrl.decode()"><i class="fas fa-unlock"></i> Decode</md-button>
+            <md-button class="md-warn md-raised" ng-click="ctrl.decode()">
+                <i class="fas fa-unlock"></i> Decode</md-button>
         </md-input-container>
 
         <md-input-container>
@@ -106,7 +109,7 @@
     </md-content>
 </md-content>
 
-<md-content class="main-container md-padding" layout-gt-sm="column" layout-align="center">
+<md-content class="main-container md-padding__" layout-gt-sm="column" layout-align="center">
     <div>
         <h2 class="color-primary md-headline uppercase inline">Sample collection:</h2>
         <md-button class="clipboard color-primary md-button offset-top" title="copy to clipboard" data-clipboard-target="#sample">
