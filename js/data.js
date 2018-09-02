@@ -31,6 +31,7 @@ app.controller('skillsCtrl', ['$scope', function($scope) {
 //My Work Section
 app.controller('galleryCtrl', ['$scope', function($scope) {
 	$scope.images = [
+		{url: 'work-stashash.jpg', alt: 'StasHash', title: 'StasHash', desc: 'Private Hash Generator', pos: 9},
 		{url: 'work-pipe-game.jpg', alt: 'Pipe game', title: 'Pipe Game', desc: 'Super Casual Game', pos: 8},
 		{url: 'work-canvas-game-phaser.jpg', alt: 'Breakout Game with Phaser2', title: 'Canvas Game', desc: 'Breakout with Phaser', pos: 7},
 		{url: 'work-canvas-game.jpg', alt: 'Breakout Game', title: 'Canvas Game', desc: 'Breakout', pos: 6},
@@ -51,6 +52,13 @@ app.controller('timeCtrl', ['$scope', function($scope) {
 }]);
 
 var bigsrc = [];
+bigsrc[9] = {
+	url: 'pan-stashash.jpg',
+	id: 9,
+	title: 'StasHash',
+	desc: 'Private Hash Generator',
+	link: '//daishodesign.com/sites/stashash/'
+}
 bigsrc[8] = {
 	url: 'pan-pipe-game.jpg',
 	id: 8,
