@@ -57,7 +57,7 @@ bigsrc[9] = {
 	id: 9,
 	title: 'StasHash',
 	desc: 'Private Hash Generator',
-	link: '//daishodesign.com/sites/stashash/'
+	link: '//daishodesign.com/sites/stashash/#/list'
 }
 bigsrc[8] = {
 	url: 'pan-pipe-game.jpg',
