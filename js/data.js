@@ -58,7 +58,7 @@ bigsrc[10] = {
 	id: 10,
 	title: 'CSS Grid Infographic',
 	desc: 'Infographic using CSS Grid',
-	link: '//daishodesign.com/sites/infograhic'
+	link: '//daishodesign.com/sites/infographic'
 }
 bigsrc[9] = {
 	url: 'pan-stashash.jpg',
