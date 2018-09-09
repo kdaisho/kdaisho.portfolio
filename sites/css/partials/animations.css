@@ -1,0 +1,40 @@
+@media (max-width: 1023px) {
+  .main-img {
+    animation: drop 1.5s linear 1s forwards;
+  }
+}
+@keyframes drop {
+  15% {
+    transform: translate(-50%, 0);
+  }
+  30% {
+    transform: translate(-50%, -50%);
+  }
+  40% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, -30%);
+  }
+  70% {
+    transform: translate(-50%, 0);
+  }
+  80% {
+    transform: translate(-50%, -15%);
+  }
+  90% {
+    transform: translate(-50%, 0);
+  }
+  95% {
+    transform: translate(-50%, -7%);
+  }
+  97% {
+    transform: translate(-50%, 0);
+  }
+  99% {
+    transform: translate(-50%, -3%);
+  }
+  100% {
+    transform: translate(-50%, 0);
+  }
+}

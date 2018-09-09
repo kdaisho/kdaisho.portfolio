@@ -1,0 +1,326 @@
+// out: style.css
+@import url(https://fonts.googleapis.com/css?family=Creepster|Nosifer|Eater);
+@import "partials/reset";
+@import "partials/variables";
+@import "partials/general";
+@import "partials/app-suicide";
+@import "partials/animations";
+
+.heading {
+    display: flex;
+    align-items: center;
+    padding-top: 1.25em;
+    position: relative;
+    grid-area: heading;
+    justify-content: center;
+    .title-container {
+        width: @width-xs;
+        z-index: 30;
+        @media (min-width: @xs) {
+            width: @width-sm;
+        }
+        @media (min-width: @small) {
+            width: 34em;
+        }
+        @media (min-width: @large) {
+            width: 56em;
+        }
+        .title {
+            font-family: 'Nosifer', sans-serif;
+            max-width: 22em;
+            text-align: center;
+        }
+    }
+}
+
+.subtitle {
+    font-family: 'Nosifer', sans-serif;
+    text-align: center;
+    z-index: 30;
+    position: relative;
+}
+
+//font-size
+h1.size-1 {
+    font-size: 2.31em;
+    @media (min-width: @xs) {
+        font-size: 2.75em;
+    }
+}
+h2.size-2 {
+    font-size: 2.01em;
+    @media (min-width: @xs) {
+        font-size: 2.5em;
+    }
+}
+.desc {
+    text-align: left;
+    font-size: 1.75em;
+    &.center {
+        text-align: center;
+    }
+    span {
+        font-size: 80%;
+    }
+    @media (min-width: @xs) {
+        font-size: 2.25em;
+    }
+    @media (min-width: @small) {
+        font-size: 2em;
+    }
+}
+.flex-vertical {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+}
+.fact {
+    &.is-one {
+        position: relative;
+        grid-area: factOne;
+        .items {
+            @media (min-width: @small) {
+                display: flex;
+                justify-content: space-evenly;
+                align-items: flex-end;
+            }
+            @media (min-width: @medium) {
+                display: flex;
+                justify-content: space-around;
+            }
+        }
+        .item {
+            text-align: center;
+            &:nth-of-type(1) {
+               .suicide {
+                   width: 2em;
+               }
+            }
+            .suicide {
+                width: 9em;
+            }
+        }
+    }
+    &.is-two {
+        grid-area: factTwo;
+        text-align: center;
+        @media (min-width: @medium) {
+            position: relative;
+            padding: 2em 0 2.5em;
+        }
+        @media (min-width: @large) {
+            display: flex;
+            flex-flow: column wrap;
+            justify-content: space-around;
+        }
+        .main-content {
+            @media (min-width: @small) {
+                display: flex;
+            }
+            @media (min-width: @medium) {
+                display: initial;
+            }
+            @media (min-width: @large) {
+                display: flex;
+            }
+        }
+        .bodybag {
+            height: 280px;
+            @media (min-width: @small) {
+                height: 230px;
+            }
+            @media (min-width: @medium) {
+                width: 140px;
+            }
+        }
+        .main-img {
+            width: 6em;
+            position: absolute;
+            top: -90px;
+            left: 50%;
+            transform: translate(-50%, -200%);
+            @media (min-width: @xs) {
+                top: -30px;
+            }
+            @media (min-width: @small) {
+                top: -222px;
+                left: 17%;
+            }
+
+            @media (min-width: @medium) {
+                left: 50%;
+                transform: translateX(-50%);
+                top: -290px;
+                width: 5em;
+                z-index: 10;
+            }
+
+            @media (min-width: @large) {
+                left: 12%;
+                top: -400px;
+            }
+        }
+        .items {
+            display: inline-block;
+            margin: 0 auto;
+            @media (min-width: @small) {
+                padding: 2em 0;
+                display: flex;
+                flex-flow: column;
+                align-items: left;
+                justify-content: space-around;
+            }
+
+            @media (min-width: @medium) {
+                height: 9em;
+                width: 22em;
+            }
+
+            @media (min-width: @large) {
+                display: flex;
+                padding-left: 2%;
+                flex-flow: column;
+                justify-content: space-around;
+                position: absolute;
+                left: 55%;
+                transform: translateX(-50%);
+            }
+            .item {
+                flex-flow: row wrap;
+                align-items: center;
+                .item-icon {
+                    width: 2.5em;
+                    padding-right: 1em;
+                }
+            }
+        }
+    }
+
+    &.is-three {
+        grid-area: factThree;
+        .main-container {
+            width: @width-xs;
+            margin: 0 auto;
+            @media (min-width: @small) {
+                width: @width-sm;
+                span {
+                    display: block;
+                }
+            }
+        }
+        .subtitle-sub {
+            @media (min-width: @small) {
+                font-size: 2em;
+                span {
+                    font-size: .5em;
+                }
+            }
+        }
+        .items {
+            text-align: center;
+            width: @width-xs;
+            margin: 0 auto;
+            @media (min-width: @xs) {
+                width: 70%;
+            }
+            @media (min-width: @small) {
+                display: flex;
+                justify-content: space-around;
+                align-items: flex-end;
+            }
+            .desc {
+                line-height: 1.2;
+            }
+            .item {
+                @media (min-width: @small) {
+                    padding: 0 1em 1.5em;
+                }
+                @media (min-width: @medium) {
+                    flex: 0 0 65%;
+                }
+                &:nth-of-type(1) {
+                    .item-img {
+                        width: 6rem;
+                    }
+                    @media (min-width: @medium) {
+                        flex: 0 0 20%;
+                    }
+                }
+            }
+        }
+    }
+    &.is-four {
+        grid-area: factFour;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: space-around;
+        .item {
+            text-align: center;
+            img {
+                width: 10rem;
+                @media (min-width: @small) {
+                    width: 14rem;
+                }
+            }
+        }
+    }
+    &.is-five {
+        grid-area: factFive;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: space-around;
+        .item {
+            text-align: center;
+        }
+    }
+}
+
+.belly {
+    grid-area: "centerFlag";
+    background: #fff;
+    display: none;
+    @media (min-width: @medium) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        span {
+            background: @red;
+            height: 2em;
+            width: 2em;
+            border-radius: 50%;
+
+        }
+    }
+}
+
+.footer {
+    background: @red;
+    padding: .5em 0 1em;
+    text-align: center;
+    grid-area: footer;
+    p {
+        color: #222;
+    }
+}
+
+.blood {
+    background: url(../images/blood-01.svg) no-repeat;
+    background-position: right top;
+    background-size: contain;
+    position: absolute;
+    &.is-01 {
+        background-position: right top;
+        transform: scaleX(-1);
+        height: 150px;
+        left: 0;
+        top: -1px;
+        width: 20%;
+    }
+    &.is-02 {
+        background-position: right top;
+        height: 80px;
+        right: -1px;
+        top: -1px;
+        width: 20%;
+    }
+}

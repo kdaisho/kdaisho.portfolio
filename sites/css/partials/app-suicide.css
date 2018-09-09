@@ -1,0 +1,20 @@
+.app-suicide {
+  overflow: hidden;
+  background: #e00;
+  display: grid;
+  grid-gap: .5em;
+  grid-template-areas: "heading" "factTwo" "factOne" "factThree" "factFour" "factFive" "footer";
+}
+@media (min-width: 1024px) {
+  .app-suicide {
+    grid-template-areas: "heading heading heading heading" "factOne factOne factTwo factTwo" "factThree belly factTwo factTwo" "factThree factFour factFour factFive" "footer footer footer footer";
+    grid-template-columns: 1.75fr 6em 1fr .75fr;
+    grid-template-rows: auto auto 3.25em auto;
+  }
+}
+@media (min-width: 1440px) {
+  .app-suicide {
+    font-size: 130%;
+    grid-template-columns: 2.25fr 6em 1fr .75fr;
+  }
+}

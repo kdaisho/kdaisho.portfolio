@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="571px" height="460px" viewBox="0 0 571 460" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>factor</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="factor" transform="translate(-184.000000, -314.000000)">
+            <g transform="translate(189.000000, 313.000000)">
+                <g id="desk" transform="translate(0.000000, 215.000000)" fill="#FFFFFF">
+                    <polygon id="leg-right" stroke="#222222" stroke-width="3" points="316 1 335 1 335 157 316 157 316 81.8027686"></polygon>
+                    <polygon id="Rectangle-6" stroke="#222222" stroke-width="3" points="210.03125 71.2685547 334.094727 0.00122070312 334.094727 15.7741699 210.03125 102.863281"></polygon>
+                    <rect id="leg-left" x="0" y="75" width="35" height="171"></rect>
+                    <polygon id="leg-center" points="176 75 208 75 208 246 176 246 176 163.572266"></polygon>
+                    <polygon id="Rectangle-7-Copy" stroke="#222222" stroke-width="3" points="220.022708 1.00390625 338.458984 1.00390625 212.470571 73 4.08933111 73"></polygon>
+                    <rect id="Rectangle" x="0" y="75" width="208" height="29"></rect>
+                </g>
+                <g id="pc" transform="translate(46.000000, 53.000000)" fill="#FFFFFF">
+                    <rect id="Rectangle-8" x="82" y="144" width="21" height="44"></rect>
+                    <path d="M70.984375,181.009766 C87.3486985,170.587722 102.792272,165.685336 116.019531,170.515625 C124.40625,173.578261 126.283854,178.688938 121.652344,185.847656 L58.8085937,206.636719 C55.3723958,196.910156 59.4309896,188.367839 70.984375,181.009766 Z" id="Rectangle-9" stroke="#222222" stroke-width="3"></path>
+                    <polygon id="Rectangle-7" stroke="#222222" stroke-width="3" points="0 0 163.92541 0 163.92541 124.95322 0 177.042969"></polygon>
+                </g>
+                <g id="body" transform="translate(385.000000, 225.500000) rotate(-180.000000) translate(-385.000000, -225.500000) translate(226.000000, 0.000000)" fill="#E20000">
+                    <path d="M276.494187,311.070227 C279.875609,323.574921 269.455302,341.849572 253.864789,328.449088 C223.890904,302.685692 223.618489,271.192835 212.159076,279.009722 C200.699662,286.826608 230.944423,357.912336 224.702717,390.213185 C222.430158,401.973686 196.199273,386.829958 192.216683,367.797053 C181.523563,316.694346 170.423782,265.89209 195.351298,249.94196 C231.996407,226.494205 273.112766,298.565533 276.494187,311.070227 Z" id="Rectangle-4" transform="translate(228.698763, 319.817545) rotate(-300.000000) translate(-228.698763, -319.817545) "></path>
+                    <circle id="Oval" cx="194" cy="401" r="49"></circle>
+                    <path d="M72.0918648,182.276903 C96.0253755,137.91712 124.43375,144.709395 157.316988,202.653726 L145.289541,362.547395 C145.227367,363.37394 144.661791,364.076479 143.867583,364.313703 C116.635406,372.447752 95.4361817,371.205008 80.2699108,360.585471 C57.154464,344.399861 46.8174358,229.122022 72.0918648,182.276903 Z" id="Rectangle-3" transform="translate(107.353131, 261.515272) rotate(-395.000000) translate(-107.353131, -261.515272) "></path>
+                    <path d="M48.5375171,69.74335 C24.8654313,63.4004337 26.9011383,38.1044357 43.8210131,26.0269582 C60.7408878,13.9494806 187.08543,-14.8283504 196.66023,61.3995361 C203.043429,112.218127 203.496221,152.058065 198.018604,180.919351 C196.126757,204.094023 185.642231,210.881901 166.565025,201.282987 C145.881623,190.875897 164.980275,119.598759 164.980275,72.3174427 C164.980275,25.0361262 72.2096029,76.0862662 48.5375171,69.74335 Z" id="Rectangle-10" transform="translate(116.376892, 108.025901) rotate(-285.000000) translate(-116.376892, -108.025901) "></path>
+                </g>
+                <g id="chair" transform="translate(446.000000, 96.000000)" fill="#FFFFFF">
+                    <rect id="Rectangle-12" x="0" y="239" width="23" height="117"></rect>
+                    <rect id="Rectangle-12-Copy" x="97" y="239" width="23" height="117"></rect>
+                    <rect id="Rectangle-12-Copy-2" x="97" y="0" width="23" height="209"></rect>
+                    <polygon id="Rectangle-11" points="0 217.644531 120 194.285156 120 239 0 239"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
