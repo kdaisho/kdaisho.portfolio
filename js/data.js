@@ -31,6 +31,7 @@ app.controller('skillsCtrl', ['$scope', function($scope) {
 //My Work Section
 app.controller('galleryCtrl', ['$scope', function($scope) {
 	$scope.images = [
+		{url: 'work-flappy-box.jpg', alt: 'Flappy Box', title: 'Simple Game', desc: 'Popular Game Clone using Phaser', pos: 11},
 		{url: 'work-infographic-suicide.jpg', alt: 'Infographic', title: 'Infographic', desc: 'Suicide in Japan', pos: 10},
 		{url: 'work-stashash.jpg', alt: 'StasHash', title: 'StasHash', desc: 'Private Hash Generator', pos: 9},
 		{url: 'work-pipe-game.jpg', alt: 'Pipe game', title: 'Pipe Game', desc: 'Super Casual Game', pos: 8},
@@ -53,6 +54,13 @@ app.controller('timeCtrl', ['$scope', function($scope) {
 }]);
 
 var bigsrc = [];
+bigsrc[11] = {
+	url: 'pan-flappy-box.jpg',
+	id: 11,
+	title: 'Flappy Box',
+	desc: 'Flappy Bird clone using Phaser',
+	link: '//daishodesign.com/sites/flappy-box'
+}
 bigsrc[10] = {
 	url: 'pan-infographic-suicide.jpg',
 	id: 10,
