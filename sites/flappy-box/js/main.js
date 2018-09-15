@@ -29,7 +29,7 @@ const mainState = {
         this.bird.anchor.setTo(-.2, .5);
 
         this.jumpSound = game.add.audio('jump');
-
+        this.game.canvas.id = 'myCanvas';
     },
 
     update: function() {
