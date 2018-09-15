@@ -11,6 +11,7 @@ const mainState = {
         game.stage.backgroundColor = '#71c5cf';
         game.physics.startSystem(Phaser.Physics.ARCADE);
         this.bird = game.add.sprite(100, 245, 'bird');
+        this.bird.scale.setTo(.7, .7);
         this.pipes = game.add.group();
         game.physics.arcade.enable(this.bird);
         this.bird.body.gravity.y = 1000;
@@ -70,9 +71,11 @@ const mainState = {
         this.pipes.forEach(function(pipe) {
             pipe.body.velocity.x = 0;
         }, this);
+
     },
 
     restartGame: function() {
+        alert('Score: ' + this.score + '\nTry again!');
         game.state.start('main');
     },
 
