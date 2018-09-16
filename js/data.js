@@ -31,6 +31,7 @@ app.controller('skillsCtrl', ['$scope', function($scope) {
 //My Work Section
 app.controller('galleryCtrl', ['$scope', function($scope) {
 	$scope.images = [
+		{url: 'work-sound-kit.jpg', alt: 'Japan Sound Kit', title: 'Drum Kit', desc: 'Japan Sound Kit', pos: 12},
 		{url: 'work-flappy-box.jpg', alt: 'Flappy Box', title: 'Simple Game', desc: 'Popular Game Clone using Phaser', pos: 11},
 		{url: 'work-infographic-suicide.jpg', alt: 'Infographic', title: 'Infographic', desc: 'Suicide in Japan', pos: 10},
 		{url: 'work-stashash.jpg', alt: 'StasHash', title: 'StasHash', desc: 'Private Hash Generator', pos: 9},
@@ -54,6 +55,13 @@ app.controller('timeCtrl', ['$scope', function($scope) {
 }]);
 
 var bigsrc = [];
+bigsrc[12] = {
+	url: 'pan-sound-kit.jpg',
+	id: 12,
+	title: 'Japan Sound Kit',
+	desc: 'Drun kit with Japan sound using native JS',
+	link: '//daishodesign.com/sites/sound-kit'
+}
 bigsrc[11] = {
 	url: 'pan-flappy-box.jpg',
 	id: 11,
