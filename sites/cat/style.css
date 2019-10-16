@@ -1,0 +1,44 @@
+body * {
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: lighter;
+}
+
+
+h1 {
+    position: relative;
+    top: 100px;
+    text-align: center;
+}
+
+.cat {
+    animation: typing 1.6s steps(18, end) infinite;
+    background: url(images/cat.png) 0 0 no-repeat;
+    height: 300px;
+    margin: 100px auto 0;
+    position: relative;
+    width: 300px;
+}
+
+@keyframes typing {
+    100% {
+        background-position: 0 -5400px;
+    }
+}
+
+@keyframes wear {
+    from {
+        top: -250px;
+    }
+    to {
+        top: 61px;
+    }
+}
+
+.sunglasses {
+    animation: wear 8s ease-in-out 5s forwards;
+    position: absolute;
+    top: -250px;
+    left: 106px;
+    transform: rotate(-7deg);
+    width: 76px;
+}
