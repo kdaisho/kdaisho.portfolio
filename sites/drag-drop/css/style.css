@@ -1,0 +1,76 @@
+body {
+    background: #ccc;
+}
+
+body * {
+    font-family: sans-serif;
+}
+
+div[data-element="0"] {
+    background: #fe4a49;
+}
+div[data-element="1"] {
+    background: #2ab7ca;
+}
+div[data-element="2"] {
+    background: #ced766;
+}
+div[data-element="3"] {
+    background: #e6e6ea;
+}
+div[data-element="4"] {
+    background: #f4f4f8;
+}
+.fill {
+    background: #fff;
+    box-shadow: 0 0 6px rgba(0, 0, 0, .5);
+    left: 5px;
+    position: relative;
+    opacity: .7;
+    top: 0;
+    transition: top .25s;
+    width: calc(100% - 10px);
+}
+
+.fill:hover {
+    cursor: pointer;
+}
+
+.fill.up {
+    top: -42px;
+}
+
+.fill.down {
+    top: 42px;
+}
+
+.empty {
+    align-items: center;
+    border: 3px solid salmon;
+    display: flex;
+    height: 25px;
+    margin: 10px;
+    position: relative;
+}
+
+.hovered {
+    background: #f4f4f4;
+    border-style: dashed;
+}
+
+.invisible {
+    display: none;
+}
+
+.handle {
+    background: orange;
+    display: inline-block;
+    float: right;
+    height: 20px;
+    padding-right: 6px;
+    width: 50px;
+}
+
+.handle:hover {
+    cursor: grab;
+}
