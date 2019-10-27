@@ -33,6 +33,7 @@ dd.dragLeave = function () {
 
 dd.dragDrop = function () {
     this.classList.remove("hovered");
+    dd.removeUpDownFromFills();
     dd.appendAll(parseInt(this.getAttribute("data-position")));
     this.append(dd.grabbed);
     setTimeout(() => dd.setOrder(), 0);
@@ -50,9 +51,6 @@ dd.appendAll = function (indexTo) {
         for (let i = dd.indexFrom - 1; i >= indexTo; i--) {
             dd.empties[i + 1].append(dd.fills[i]);
         }
-    }
-    for (let i = 0; i < dd.fills.length; i++) {
-        dd.fills[i].classList.remove("up", "down");
     }
 };
 
@@ -119,6 +117,12 @@ dd.isIn = function (x, y) {
     }
 };
 
+dd.removeUpDownFromFills = function () {
+    for (let i = 0; i < dd.fills.length; i++) {
+        dd.fills[i].classList.remove("up", "down");
+    }
+}
+
 dd.touchStart = function (event) {
     dd.indexFrom = dd.getPosition(event.targetTouches[0].pageX, event.targetTouches[0].pageY);
     dd.lastPosition = parseInt(this.parentElement.getAttribute("data-position"));
@@ -128,32 +132,40 @@ dd.touchStart = function (event) {
 };
 
 dd.touchMove = function (event) {
-    event.preventDefault();
+    console.log("TOUICH MOVE FIRED", event);
+    event.cancelable ? event.preventDefault() : "";
     this.style.left = (event.targetTouches[0].pageX - dd.initialX) + "px";
     this.style.top = (event.targetTouches[0].pageY - dd.initialY) + "px";
 
     dd.indexTo = dd.getPosition(event.targetTouches[0].pageX, event.targetTouches[0].pageY);
-    console.log("Is_IN, dd.INDEXTO", dd.isIn(event.targetTouches[0].pageX, event.targetTouches[0].pageY), dd.indexTo);
+    //when dd.indexTo is undefined, fill is outside
+    console.log("It's in", dd.indexTo);
     //isIN function is not needed
     if (typeof dd.indexFrom === "number" && typeof dd.indexTo === "number") {
         dd.adjustTop(dd.indexFrom < dd.indexTo ? "up" : "down");
     }
+    else {
+        dd.removeUpDownFromFills();
+    }
 };
 
 dd.touchEnd = function (event) {
-    console.log("TOUCH END", this, dd.empties, dd.indexTo);
+    console.log("TOUCH END", typeof dd.indexTo);
     this.style.left = "5px";
     this.style.top = 0;
 
-    dd.adjustTop();
-    if (typeof dd.indexTo === "number") {
-        console.log(dd.empties, dd.indexTo);
+    this.removeAttribute("style");
+    //when dd.indexTo is undefined, up, down class won't be removed
+    //so remove them here
+    dd.removeUpDownFromFills();
+
+    if (typeof dd.indexTo === "number" && dd.currentSpot !== dd.indexTo) {
         dd.appendAll(dd.indexTo);
         dd.empties[dd.indexTo].append(this);
+        dd.currentSpot = dd.indexTo;
     }
     setTimeout(() => dd.setOrder(), 0);
 };
-
 
 dd.initTouch = function () {
     dd.coordinates = [];
@@ -161,6 +173,8 @@ dd.initTouch = function () {
     dd.height = 0;
     dd.width = 0;
     dd.initialLocation;
+    dd.currentSpot;
+
     for (let i = 0; i < dd.empties.length; i++) {
         dd.coordinates.push(dd.empties[i].getBoundingClientRect());
     }
