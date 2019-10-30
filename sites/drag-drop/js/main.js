@@ -132,21 +132,23 @@ dd.touchStart = function (event) {
 };
 
 dd.touchMove = function (event) {
-    console.log("TOUICH MOVE FIRED", event);
     event.cancelable ? event.preventDefault() : "";
-    this.style.left = (event.targetTouches[0].pageX - dd.initialX) + "px";
-    this.style.top = (event.targetTouches[0].pageY - dd.initialY) + "px";
+    window.requestAnimationFrame(() => {
+        console.log("TOUICH MOVE FIRED", event);
+        this.style.left = (event.targetTouches[0].pageX - dd.initialX) + "px";
+        this.style.top = (event.targetTouches[0].pageY - dd.initialY) + "px";
 
-    dd.indexTo = dd.getPosition(event.targetTouches[0].pageX, event.targetTouches[0].pageY);
-    //when dd.indexTo is undefined, fill is outside
-    console.log("It's in", dd.indexTo);
-    //isIN function is not needed
-    if (typeof dd.indexFrom === "number" && typeof dd.indexTo === "number") {
-        dd.adjustTop(dd.indexFrom < dd.indexTo ? "up" : "down");
-    }
-    else {
-        dd.removeUpDownFromFills();
-    }
+        dd.indexTo = dd.getPosition(event.targetTouches[0].pageX, event.targetTouches[0].pageY);
+        //when dd.indexTo is undefined, fill is outside
+        console.log("It's in", dd.indexTo);
+        //isIN function is not needed
+        if (typeof dd.indexFrom === "number" && typeof dd.indexTo === "number") {
+            dd.adjustTop(dd.indexFrom < dd.indexTo ? "up" : "down");
+        }
+        else {
+            dd.removeUpDownFromFills();
+        }
+    });
 };
 
 dd.touchEnd = function (event) {
