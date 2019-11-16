@@ -1,9 +1,8 @@
 const dd = {};
 
-dd.setOrder = element => {
-    element && element.removeAttribute("style");
+dd.setOrder = () => {
     dd.lastPosition && dd.spots[dd.lastPosition].classList.remove("hovered");
-    dd.tags = document.querySelectorAll(".fill");
+    dd.tags = document.querySelectorAll(".tag");
 };
 
 dd.dragStart = function () {
@@ -36,7 +35,7 @@ dd.dragLeave = function () {
 
 dd.dragDrop = function () {
     this.classList.remove("hovered");
-    dd.removeUpDownFromFills();
+    dd.removeUpDownFromTags();
     dd.dropTags(parseInt(this.getAttribute("data-position")));
     this.append(dd.currentTag);
     setTimeout(() => dd.setOrder(), 0);
@@ -63,7 +62,7 @@ dd.pushTags = downwards => {
 }
 
 dd.init = () => {
-    dd.spots = document.getElementsByClassName("empty");
+    dd.spots = document.getElementsByClassName("spot");
     dd.tags = "";
     dd.currentTag = "";
     dd.indexFrom = "";
@@ -92,7 +91,7 @@ dd.getPosition = (x, y) => {
     }
 }
 
-dd.removeUpDownFromFills = () => {
+dd.removeUpDownFromTags = () => {
     for (let i = 0; i < dd.tags.length; i++) {
         dd.tags[i].classList.remove("up", "down");
     }
@@ -107,42 +106,36 @@ dd.touchStart = function (event) {
 };
 
 dd.touchMove = function (event) {
-    dd.hasMoved = true;
-    event.cancelable ? event.preventDefault() : "";
-    window.requestAnimationFrame(() => {
-        this.style.transform = `translate(${event.targetTouches[0].pageX - dd.initialX}px, ${event.targetTouches[0].pageY - dd.initialY}px)`;
-        dd.indexTo = dd.getPosition(event.targetTouches[0].pageX, event.targetTouches[0].pageY);
-        if (typeof dd.indexFrom === "number" && typeof dd.indexTo === "number") {
-            if (!dd.wasInside) {
-                dd.lastSpot = dd.indexTo;
-                dd.spots[dd.indexTo].classList.add("hovered");
-                dd.pushTags(dd.indexFrom < dd.indexTo);
-                dd.wasInside = true;
-            }
-        }
-        else {
-            if (dd.wasInside) {
-                dd.spots[dd.lastSpot].classList.remove("hovered");
-                dd.removeUpDownFromFills();
-                dd.wasInside = false;
-            }
-        }
-    });
+    if (!dd.hasMoved) dd.hasMoved = true;
+    if (event.cancelable) event.preventDefault();
+    this.style.transform = `translate(${event.targetTouches[0].pageX - dd.initialX}px, ${event.targetTouches[0].pageY - dd.initialY}px)`;
+    dd.indexTo = dd.getPosition(event.targetTouches[0].pageX, event.targetTouches[0].pageY);
+    if (typeof dd.indexFrom === "number" && typeof dd.indexTo === "number") {
+        dd.lastSpot = dd.indexTo;
+        dd.spots[dd.indexTo].classList.add("hovered");
+        dd.pushTags(dd.indexFrom < dd.indexTo);
+        dd.wasInside = true;
+    }
+    else if (dd.wasInside) {
+        dd.spots[dd.lastSpot].classList.remove("hovered");
+        dd.removeUpDownFromTags();
+        dd.wasInside = false;
+    }
 };
 
 dd.touchEnd = function () {
     if (!dd.hasMoved) return false;
-    this.removeAttribute("style");
-    dd.removeUpDownFromFills();
+    dd.removeUpDownFromTags();
     if (typeof dd.indexTo === "number") {
-        dd.spots[dd.indexTo].classList.remove("hovered");
+        dd.spots[dd.indexTo] && dd.spots[dd.indexTo].classList.remove("hovered");
         dd.dropTags(dd.indexTo);
         dd.spots[dd.indexTo].append(this);
         dd.hasMoved = false;
     }
-    setTimeout(() => {
-        dd.setOrder(this);
-    }, 100);
+    requestAnimationFrame(() => {
+        this.removeAttribute("style");
+        dd.setOrder();
+    });
 };
 
 dd.initTouch = () => {
